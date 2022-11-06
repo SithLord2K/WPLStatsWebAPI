@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="XWPLStats.Views.AddUpdatePlayer"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodel="clr-namespace:XWPLStats.ViewModels"
+    Title="{Binding Title}"
+    x:DataType="viewmodel:AddUpdatePlayerViewModel"
+    Shell.PresentationMode="Modal"
+    BackgroundColor="{AppThemeBinding 
+                    Dark={StaticResource WindowBackgroundColorDark}, 
+                    Light={StaticResource WindowBackgroundColor}}">
+    <ContentPage.BindingContext>
+        <viewmodel:AddUpdatePlayerViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout Padding="20">
+            <Label Text="ID:"
+                   Style="{StaticResource LabelMedium}" />
+            <Entry Text="{Binding Id}" />
+            <Label Text="Name:"
+                   Style="{StaticResource LabelMedium}"/>
+            <Entry Text="{Binding Name}" />
+            <Label Text="Games Won:"
+                   Style="{StaticResource LabelMedium}" />
+            <Entry Text="{Binding GamesWon}" Keyboard="Numeric" />
+            <Label Text="Games Lost:"
+                   Style="{StaticResource LabelMedium}" />
+            <Entry Text="{Binding GamesLost}" Keyboard="Numeric" />
+            <Label Text="Games Played:"
+                   Style="{StaticResource LabelMedium}" />
+            <Entry Text="{Binding GamesPlayed}" IsReadOnly="True" />
+            <Label Text="Average:"
+                   Style="{StaticResource LabelMedium}" />
+            <Entry Text="{Binding Average}" IsReadOnly="True" />
+
+            <ActivityIndicator
+                HorizontalOptions="Center"
+                IsRunning="{Binding IsBusy}"
+                IsVisible="{Binding IsBusy}"
+                VerticalOptions="Center" />
+
+            <Button
+                Padding="20,0"
+                Command="{Binding SavePlayerCommand}"
+                HorizontalOptions="Center"
+                IsEnabled="{Binding IsNotBusy}"
+                Text="Save"
+                VerticalOptions="EndAndExpand"
+                Style="{StaticResource ButtonOutline}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="XWPLStats.Views.PlayerDetailPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:model="clr-namespace:XWPLStats.Models"
+    Title="{Binding Name}"
+    x:DataType="model:Players"
+    BackgroundColor="{AppThemeBinding 
+                    Dark={StaticResource WindowBackgroundColorDark}, 
+                    Light={StaticResource WindowBackgroundColor}}">
+    <ContentPage.Content>
+        <StackLayout Padding="20">
+            <Label Text="{Binding Id, StringFormat='ID: {0}'}"
+                   Style="{StaticResource LabelMedium}" />
+            <Label Text="{Binding Name, StringFormat='Name: {0}'}"
+                   Style="{StaticResource LabelLarge}" />
+            <Label Text="{Binding GamesWon, StringFormat='Games Won: {0}'}"
+                   Style="{StaticResource LabelMedium}" />
+            <Label Text="{Binding GamesLost, StringFormat='Games Lost: {0}'}"
+                   Style="{StaticResource LabelMedium}" />
+            <Label Text="{Binding GamesPlayed, StringFormat='Games Played: {0}'}"
+                   Style="{StaticResource LabelMedium}" />
+            <Label Text="{Binding Average, StringFormat='Average: {0}%'}"
+                   Style="{StaticResource LabelMedium}" />
+            
+            <Button Clicked="Button_Clicked" Text="Done"
+                    Style="{StaticResource ButtonOutline}"/>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

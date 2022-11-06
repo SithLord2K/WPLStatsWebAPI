@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit" 
+             xmlns:viewmodels="clr-namespace:XWPLStats.ViewModels"
+             xmlns:models="clr-namespace:XWPLStats.Models"
+             x:Class="XWPLStats.Views.TeamStats"
+             x:DataType="viewmodels:TeamStatsViewModel"
+             BackgroundColor="{AppThemeBinding 
+                    Dark={StaticResource WindowBackgroundColorDark}, 
+                    Light={StaticResource WindowBackgroundColor}}">
+    <ContentPage.BindingContext>
+        <viewmodels:TeamStatsViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <ListView
+        IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+        ItemsSource="{Binding TeamStat}"
+        RefreshCommand="{Binding RefreshCommand}"
+        SelectionMode="Single"
+        Style="{StaticResource PlayerListView}"
+        CachingStrategy="RecycleElement"
+        x:Name="PlayersList">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="models:TeamStats">
+                    <ViewCell>
+                        <Grid Padding="10">
+
+                            <Frame  Style="{StaticResource PlayerCard}">
+                                <StackLayout Orientation="Horizontal">
+                                    <StackLayout VerticalOptions="Center">
+                                        <Label
+                                       Style="{StaticResource LabelMedium}"
+                                       Text="Team Statistics"
+                                       VerticalOptions="Center" />
+                                        <Label
+                                       Style="{StaticResource LabelSmall}"
+                                       Text="{Binding TotalGamesPlayed, StringFormat='Total Games Played: {0}'}"
+                                       VerticalOptions="Center" />
+                                        <Label
+                                        Style="{StaticResource LabelSmall}"
+                                        Text="{Binding TotalGamesWon, StringFormat='Total Games Won: {0}'}"
+                                        VerticalOptions="Center" />
+                                        <Label
+                                        Style="{StaticResource LabelSmall}"
+                                        Text="{Binding TotalGamesLost, StringFormat='Total Games Lost: {0}'}"
+                                        VerticalOptions="Center" />
+                                        <Label
+                                        Style="{StaticResource LabelSmall}"
+                                        Text="{Binding TotalAverage, StringFormat='Average: {0}%'}"
+                                        VerticalOptions="Center" />
+                                        <Label
+                                        Style="{StaticResource LabelSmall}"
+                                        Text="{Binding WeeksPlayed, StringFormat='Weeks Played: {0}'}"
+                                        VerticalOptions="Center" />
+                                    </StackLayout>
+                                </StackLayout>
+                            </Frame>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </ContentPage.Content>
+</ContentPage>
