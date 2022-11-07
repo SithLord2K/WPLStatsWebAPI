@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:XWPLStats.ViewModels"
+             xmlns:models="clr-namespace:XWPLStats.Models"
+             x:Class="XWPLStats.Views.UpdatePlayerPage">
+    <ContentPage.BindingContext>
+        <viewmodels:UpdatePlayerViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Select Player to Edit:" Style="{StaticResource LabelMedium}"/>
+            <Picker ItemsSource="{Binding playerList.Name}" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

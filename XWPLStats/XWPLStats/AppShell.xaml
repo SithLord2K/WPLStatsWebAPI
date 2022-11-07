@@ -90,4 +90,7 @@
     <FlyoutItem Title="Team Stats Page">
           <ShellContent ContentTemplate="{DataTemplate views:TeamStats}" Route="TeamStats" />
     </FlyoutItem>
+    <FlyoutItem Title="Update Player">
+        <ShellContent ContentTemplate="{DataTemplate views:UpdatePlayerPage}" Route="UpdatePlayerPage" />
+    </FlyoutItem>
 </Shell>
