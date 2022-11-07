@@ -12,11 +12,10 @@ using XWPLStats.Views;
 namespace XWPLStats.ViewModels
 {
     [QueryProperty(nameof(Name), nameof(Name))]
-    [QueryProperty(nameof(PlayerID),nameof(PlayerID))]
-
+    [QueryProperty(nameof(Player),nameof(Player))]
     public class AddUpdatePlayerViewModel : BaseViewModel
     {
-
+        Players Player = new Players();
         string name;
         int gamesWon, gamesLost, id, gamesPlayed;
         decimal average;
@@ -38,10 +37,10 @@ namespace XWPLStats.ViewModels
             Title = "Add/Update Player";
             SavePlayerCommand = new AsyncCommand(SavePlayer);
             playerService = DependencyService.Get<IPlayerService>();
-            if(PlayerID !=null)
+            if(Player !=null)
             {
-                int.TryParse(PlayerID, out int result);
-                var player = playerService.GetSinglePlayer(result);
+                var player = playerService.GetSinglePlayer(Player.Id);
+
             }
         }
 

@@ -36,10 +36,10 @@ namespace XWPLStats.Services
         {
             await Init();
 
-            var coffee = await db.Table<Players>()
+            var player = await db.Table<Players>()
                 .FirstOrDefaultAsync(c => c.Id == id);
 
-            return coffee;
+            return player;
         }
 
         public async Task RemovePlayer(int Id)
