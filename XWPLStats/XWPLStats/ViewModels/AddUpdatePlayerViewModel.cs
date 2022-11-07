@@ -13,6 +13,7 @@ namespace XWPLStats.ViewModels
 {
     [QueryProperty(nameof(Name), nameof(Name))]
     [QueryProperty(nameof(PlayerID),nameof(PlayerID))]
+
     public class AddUpdatePlayerViewModel : BaseViewModel
     {
 
@@ -41,7 +42,6 @@ namespace XWPLStats.ViewModels
             {
                 int.TryParse(PlayerID, out int result);
                 var player = playerService.GetSinglePlayer(result);
-               
             }
         }
 
@@ -68,8 +68,5 @@ namespace XWPLStats.ViewModels
             await Shell.Current.GoToAsync("..");
         }
 
-        
-        
-       
     }
 }

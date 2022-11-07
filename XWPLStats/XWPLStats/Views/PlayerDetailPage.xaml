@@ -27,6 +27,9 @@
             <Button Clicked="Button_Clicked" Text="Done"
                     Style="{StaticResource ButtonOutline}"/>
 
+            <Button Clicked="ButtonEdit_Clicked" Text="Edit"
+                    Style="{StaticResource ButtonOutline}"/>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

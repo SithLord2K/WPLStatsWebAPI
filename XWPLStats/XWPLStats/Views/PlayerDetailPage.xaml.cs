@@ -27,7 +27,6 @@ namespace XWPLStats.Views
         {
             base.OnAppearing();
             int.TryParse(PlayerID, out var result);
-            var pID = result;
             BindingContext =await playerService.GetSinglePlayer(result);
             
         }
@@ -36,6 +35,10 @@ namespace XWPLStats.Views
         {
             await Shell.Current.GoToAsync("..");
         }
-
+        private async void ButtonEdit_Clicked(object sender, EventArgs e)
+        {
+            var route = $"{nameof(AddUpdatePlayer)}?Name={Player.Name}";
+            await Shell.Current.GoToAsync(route);
+        }
     }
 }

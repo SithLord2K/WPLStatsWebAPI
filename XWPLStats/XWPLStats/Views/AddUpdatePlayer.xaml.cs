@@ -6,15 +6,18 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using XWPLStats.Models;
+using XWPLStats.Services;
+using XWPLStats.ViewModels;
 
 namespace XWPLStats.Views
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddUpdatePlayer : ContentPage
     {
         public AddUpdatePlayer()
         {
             InitializeComponent();
         }
+
     }
 }
