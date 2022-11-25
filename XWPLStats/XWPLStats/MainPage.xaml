@@ -52,7 +52,7 @@
                             IsDestructive="True"
                             Text="Delete Player" />
                     </ViewCell.ContextActions>
-                    <Grid Padding="10">
+                    <Grid Padding="5">
 
                         <Frame  Style="{StaticResource PlayerCard}">
                             <StackLayout Orientation="Horizontal">

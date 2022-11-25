@@ -11,6 +11,7 @@ namespace XWPLStats
             InitializeComponent();
 
             MainPage = new AppShell();
+            
         }
 
         protected override void OnStart()

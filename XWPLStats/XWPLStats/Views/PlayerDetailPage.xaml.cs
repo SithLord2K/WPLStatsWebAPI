@@ -17,11 +17,12 @@ namespace XWPLStats.Views
     {
         public string PlayerID { get; set; }
         public Players Player { get; set; }
-        IPlayerService playerService;
+
+        readonly IPlayerService playerService;
         public PlayerDetailPage()
         {
             InitializeComponent();
-            playerService = DependencyService.Get<IPlayerService>();
+            playerService = new PlayerService();
         }
         protected override async void OnAppearing()
         {
@@ -37,7 +38,7 @@ namespace XWPLStats.Views
         }
         private async void ButtonEdit_Clicked(object sender, EventArgs e)
         {
-            var route = $"{nameof(AddUpdatePlayer)}?Name={Player.Name}";
+            var route = $"{nameof(AddUpdatePlayer)}?Player={Player}";
             await Shell.Current.GoToAsync(route);
         }
     }

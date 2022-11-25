@@ -2,6 +2,7 @@
 using MvvmHelpers.Commands;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -13,16 +14,20 @@ namespace XWPLStats.ViewModels
     public partial class TeamStatsViewModel : BaseViewModel
     {
         public ObservableRangeCollection<TeamStats> TeamStat { get; set; }
+        public ObservableRangeCollection<Weeks> WeekStats { get; set; }
         public AsyncCommand RefreshCommand { get; }
         
 
         IPlayerService playerService;
+        IWeekService weekService;
         public TeamStatsViewModel()
         {
-            Title = "Player List";
+            Title = "Team and Week Statistics";
             TeamStat = new ObservableRangeCollection<TeamStats>();
+            WeekStats = new ObservableRangeCollection<Weeks>(); 
             RefreshCommand = new AsyncCommand(Refresh);
 
+            weekService = new WeekService();
             playerService = DependencyService.Get<IPlayerService>();
             
         }
@@ -52,10 +57,16 @@ namespace XWPLStats.ViewModels
                 WeeksPlayed = gPlayed / 25
             };
            
-
             TeamStat.Add(Team);
 
 
+            //Get Week Stats
+
+            
+            WeekStats.Clear();
+            var weeks = await weekService.GetAllWeeksAsync();
+            weeks = weeks.OrderByDescending(a => a.Id);
+            WeekStats.Add((Weeks)weeks.FirstOrDefault());
             IsBusy = false;
         }
     }

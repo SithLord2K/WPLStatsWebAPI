@@ -9,10 +9,9 @@ using Xamarin.Forms.Xaml;
 
 namespace XWPLStats.Views
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class UpdatePlayerPage : ContentPage
+    public partial class WeekStatsPage : ContentPage
     {
-        public UpdatePlayerPage()
+        public WeekStatsPage()
         {
             InitializeComponent();
         }

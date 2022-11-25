@@ -2,6 +2,7 @@
 using MvvmHelpers.Commands;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -60,7 +61,7 @@ namespace XWPLStats.ViewModels
             IsBusy = true;
             Player.Clear();
             var players = await playerService.GetAllPlayersAsync();
-
+            players = players.OrderByDescending(a => a.Average);
             Player.AddRange(players);
 
 
