@@ -50,6 +50,7 @@ namespace XWPLStats.ViewModels
             };
 
             await weekService.SaveWeeks(week);
+            await Shell.Current.GoToAsync($"{nameof(TeamStats)}");
             
         }
 

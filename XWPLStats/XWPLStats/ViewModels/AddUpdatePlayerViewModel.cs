@@ -13,6 +13,7 @@ namespace XWPLStats.ViewModels
 {
     [QueryProperty(nameof(Name), nameof(Name))]
     [QueryProperty(nameof(Player),nameof(Player))]
+    [QueryProperty(nameof(PlayerID), nameof(PlayerID))]
     public class AddUpdatePlayerViewModel : BaseViewModel
     {
         Players Player = new Players();
@@ -37,10 +38,10 @@ namespace XWPLStats.ViewModels
             Title = "Add/Update Player";
             SavePlayerCommand = new AsyncCommand(SavePlayer);
             playerService = DependencyService.Get<IPlayerService>();
-            if(Player !=null)
+            if(PlayerID !=null)
             {
-                var player = playerService.GetSinglePlayer(Player.Id);
-
+                int playerID = int.Parse(PlayerID);
+                var player = playerService.GetSinglePlayer(playerID);
             }
         }
 

@@ -88,7 +88,6 @@
             <Style x:Key="ButtonOutline" TargetType="Button">
                 <Setter Property="TextColor" Value="{AppThemeBinding Dark={StaticResource TextColorDark},
                     Light={StaticResource TextColor}}" />
-                <Setter Property="WidthRequest" Value="150" />
                 <Setter Property="HeightRequest" Value="{OnPlatform iOS=30, Android=40}" />
                 <Setter Property="FontSize" Value="Small" />
                 <Setter Property="CornerRadius" Value="6" />

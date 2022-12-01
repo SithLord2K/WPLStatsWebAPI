@@ -20,6 +20,8 @@ namespace XWPLStats.ViewModels
         public AsyncCommand<Players> RemoveCommand { get; }
         public AsyncCommand<Players> SelectedCommand { get; }
 
+        private bool _isBusy;
+
         IPlayerService playerService;
 
         public MainPageViewModel()
@@ -35,7 +37,18 @@ namespace XWPLStats.ViewModels
 
             playerService = DependencyService.Get<IPlayerService>();
         }
-
+        public new bool IsBusy
+        {
+            get
+            {
+                return _isBusy;
+            }
+            set
+            {
+                _isBusy = value;
+                OnPropertyChanged("IsBusy");
+            }
+        }
         async Task AddPlayer()
         {
             await Shell.Current.GoToAsync($"{nameof(AddUpdatePlayer)}");
@@ -58,13 +71,10 @@ namespace XWPLStats.ViewModels
 
         async Task Refresh()
         {
-            IsBusy = true;
             Player.Clear();
             var players = await playerService.GetAllPlayersAsync();
             players = players.OrderByDescending(a => a.Average);
             Player.AddRange(players);
-
-
             IsBusy = false;
         }
     }

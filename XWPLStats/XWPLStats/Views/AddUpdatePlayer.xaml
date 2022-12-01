@@ -4,7 +4,8 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:viewmodel="clr-namespace:XWPLStats.ViewModels"
-    Title="{Binding Title}"
+    xmlns:models="clr-namespace:XWPLStats.Models"
+    Title="Add/Update Players"
     x:DataType="viewmodel:AddUpdatePlayerViewModel"
     Shell.PresentationMode="Modal"
     BackgroundColor="{AppThemeBinding 
@@ -14,7 +15,7 @@
         <viewmodel:AddUpdatePlayerViewModel />
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <StackLayout Padding="20">
+        <StackLayout Padding="20" x:DataType="models:Players">
             <Label Text="ID:"
                    Style="{StaticResource LabelMedium}" />
             <Entry Text="{Binding Id}" />
@@ -35,18 +36,20 @@
             <Entry Text="{Binding Average}" IsReadOnly="True" />
 
             <ActivityIndicator
+                x:DataType="viewmodel:AddUpdatePlayerViewModel"
                 HorizontalOptions="Center"
                 IsRunning="{Binding IsBusy}"
                 IsVisible="{Binding IsBusy}"
                 VerticalOptions="Center" />
 
             <Button
+                x:DataType="viewmodel:AddUpdatePlayerViewModel"
                 Padding="20,0"
                 Command="{Binding SavePlayerCommand}"
-                HorizontalOptions="Center"
                 IsEnabled="{Binding IsNotBusy}"
                 Text="Save"
                 VerticalOptions="EndAndExpand"
+                HorizontalOptions="Fill"
                 Style="{StaticResource ButtonOutline}"/>
         </StackLayout>
     </ContentPage.Content>

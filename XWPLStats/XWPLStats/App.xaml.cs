@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Autofac;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using XWPLStats.Views;
 
 namespace XWPLStats
 {
@@ -11,7 +13,7 @@ namespace XWPLStats
             InitializeComponent();
 
             MainPage = new AppShell();
-            
+          
         }
 
         protected override void OnStart()
