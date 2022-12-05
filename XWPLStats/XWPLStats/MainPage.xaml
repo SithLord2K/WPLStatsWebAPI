@@ -32,6 +32,7 @@
         IsRefreshing="{Binding IsBusy, Mode=OneWay}"
         ItemsSource="{Binding Player}"
         RefreshCommand="{Binding RefreshCommand}"
+        IsPullToRefreshEnabled="True"
         SelectionMode="Single"
         Style="{StaticResource PlayerListView}"
         CachingStrategy="RecycleElement"

@@ -18,22 +18,25 @@
         <StackLayout Padding="20" x:DataType="models:Players">
             <Label Text="ID:"
                    Style="{StaticResource LabelMedium}" />
-            <Entry Text="{Binding Id}" />
+            <Entry Text="{Binding Id}" Keyboard="Numeric" />
             <Label Text="Name:"
-                   Style="{StaticResource LabelMedium}"/>
-            <Entry Text="{Binding Name}" />
+                   Style="{StaticResource LabelMedium}" />
+            <Entry Text="{Binding Name}" Keyboard="Chat" />
             <Label Text="Games Won:"
                    Style="{StaticResource LabelMedium}" />
             <Entry Text="{Binding GamesWon}" Keyboard="Numeric" />
             <Label Text="Games Lost:"
                    Style="{StaticResource LabelMedium}" />
             <Entry Text="{Binding GamesLost}" Keyboard="Numeric" />
-            <Label Text="Games Played:"
+            <!--<Label Text="Games Played:"
                    Style="{StaticResource LabelMedium}" />
             <Entry Text="{Binding GamesPlayed}" IsReadOnly="True" />
             <Label Text="Average:"
                    Style="{StaticResource LabelMedium}" />
-            <Entry Text="{Binding Average}" IsReadOnly="True" />
+            <Entry Text="{Binding Average}" IsReadOnly="True" />-->
+            <Label Text="Week Number:"
+                   Style="{StaticResource LabelMedium}" />
+            <Entry Text="{Binding WeekNumber}" Keyboard="Numeric" />
 
             <ActivityIndicator
                 x:DataType="viewmodel:AddUpdatePlayerViewModel"
@@ -46,6 +49,7 @@
                 x:DataType="viewmodel:AddUpdatePlayerViewModel"
                 Padding="20,0"
                 Command="{Binding SavePlayerCommand}"
+                HorizontalOptions="Fill"
                 IsEnabled="{Binding IsNotBusy}"
                 Text="Save"
                 VerticalOptions="EndAndExpand"

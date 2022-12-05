@@ -25,7 +25,7 @@ namespace XWPLStats.Services
             db = new SQLiteAsyncConnection(dbPath);
             await db.CreateTableAsync<Players>();
         }
-        public async Task<IEnumerable<Players>> GetAllPlayersAsync()
+        public async Task<List<Players>> GetAllPlayersAsync()
         {
             await Init();
             var players = await db.Table<Players>().ToListAsync();
@@ -42,6 +42,13 @@ namespace XWPLStats.Services
             return player;
         }
 
+        public async Task<List<Players>> GetAllBySingleId(int id)
+        {
+            await Init();
+            var singlePlayerId = await db.Table<Players>().Where(s => s.Id == id).ToListAsync();
+            return singlePlayerId;
+        }
+
         public async Task RemovePlayer(int Id)
         {
             await Init();
@@ -52,10 +59,7 @@ namespace XWPLStats.Services
         public async Task<int> SavePlayer(Players player)
         {
             await Init();
-            if (player.Id != 0)
-                return await db.UpdateAsync(player);
-            else
-                return await db.InsertAsync(player);
+            return await db.InsertAsync(player);
         }
     }
 }

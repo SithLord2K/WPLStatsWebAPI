@@ -18,7 +18,7 @@ namespace XWPLStats.ViewModels
     {
         Players Player = new Players();
         string name;
-        int gamesWon, gamesLost, id, gamesPlayed;
+        int gamesWon, gamesLost, id, gamesPlayed, weekNumber;
         decimal average;
 
         public string PlayerID { get; set; }
@@ -28,6 +28,7 @@ namespace XWPLStats.ViewModels
         public int GamesLost { get => gamesLost; set => SetProperty(ref gamesLost, value); }
         public int GamesPlayed { get=> gamesPlayed; set => SetProperty(ref gamesPlayed, value); }
         public decimal Average { get => average; set => SetProperty(ref average, value); }
+        public int WeekNumber { get => weekNumber; set => SetProperty(ref weekNumber, value); }
 
         public AsyncCommand SavePlayerCommand { get; }
         IPlayerService playerService;
@@ -62,6 +63,7 @@ namespace XWPLStats.ViewModels
                 GamesLost = gamesLost,
                 GamesPlayed = gamesPlayed,
                 Average = avg,
+                WeekNumber = weekNumber
             };
 
             await playerService.SavePlayer(player);
