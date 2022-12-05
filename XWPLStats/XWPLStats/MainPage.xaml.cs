@@ -21,9 +21,6 @@ namespace XWPLStats
         {
             base.OnAppearing();
             var vm = (MainPageViewModel)BindingContext;
-            //if (vm.Player.Count == 0)
-            //    await vm.RefreshCommand.ExecuteAsync();
-
             await vm.RefreshCommand.ExecuteAsync();
         }
     }

@@ -16,6 +16,8 @@ namespace XWPLStats.Services
     public class PlayerService : IPlayerService
     {
         SQLiteAsyncConnection db;
+
+
         async Task Init()
         {
             if (db != null)
@@ -61,5 +63,6 @@ namespace XWPLStats.Services
             await Init();
             return await db.InsertAsync(player);
         }
+
     }
 }

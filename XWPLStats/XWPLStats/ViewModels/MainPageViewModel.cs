@@ -10,6 +10,7 @@ using XWPLStats.Models;
 using XWPLStats.Services;
 using XWPLStats.Views;
 
+
 namespace XWPLStats.ViewModels
 {
     public partial class MainPageViewModel : BaseViewModel
@@ -34,6 +35,7 @@ namespace XWPLStats.ViewModels
         public decimal Average { get => average; set => SetProperty(ref average, value); }
 
         IPlayerService playerService;
+        PlayerHelpers pHelper = new PlayerHelpers();
         public bool _isBusy;
         public MainPageViewModel()
         {
@@ -93,32 +95,32 @@ namespace XWPLStats.ViewModels
             }
             else
             {
-                foreach (var item in players)
-                {
+                //foreach (var item in players)
+               // {
 
-                    var getPlayerData = await playerService.GetAllBySingleId(item.Id);
-                    if (getPlayerData != null)
-                    {
-                        foreach (var single in getPlayerData)
-                        {
-                            playerTotals.Id = single.Id;
-                            playerTotals.Name = single.Name;
-                            playerTotals.GamesWon += single.GamesWon;
-                            playerTotals.GamesLost += single.GamesLost;
-                            playerTotals.GamesPlayed = playerTotals.GamesWon + playerTotals.GamesLost;
-                            playerTotals.Average = Decimal.Round((decimal)(playerTotals.GamesWon / (decimal)playerTotals.GamesPlayed) * 100, 2);
-                        }
-                    }
-                }
-                pList.Add(playerTotals);
+                    //        var getPlayerData = await playerService.GetAllBySingleId(item.Id);
+                    //        if (getPlayerData != null)
+                    //        {
+                    //            foreach (var single in getPlayerData)
+                    //            {
+                    //                playerTotals.Id = single.Id;
+                    //                playerTotals.Name = single.Name;
+                    //                playerTotals.GamesWon += single.GamesWon;
+                    //                playerTotals.GamesLost += single.GamesLost;
+                    //                playerTotals.GamesPlayed = playerTotals.GamesWon + playerTotals.GamesLost;
+                    //                playerTotals.Average = Decimal.Round((decimal)(playerTotals.GamesWon / (decimal)playerTotals.GamesPlayed) * 100, 2);
+                    //            }
+                    //        }
+                    //    pList.Add(playerTotals);
+                    pList = await pHelper.ConsolidatePlayer();
 
+                    //Player.AddRange(players);
+                //}
                 var sorted = pList.OrderByDescending(a => a.Average);
                 Player.AddRange(sorted);
                 IsBusy = false;
-                //Player.AddRange(players);
-            }
 
-            IsBusy = false;
+            }
         }
     }
 }

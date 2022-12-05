@@ -15,7 +15,7 @@
         <viewmodel:AddUpdatePlayerViewModel />
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <StackLayout Padding="20" x:DataType="models:Players">
+        <StackLayout Padding="20" >
             <Label Text="ID:"
                    Style="{StaticResource LabelMedium}" />
             <Entry Text="{Binding Id}" Keyboard="Numeric" />
@@ -39,21 +39,18 @@
             <Entry Text="{Binding WeekNumber}" Keyboard="Numeric" />
 
             <ActivityIndicator
-                x:DataType="viewmodel:AddUpdatePlayerViewModel"
                 HorizontalOptions="Center"
                 IsRunning="{Binding IsBusy}"
                 IsVisible="{Binding IsBusy}"
                 VerticalOptions="Center" />
 
             <Button
-                x:DataType="viewmodel:AddUpdatePlayerViewModel"
                 Padding="20,0"
                 Command="{Binding SavePlayerCommand}"
                 HorizontalOptions="Fill"
                 IsEnabled="{Binding IsNotBusy}"
                 Text="Save"
                 VerticalOptions="EndAndExpand"
-                HorizontalOptions="Fill"
                 Style="{StaticResource ButtonOutline}"/>
         </StackLayout>
     </ContentPage.Content>

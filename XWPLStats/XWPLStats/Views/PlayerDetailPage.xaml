@@ -6,14 +6,11 @@
     xmlns:model="clr-namespace:XWPLStats.Models"
     xmlns:viewmodel="clr-namespace:XWPLStats.ViewModels"
     Title="{Binding Player.Name, StringFormat='Player: {0}'}"
-   
     Shell.PresentationMode="Modal"
     BackgroundColor="{AppThemeBinding 
                     Dark={StaticResource WindowBackgroundColorDark}, 
                     Light={StaticResource WindowBackgroundColor}}">
-    <ContentPage.BindingContext>
-        <viewmodel:PlayerDetailPageViewModel />
-    </ContentPage.BindingContext>
+
     <ContentPage.Content >
         <StackLayout Padding="20">
             <Label x:Name="labelId" Text="{Binding Player.Id, StringFormat='ID: {0}', Mode=OneWay}"
@@ -39,11 +36,11 @@
                     Grid.Column="0"
                     Style="{StaticResource ButtonOutline}"/>
 
-                <Button Clicked="ButtonEdit_Clicked" Text="Edit"
+                <!--<Button Clicked="ButtonEdit_Clicked" Text="Edit"
                     HorizontalOptions="Fill"
                     Grid.Column="1"
                     VerticalOptions="EndAndExpand"
-                    Style="{StaticResource ButtonOutline}"/>
+                    Style="{StaticResource ButtonOutline}"/>-->
             </Grid>
         </StackLayout>
     </ContentPage.Content>

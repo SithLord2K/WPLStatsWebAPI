@@ -38,7 +38,7 @@ namespace XWPLStats.ViewModels
         {
             Title = "Add/Update Player";
             SavePlayerCommand = new AsyncCommand(SavePlayer);
-            playerService = DependencyService.Get<IPlayerService>();
+            playerService = new PlayerService();
             if(PlayerID !=null)
             {
                 int playerID = int.Parse(PlayerID);
@@ -48,10 +48,7 @@ namespace XWPLStats.ViewModels
 
         async Task SavePlayer()
         {
-            if(string.IsNullOrWhiteSpace(name))
-            {
-                return;
-            }
+ 
             gamesPlayed = gamesWon + gamesLost;
             decimal avg = Decimal.Round((decimal)(gamesWon / (decimal)gamesPlayed)*100,2);
 
