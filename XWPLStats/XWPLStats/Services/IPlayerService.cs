@@ -13,6 +13,6 @@ namespace XWPLStats.Services
         Task<List<Players>> GetAllBySingleId(int id);
         Task<int> SavePlayer(Players player);
         Task RemovePlayer(int Id);
-
-     }
+        Task<List<int>> GetDistinctPlayerId();
+    }
 }

@@ -73,7 +73,6 @@ namespace XWPLStats.ViewModels
 
             //Get Week Stats
 
-
             WeekStats.Clear();
             var weeks = await weekService.GetAllWeeksAsync();
             weeks = weeks.OrderByDescending(a => a.Id);

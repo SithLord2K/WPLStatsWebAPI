@@ -9,6 +9,7 @@ namespace XWPLStats.Views
     [QueryProperty(nameof(PlayerID), nameof(PlayerID))]
     public partial class PlayerDetailPage : ContentPage
     {
+        PlayerHelpers playerHelper = new PlayerHelpers();
         PlayerDetailPageViewModel vm = new PlayerDetailPageViewModel();
         IPlayerService playerService;
         public string PlayerID { get; set; }
@@ -17,11 +18,12 @@ namespace XWPLStats.Views
             InitializeComponent();
             playerService = new PlayerService();
         }
-        protected async override void OnAppearing()
+        protected override async void OnAppearing()
         {
             base.OnAppearing();
             int.TryParse(PlayerID, out var result);
-            BindingContext = await playerService.GetSinglePlayer(result);
+            var playerdetail = await playerHelper.GetPlayerDetails(result);
+            BindingContext = playerdetail;
         }
 
         //protected override void OnAppearing()

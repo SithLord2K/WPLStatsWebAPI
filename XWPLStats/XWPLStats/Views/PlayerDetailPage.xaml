@@ -5,43 +5,41 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:model="clr-namespace:XWPLStats.Models"
     xmlns:viewmodel="clr-namespace:XWPLStats.ViewModels"
-    Title="{Binding Player.Name, StringFormat='Player: {0}'}"
+    Title="{Binding Name, StringFormat='Player: {0}'}"
     Shell.PresentationMode="Modal"
+    x:DataType="model:Players"
     BackgroundColor="{AppThemeBinding 
                     Dark={StaticResource WindowBackgroundColorDark}, 
                     Light={StaticResource WindowBackgroundColor}}">
 
     <ContentPage.Content >
         <StackLayout Padding="20">
-            <Label x:Name="labelId" Text="{Binding Player.Id, StringFormat='ID: {0}', Mode=OneWay}"
+            <Label x:Name="labelId" Text="{Binding Id, StringFormat='ID: {0}', Mode=OneWay}"
                    Style="{StaticResource LabelMedium}" />
-            <Label Text="{Binding Player.Name, StringFormat='Name: {0}'}"
+            <Label Text="{Binding Name, StringFormat='Name: {0}'}"
                    Style="{StaticResource LabelLarge}" />
-            <Label Text="{Binding Player.GamesWon, StringFormat='Games Won: {0}'}"
+            <Label Text="{Binding GamesWon, StringFormat='Games Won: {0}'}"
                    Style="{StaticResource LabelMedium}" />
-            <Label Text="{Binding Player.GamesLost, StringFormat='Games Lost: {0}'}"
+            <Label Text="{Binding GamesLost, StringFormat='Games Lost: {0}'}"
                    Style="{StaticResource LabelMedium}" />
-            <Label Text="{Binding Player.GamesPlayed, StringFormat='Games Played: {0}'}"
+            <Label Text="{Binding GamesPlayed, StringFormat='Games Played: {0}'}"
                    Style="{StaticResource LabelMedium}" />
-            <Label Text="{Binding Player.Average, StringFormat='Average: {0}%'}"
+            <Label Text="{Binding Average, StringFormat='Average: {0}%'}"
                    Style="{StaticResource LabelMedium}" />
-            <Grid VerticalOptions="EndAndExpand">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <Button Clicked="Button_Clicked" Text="Done"
+            <Label Text="{Binding WeekNumber, StringFormat='Weeks Played: {0}'}"
+                   Style="{StaticResource LabelMedium}" />
+
+            <Button Clicked="Button_Clicked" Text="Done"
                     VerticalOptions="EndAndExpand"
                     HorizontalOptions="Fill"
-                    Grid.Column="0"
                     Style="{StaticResource ButtonOutline}"/>
 
-                <!--<Button Clicked="ButtonEdit_Clicked" Text="Edit"
+            <!--<Button Clicked="ButtonEdit_Clicked" Text="Edit"
                     HorizontalOptions="Fill"
                     Grid.Column="1"
                     VerticalOptions="EndAndExpand"
                     Style="{StaticResource ButtonOutline}"/>-->
-            </Grid>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

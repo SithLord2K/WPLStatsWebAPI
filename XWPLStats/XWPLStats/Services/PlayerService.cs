@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
@@ -33,6 +34,12 @@ namespace XWPLStats.Services
             var players = await db.Table<Players>().ToListAsync();
             return players;
         }
+        public async Task<List<int>> GetDistinctPlayerId()
+        {
+            await Init();
+            var playersId = await db.Table<Players>().ToListAsync();
+            return playersId.Select(x => x.Id).Distinct().ToList();
+        }
 
         public async Task<Players> GetSinglePlayer(int id)
         {
@@ -63,6 +70,7 @@ namespace XWPLStats.Services
             await Init();
             return await db.InsertAsync(player);
         }
+
 
     }
 }
