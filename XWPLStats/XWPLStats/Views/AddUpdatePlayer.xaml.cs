@@ -14,13 +14,5 @@ namespace XWPLStats.Views
             InitializeComponent();
             playerService = new PlayerService();
         }
-        /*protected override async void OnAppearing()
-        {
-            base.OnAppearing();
-            int.TryParse(PlayerID, out var result);
-            var player = await playerService.GetSinglePlayer(result);
-            BindingContext = player;
-        }*/
-
-    }
+     }
 }

@@ -1,10 +1,6 @@
 ﻿using MvvmHelpers;
 using MvvmHelpers.Commands;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
-using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using XWPLStats.Models;
@@ -50,7 +46,7 @@ namespace XWPLStats.ViewModels
             };
 
             await weekService.SaveWeeks(week);
-            await Shell.Current.GoToAsync($"{nameof(TeamStats)}");
+            await Shell.Current.GoToAsync("..");
             
         }
 

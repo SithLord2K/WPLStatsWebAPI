@@ -1,6 +1,5 @@
 ﻿using System;
 using Xamarin.Forms;
-using XWPLStats.Models;
 using XWPLStats.Services;
 using XWPLStats.ViewModels;
 

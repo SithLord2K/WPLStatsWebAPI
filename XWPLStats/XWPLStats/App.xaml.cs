@@ -1,8 +1,4 @@
-﻿using Autofac;
-using System;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-using XWPLStats.Views;
+﻿using Xamarin.Forms;
 
 namespace XWPLStats
 {
