@@ -67,7 +67,12 @@ namespace XWPLStats.ViewModels
         [RelayCommand]
         async Task Remove(Players player)
         {
-            await playerService.RemovePlayer(player.Id);
+            List<Players> removePlayer = new();
+            removePlayer = await playerService.GetAllBySingleId(player.Id);
+            foreach (var item in removePlayer)
+            {
+                await playerService.RemovePlayer(item.EntryId);
+            }
             await Refresh();
         }
 

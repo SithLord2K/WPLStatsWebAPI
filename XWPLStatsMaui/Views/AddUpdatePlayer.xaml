@@ -18,25 +18,19 @@
         <StackLayout Padding="20" >
             <Label Text="ID:"
                    Style="{StaticResource LabelMedium}" />
-            <Entry Text="{Binding Id}" Keyboard="Numeric" />
+            <Entry Text="{Binding Id}" Style="{StaticResource LabelMedium}" Keyboard="Numeric" />
             <Label Text="Name:"
                    Style="{StaticResource LabelMedium}" />
-            <Entry Text="{Binding Name}" Keyboard="Chat" />
+            <Entry Text="{Binding Name}" Style="{StaticResource LabelMedium}" Keyboard="Chat" />
             <Label Text="Games Won:"
                    Style="{StaticResource LabelMedium}" />
-            <Entry Text="{Binding GamesWon}" Keyboard="Numeric" />
+            <Entry Text="{Binding GamesWon}" Style="{StaticResource LabelMedium}" Keyboard="Numeric" />
             <Label Text="Games Lost:"
                    Style="{StaticResource LabelMedium}" />
-            <Entry Text="{Binding GamesLost}" Keyboard="Numeric" />
-            <!--<Label Text="Games Played:"
-                   Style="{StaticResource LabelMedium}" />
-            <Entry Text="{Binding GamesPlayed}" IsReadOnly="True" />
-            <Label Text="Average:"
-                   Style="{StaticResource LabelMedium}" />
-            <Entry Text="{Binding Average}" IsReadOnly="True" />-->
+            <Entry Text="{Binding GamesLost}" Style="{StaticResource LabelMedium}" Keyboard="Numeric" />
             <Label Text="Week Number:"
                    Style="{StaticResource LabelMedium}" />
-            <Entry Text="{Binding WeekNumber}" Keyboard="Numeric" />
+            <Entry Text="{Binding WeekNumber}" Style="{StaticResource LabelMedium}" Keyboard="Numeric" />
 
             <ActivityIndicator
                 HorizontalOptions="Center"

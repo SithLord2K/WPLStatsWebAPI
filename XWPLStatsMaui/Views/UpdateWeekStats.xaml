@@ -15,13 +15,13 @@
         <StackLayout>
             <Label Text="ID" 
                    Style="{StaticResource LabelMedium}" />
-            <Entry Text="{Binding Id}" Keyboard="Numeric" />
+            <Entry Text="{Binding Id}" Style="{StaticResource LabelMedium}" Keyboard="Numeric" />
             <Label Text="Weeks Won" 
                    Style="{StaticResource LabelMedium}" />
-            <Entry Text="{Binding WeeksWon}" Keyboard="Numeric" />
+            <Entry Text="{Binding WeeksWon}" Style="{StaticResource LabelMedium}" Keyboard="Numeric" />
             <Label Text="Weeks Lost" 
                    Style="{StaticResource LabelMedium}" />
-            <Entry Text="{Binding WeeksLost}" Keyboard="Numeric" />
+            <Entry Text="{Binding WeeksLost}" Style="{StaticResource LabelMedium}" Keyboard="Numeric" />
 
             <ActivityIndicator
                 HorizontalOptions="Center"

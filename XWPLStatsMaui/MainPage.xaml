@@ -24,7 +24,7 @@
     </ContentPage.Resources>
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add Player" Command="{Binding AddPlayerCommand}"/>
+        <ToolbarItem Text="Add/Update Player" Command="{Binding AddPlayerCommand}"/>
     </ContentPage.ToolbarItems>
 
 

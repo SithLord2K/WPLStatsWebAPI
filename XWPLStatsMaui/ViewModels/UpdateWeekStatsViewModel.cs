@@ -7,6 +7,7 @@ using XWPLStats.Services;
 using Microsoft.Maui;
 using Microsoft.Maui.Controls;
 using CommunityToolkit.Mvvm.Input;
+using XWPLStats.Views;
 
 namespace XWPLStats.ViewModels
 {
@@ -45,7 +46,7 @@ namespace XWPLStats.ViewModels
             };
 
             await weekService.SaveWeeks(week);
-            await Shell.Current.GoToAsync($"{nameof(TeamStats)}");
+            await Shell.Current.GoToAsync($"{nameof(WeekStatsPage)}");
             
         }
 
