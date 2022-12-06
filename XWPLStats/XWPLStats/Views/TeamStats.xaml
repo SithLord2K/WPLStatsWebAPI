@@ -28,7 +28,8 @@
         Style="{StaticResource PlayerListView}"
         CachingStrategy="RecycleElement"
         x:Name="PlayersList"
-                    Grid.Row="0">
+                    Grid.Row="0"
+                    VerticalOptions="Start">
                     <ListView.ItemTemplate>
                         <DataTemplate x:DataType="models:TeamStats">
                             <ViewCell>
@@ -78,7 +79,8 @@
         Style="{StaticResource PlayerListView}"
         CachingStrategy="RecycleElement"
         x:Name="WeeksList"
-                    Grid.Row="1">
+                    Grid.Row="1"
+                    VerticalOptions="Center">
                     <ListView.ItemTemplate>
                         <DataTemplate x:DataType="models:Weeks">
                             <ViewCell>

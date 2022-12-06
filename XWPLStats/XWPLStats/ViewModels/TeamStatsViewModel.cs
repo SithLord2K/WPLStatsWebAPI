@@ -28,7 +28,7 @@ namespace XWPLStats.ViewModels
             RefreshCommand = new AsyncCommand(Refresh);
 
             weekService = new WeekService();
-            playerService = DependencyService.Get<IPlayerService>();
+            playerService = new PlayerService();
 
         }
         public bool IsBusy
