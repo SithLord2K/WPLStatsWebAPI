@@ -49,7 +49,7 @@ namespace XWPLStats.ViewModels
 
             playerService = new PlayerService();
         }
-        public bool IsBusy
+        public new bool IsBusy
         {
             get { return _isBusy; }
             set

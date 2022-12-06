@@ -18,8 +18,8 @@ namespace XWPLStats.ViewModels
         public AsyncCommand RefreshCommand { get; }
 
         private bool _isBusy;
-        IPlayerService playerService;
-        IWeekService weekService;
+        readonly IPlayerService playerService;
+        readonly IWeekService weekService;
         public TeamStatsViewModel()
         {
             Title = "Team and Week Statistics";
@@ -31,7 +31,7 @@ namespace XWPLStats.ViewModels
             playerService = new PlayerService();
 
         }
-        public bool IsBusy
+        public new bool IsBusy
         {
             get
             {
