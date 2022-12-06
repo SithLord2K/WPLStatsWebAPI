@@ -1,7 +1,8 @@
 ﻿using System;
-using Xamarin.Forms;
 using XWPLStats.Services;
 using XWPLStats.ViewModels;
+using Microsoft.Maui;
+using Microsoft.Maui.Controls;
 
 namespace XWPLStats.Views
 {

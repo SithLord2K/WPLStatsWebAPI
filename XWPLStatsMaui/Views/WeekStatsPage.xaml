@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit" 
+             xmlns:viewmodels="clr-namespace:XWPLStats.ViewModels"
+             xmlns:models="clr-namespace:XWPLStats.Models"
+             x:Class="XWPLStats.Views.WeekStatsPage"
+             Title="{Binding Title}"
+             x:DataType="viewmodels:WeekStatsViewModel"
+             BackgroundColor="{AppThemeBinding 
+                    Dark={StaticResource WindowBackgroundColorDark}, 
+                    Light={StaticResource WindowBackgroundColor}}">
+    <ContentPage.BindingContext>
+        <viewmodels:WeekStatsViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <FlexLayout>
+            <ListView
+        IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+        ItemsSource="{Binding WeekStats}"
+        RefreshCommand="{Binding RefreshCommand}"
+        SelectionMode="None"
+        HorizontalOptions="Fill"            
+        Style="{StaticResource PlayerListView}"
+        CachingStrategy="RecycleElement"
+        x:Name="WeeksList"
+                    Grid.Column="0"
+                    Grid.Row="1"
+                    VerticalOptions="End">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Weeks">
+                        <ViewCell>
+                            <Grid Padding="5">
+
+                                <Frame  Style="{StaticResource PlayerCard}">
+                                    <StackLayout Orientation="Horizontal">
+                                        <StackLayout VerticalOptions="Center">
+                                            <Label
+                                       Style="{StaticResource LabelMedium}"
+                                       Text="Week Statistics"
+                                       VerticalOptions="Center" />
+                                            <Label
+                                       Style="{StaticResource LabelSmall}"
+                                       Text="{Binding WeeksPlayed, StringFormat='Weeks Played: {0}'}"
+                                       VerticalOptions="Center" />
+                                            <Label
+                                        Style="{StaticResource LabelSmall}"
+                                        Text="{Binding WeeksWon, StringFormat='Weeks Won: {0}'}"
+                                        VerticalOptions="Center" />
+                                            <Label
+                                        Style="{StaticResource LabelSmall}"
+                                        Text="{Binding WeeksLost, StringFormat='Weeks Lost: {0}'}"
+                                        VerticalOptions="Center" />
+                                            <Label
+                                        Style="{StaticResource LabelSmall}"
+                                        Text="{Binding WeeksAverage, StringFormat='Week Average: {0}%'}"
+                                        VerticalOptions="Center" />
+                                        </StackLayout>
+                                    </StackLayout>
+                                </Frame>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </FlexLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,6 +1,6 @@
-﻿using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-using XWPLStats.ViewModels;
+﻿using XWPLStats.ViewModels;
+using Microsoft.Maui;
+using Microsoft.Maui.Controls;
 
 namespace XWPLStats
 {

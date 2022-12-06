@@ -5,10 +5,10 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Xamarin.Essentials;
-using Xamarin.Forms;
 using XWPLStats.Models;
 using XWPLStats.Services;
+using Microsoft.Maui;
+using Microsoft.Maui.Controls;
 
 [assembly: Dependency(typeof(PlayerService))]
 namespace XWPLStats.Services

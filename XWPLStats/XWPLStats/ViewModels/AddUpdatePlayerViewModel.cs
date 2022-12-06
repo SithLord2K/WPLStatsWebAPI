@@ -2,9 +2,10 @@
 using MvvmHelpers.Commands;
 using System;
 using System.Threading.Tasks;
-using Xamarin.Forms;
 using XWPLStats.Models;
 using XWPLStats.Services;
+using Microsoft.Maui;
+using Microsoft.Maui.Controls;
 
 namespace XWPLStats.ViewModels
 {

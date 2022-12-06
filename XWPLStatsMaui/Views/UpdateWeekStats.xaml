@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XWPLStats.Views.UpdateWeekStats"
+             xmlns:viewmodel="clr-namespace:XWPLStats.ViewModels"
+             Title="{Binding Title}"
+             x:DataType="viewmodel:UpdateWeekStatsViewModel"
+             BackgroundColor="{AppThemeBinding 
+                    Dark={StaticResource WindowBackgroundColorDark}, 
+                    Light={StaticResource WindowBackgroundColor}}">
+    <ContentPage.BindingContext>
+        <viewmodel:UpdateWeekStatsViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="ID" 
+                   Style="{StaticResource LabelMedium}" />
+            <Entry Text="{Binding Id}" Keyboard="Numeric" />
+            <Label Text="Weeks Won" 
+                   Style="{StaticResource LabelMedium}" />
+            <Entry Text="{Binding WeeksWon}" Keyboard="Numeric" />
+            <Label Text="Weeks Lost" 
+                   Style="{StaticResource LabelMedium}" />
+            <Entry Text="{Binding WeeksLost}" Keyboard="Numeric" />
+
+            <ActivityIndicator
+                HorizontalOptions="Center"
+                IsRunning="{Binding IsBusy}"
+                IsVisible="{Binding IsBusy}"
+                VerticalOptions="Center" />
+
+            <Button
+                Padding="20,0"
+                Command="{Binding SaveWeeksCommand}"
+                HorizontalOptions="Fill"
+                IsEnabled="{Binding IsNotBusy}"
+                Text="Save"
+                VerticalOptions="EndAndExpand"
+                Style="{StaticResource ButtonOutline}"/>
+
+            <Button
+                Padding="20,0"
+                Command="{Binding DeleteAllWeeksCommand}"
+                HorizontalOptions="Center"
+                IsEnabled="{Binding IsNotBusy}"
+                Text="Delete Weeks Table"
+                VerticalOptions="EndAndExpand"
+                Style="{StaticResource ButtonOutline}" IsVisible="false"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
+    
