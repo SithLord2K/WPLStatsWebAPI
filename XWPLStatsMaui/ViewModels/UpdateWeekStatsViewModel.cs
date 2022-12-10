@@ -23,13 +23,11 @@ namespace XWPLStats.ViewModels
         public int WeeksPlayed { get => weeksPlayed; set => SetProperty(ref weeksPlayed, value); }
         public decimal Average { get => average; set => SetProperty(ref average, value); }
 
-        readonly IWeekService weekService;
         readonly IRestService restService;
 
         public UpdateWeekStatsViewModel()
         {
             Title = "Add/Update Week Stats";
-            weekService = new WeekService();
             restService = new RestService();
         }
 
@@ -51,7 +49,7 @@ namespace XWPLStats.ViewModels
         [RelayCommand]
         async Task DeleteAllWeeks()
         {
-            await weekService.DeleteAllWeeks();
+            await restService.RemoveWeeks(id);
         }
     }
 }

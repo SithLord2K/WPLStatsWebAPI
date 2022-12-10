@@ -26,14 +26,14 @@ namespace XWPLStats.ViewModels
         public async void LoadPlayer(string value)
         {
             int id = int.Parse(value);
-            Player = await playerService.GetSinglePlayer(id);
+            Player = await restService.GetSinglePlayer(id);
             
         }
 
-        IPlayerService playerService;
+        IRestService restService;
         public PlayerDetailPageViewModel() 
         { 
-            playerService= new PlayerService();
+            restService = new RestService();
         }
 
     }

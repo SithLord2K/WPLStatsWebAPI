@@ -14,8 +14,7 @@ public static class MauiProgram
 		builder
 			.UseMauiApp<App>().UseMauiCommunityToolkit();
 
-		builder.Services.AddSingleton<IPlayerService, PlayerService>();
-		builder.Services.AddSingleton<IWeekService, WeekService>();
+		builder.Services.AddSingleton<IRestService, RestService>();
 		builder.Services.AddSingleton<PlayerHelpers, PlayerHelpers>();
 
 		builder.Services.AddSingleton<MainPage>();

@@ -11,17 +11,16 @@ namespace XWPLStats.Views
     {
         readonly PlayerHelpers playerHelper = new();
         readonly PlayerDetailPageViewModel vm = new();
-        readonly IPlayerService playerService;
         public string PlayerID { get; set; }
         public PlayerDetailPage()
         {
             InitializeComponent();
-            playerService = new PlayerService();
+           
         }
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            int.TryParse(PlayerID, out var result);
+            _ = int.TryParse(PlayerID, out var result);
             var playerdetail = await playerHelper.GetPlayerDetails(result);
             BindingContext = playerdetail;
         }

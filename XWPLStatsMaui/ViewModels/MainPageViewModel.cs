@@ -29,16 +29,14 @@ namespace XWPLStats.ViewModels
         public int WeekNumber { get => weekNumber; set => SetProperty(ref weekNumber, value); }
         public decimal Average { get => average; set => SetProperty(ref average, value); }
 
-        IPlayerService playerService;
-        IRestService restPlayerService;
-        PlayerHelpers pHelper = new PlayerHelpers();
+        IRestService restService;
+        PlayerHelpers pHelper = new();
         public bool _isBusy;
         public MainPageViewModel()
         {
             Title = "Player List";
             Player = new ObservableRangeCollection<Players>();
-            playerService = new PlayerService();
-            restPlayerService = new RestService();
+            restService = new RestService();
         }
         public new bool IsBusy
         {
@@ -70,10 +68,10 @@ namespace XWPLStats.ViewModels
         async Task Remove(Players player)
         {
             List<Players> removePlayer = new();
-            removePlayer = await playerService.GetAllBySingleId(player.Id);
+            removePlayer = await restService.GetAllBySingleId(player.Id);
             foreach (var item in removePlayer)
             {
-                await playerService.RemovePlayer(item.EntryId);
+                await restService.DeletePlayer(item.EntryId);
             }
             await Refresh();
         }
@@ -86,9 +84,9 @@ namespace XWPLStats.ViewModels
                 Player.Clear();
 
             }
-            Players playerTotals = new Players();
+            Players playerTotals = new();
             //var players = await playerService.GetAllPlayersAsync();
-            var players = await restPlayerService.GetAllPlayers();
+            var players = await restService.GetAllPlayers();
 
             if (players.Count == 0)
             {

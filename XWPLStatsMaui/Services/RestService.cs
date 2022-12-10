@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http.Json;
-using System.Text;
+﻿using System.Net.Http.Json;
 using System.Text.Json;
-using System.Threading.Tasks;
 using XWPLStats.Models;
 
 namespace XWPLStats.Services
@@ -53,9 +48,14 @@ namespace XWPLStats.Services
 
             HttpResponseMessage response = await _client.SendAsync(message);
         }
-        public Task DeletePlayer(int id)
+        public async Task DeletePlayer(int id)
         {
-            throw new NotImplementedException();
+            Uri uri = new($"https://wileysoft.codersden.com/api/Players/{id}");
+            HttpRequestMessage message = new(HttpMethod.Delete, uri)
+            { 
+                Content = JsonContent.Create<int>(id)
+            };
+            HttpResponseMessage response = await _client.SendAsync(message);
         }
 
  
@@ -116,9 +116,15 @@ namespace XWPLStats.Services
             throw new NotImplementedException();
         }
 
-        public Task RemoveWeeks(Weeks weeks)
+        public async Task RemoveWeeks(int id)
         {
-            throw new NotImplementedException();
+            Uri uri = new($"https://wileysoft.codersden.com/api/Weeks/{id}");
+            HttpRequestMessage message = new(HttpMethod.Delete, uri)
+            {
+                Content = JsonContent.Create<int>(id)
+            };
+
+            HttpResponseMessage response = await _client.SendAsync(message);
         }
     }
 }

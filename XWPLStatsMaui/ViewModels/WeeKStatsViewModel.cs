@@ -11,14 +11,12 @@ namespace XWPLStats.ViewModels
         
         private bool _isBusy;
         
-        readonly IWeekService weekService;
-        readonly IRestService restPlayerService;
+        readonly IRestService restService;
         public WeekStatsViewModel()
         {
             Title = "Week Statistics";
             WeekStats = new ObservableRangeCollection<Weeks>();
-            weekService = new WeekService();
-            restPlayerService = new RestService();
+            restService = new RestService();
         }
         public new bool IsBusy
         {
@@ -40,7 +38,7 @@ namespace XWPLStats.ViewModels
             {
                 WeekStats.Clear();
             }
-            var weeks = await restPlayerService.GetAllWeeks();
+            var weeks = await restService.GetAllWeeks();
             weeks = weeks.OrderByDescending(a => a.Id);
             Weeks week = new();
             foreach(var w in weeks)

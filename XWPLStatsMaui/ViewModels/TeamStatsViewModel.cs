@@ -10,15 +10,13 @@ namespace XWPLStats.ViewModels
         public ObservableRangeCollection<TeamStats> TeamStat { get; set; }
         
         private bool _isBusy;
-        readonly IPlayerService playerService;
-        readonly IRestService restPlayerService;
+        readonly IRestService restService;
         
         public TeamStatsViewModel()
         {
             Title = "Team Statistics";
             TeamStat = new ObservableRangeCollection<TeamStats>();
-            playerService = new PlayerService();
-            restPlayerService = new RestService();
+            restService = new RestService();
         }
         public new bool IsBusy
         {
@@ -36,7 +34,7 @@ namespace XWPLStats.ViewModels
         async Task Refresh()
         {
             TeamStat.Clear();
-            var players = await restPlayerService.GetAllPlayers();
+            var players = await restService.GetAllPlayers();
             int gWon = 0;
             int gLost = 0;
             int gPlayed = 0;

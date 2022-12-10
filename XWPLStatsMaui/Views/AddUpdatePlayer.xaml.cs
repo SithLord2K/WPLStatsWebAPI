@@ -8,12 +8,12 @@ namespace XWPLStats.Views
     public partial class AddUpdatePlayer : ContentPage
     {
         public string PlayerID { get; set; }
-        readonly IPlayerService playerService;
+        
 
         public AddUpdatePlayer()
         {
             InitializeComponent();
-            playerService = new PlayerService();
+        
         }
      }
 }

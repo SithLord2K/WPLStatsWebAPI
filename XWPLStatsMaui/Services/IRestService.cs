@@ -21,7 +21,7 @@ namespace XWPLStats.Services
         Task<IEnumerable<Weeks>> GetAllWeeks();
         Task AddWeeks(Weeks weeks);
         Task UpdateWeeks(Weeks weeks);
-        Task RemoveWeeks(Weeks weeks);
+        Task RemoveWeeks(int id);
             
     }
 }
