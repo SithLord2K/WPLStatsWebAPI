@@ -26,7 +26,7 @@
         x:Name="WeeksList"
                     Grid.Column="0"
                     Grid.Row="1"
-                    VerticalOptions="End">
+                    VerticalOptions="Start">
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="models:Weeks">
                         <ViewCell>
@@ -45,11 +45,11 @@
                                        VerticalOptions="Center" />
                                             <Label
                                         Style="{StaticResource LabelSmall}"
-                                        Text="{Binding WeeksWon, StringFormat='Weeks Won: {0}'}"
+                                        Text="{Binding WeekWin, StringFormat='Weeks Won: {0}'}"
                                         VerticalOptions="Center" />
                                             <Label
                                         Style="{StaticResource LabelSmall}"
-                                        Text="{Binding WeeksLost, StringFormat='Weeks Lost: {0}'}"
+                                        Text="{Binding WeekLoss, StringFormat='Weeks Lost: {0}'}"
                                         VerticalOptions="Center" />
                                             <Label
                                         Style="{StaticResource LabelSmall}"

@@ -27,8 +27,7 @@
         Style="{StaticResource PlayerListView}"
         CachingStrategy="RecycleElement"
         x:Name="PlayersList"
-    
-                    VerticalOptions="Center">
+                        VerticalOptions="Start">
                     <ListView.ItemTemplate>
                         <DataTemplate x:DataType="models:TeamStats">
                             <ViewCell>

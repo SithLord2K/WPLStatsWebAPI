@@ -30,6 +30,7 @@ namespace XWPLStats.ViewModels
         public decimal Average { get => average; set => SetProperty(ref average, value); }
 
         IPlayerService playerService;
+        IRestService restPlayerService;
         PlayerHelpers pHelper = new PlayerHelpers();
         public bool _isBusy;
         public MainPageViewModel()
@@ -37,6 +38,7 @@ namespace XWPLStats.ViewModels
             Title = "Player List";
             Player = new ObservableRangeCollection<Players>();
             playerService = new PlayerService();
+            restPlayerService = new RestService();
         }
         public new bool IsBusy
         {
@@ -85,7 +87,8 @@ namespace XWPLStats.ViewModels
 
             }
             Players playerTotals = new Players();
-            var players = await playerService.GetAllPlayersAsync();
+            //var players = await playerService.GetAllPlayersAsync();
+            var players = await restPlayerService.GetAllPlayers();
 
             if (players.Count == 0)
             {

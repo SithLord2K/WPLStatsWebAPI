@@ -17,7 +17,7 @@ namespace XWPLStats.Views
             if (vm.TeamStat.Count == 0)
                 await vm.RefreshCommand.ExecuteAsync(null);
 
-            await vm.RefreshCommand.ExecuteAsync(null);
+            //await vm.RefreshCommand.ExecuteAsync(null);
         }
     }
 }

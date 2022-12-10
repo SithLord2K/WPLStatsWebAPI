@@ -11,13 +11,14 @@ namespace XWPLStats.ViewModels
         
         private bool _isBusy;
         readonly IPlayerService playerService;
+        readonly IRestService restPlayerService;
         
         public TeamStatsViewModel()
         {
             Title = "Team Statistics";
             TeamStat = new ObservableRangeCollection<TeamStats>();
             playerService = new PlayerService();
-
+            restPlayerService = new RestService();
         }
         public new bool IsBusy
         {
@@ -28,27 +29,26 @@ namespace XWPLStats.ViewModels
             set
             {
                 _isBusy = value;
-                OnPropertyChanged("IsBusy");
+                OnPropertyChanged(nameof(IsBusy));
             }
         }
         [RelayCommand]
         async Task Refresh()
         {
             TeamStat.Clear();
-            var players = await playerService.GetAllPlayersAsync();
+            var players = await restPlayerService.GetAllPlayers();
             int gWon = 0;
             int gLost = 0;
             int gPlayed = 0;
-            decimal tAverage = 0;
             foreach (var player in players)
             {
                 gWon += player.GamesWon;
                 gLost += player.GamesLost;
-                gPlayed += player.GamesPlayed;
+                gPlayed += player.GamesWon + player.GamesLost;
             }
-            tAverage = Decimal.Round((decimal)(gWon / (decimal)gPlayed) * 100, 2);
+            decimal tAverage = decimal.Round(gWon / (decimal)gPlayed * 100, 2);
 
-            TeamStats Team = new TeamStats()
+            TeamStats Team = new()
             {
                 TotalGamesWon = gWon,
                 TotalGamesLost = gLost,

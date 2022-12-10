@@ -15,7 +15,7 @@ namespace XWPLStats.ViewModels
     [QueryProperty(nameof(PlayerID), nameof(PlayerID))]
     public partial class AddUpdatePlayerViewModel : BaseViewModel
     {
-        Players Player = new Players();
+        Players Player = new();
         string name;
         int gamesWon, gamesLost, id, gamesPlayed, weekNumber;
         decimal average;
@@ -29,18 +29,12 @@ namespace XWPLStats.ViewModels
         public decimal Average { get => average; set => SetProperty(ref average, value); }
         public int WeekNumber { get => weekNumber; set => SetProperty(ref weekNumber, value); }
 
-        IPlayerService playerService;
-        
+        readonly IRestService restService;
 
         public AddUpdatePlayerViewModel()
         {
             Title = "Add/Update Player";
-            playerService = new PlayerService();
-            if(PlayerID !=null)
-            {
-                int playerID = int.Parse(PlayerID);
-                var player = playerService.GetSinglePlayer(playerID);
-            }
+            restService = new RestService();
         }
 
         [RelayCommand]
@@ -50,7 +44,7 @@ namespace XWPLStats.ViewModels
             gamesPlayed = gamesWon + gamesLost;
             decimal avg = Decimal.Round((decimal)(gamesWon / (decimal)gamesPlayed)*100,2);
 
-            Players player = new Players()
+            Players player = new()
             {
                 Id = id,
                 Name = name,
@@ -61,7 +55,7 @@ namespace XWPLStats.ViewModels
                 WeekNumber = weekNumber
             };
 
-            await playerService.SavePlayer(player);
+            await restService.SavePlayer(player);
             await Shell.Current.GoToAsync("..");
         }
 

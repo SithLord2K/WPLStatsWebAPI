@@ -13,15 +13,16 @@
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="ID" 
+            <Label Text="Week Number" 
                    Style="{StaticResource LabelMedium}" />
-            <Entry Text="{Binding Id}" Style="{StaticResource LabelMedium}" Keyboard="Numeric" />
-            <Label Text="Weeks Won" 
+            <Entry Text="{Binding WeekNumber}" Style="{StaticResource LabelMedium}" Keyboard="Numeric" />
+            <Label Text="Week Won:" 
                    Style="{StaticResource LabelMedium}" />
-            <Entry Text="{Binding WeeksWon}" Style="{StaticResource LabelMedium}" Keyboard="Numeric" />
-            <Label Text="Weeks Lost" 
+            <CheckBox IsChecked="{Binding WeekWon}"/> 
+            <!--<Entry Text="{Binding WeeksWon}" Style="{StaticResource LabelMedium}" Keyboard="Numeric" />-->
+            <!--<Label Text="Weeks Lost" 
                    Style="{StaticResource LabelMedium}" />
-            <Entry Text="{Binding WeeksLost}" Style="{StaticResource LabelMedium}" Keyboard="Numeric" />
+            <Entry Text="{Binding WeeksLost}" Style="{StaticResource LabelMedium}" Keyboard="Numeric" />-->
 
             <ActivityIndicator
                 HorizontalOptions="Center"

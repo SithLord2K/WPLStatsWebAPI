@@ -11,13 +11,14 @@ namespace XWPLStats.Services
     public class PlayerHelpers
     {
 
-        IPlayerService playerService = new PlayerService();
+        readonly IRestService restService = new RestService();
         public async Task<List<Players>> ConsolidatePlayer()
         {
             var pList = new List<Players>();
 
 
-            var players = await playerService.GetDistinctPlayerId();
+            //var players = await playerService.GetDistinctPlayerId();
+            var players = await restService.GetDistinctPlayer();
 
             if (players.Count == 0)
             {
@@ -27,9 +28,9 @@ namespace XWPLStats.Services
             {
                 foreach (var item in players)
                 {
-                    Players playerTotals = new Players();
+                    Players playerTotals = new();
 
-                    var getPlayerData = await playerService.GetAllBySingleId(item);
+                    var getPlayerData = await restService.GetAllBySingleId(item); //playerService.GetAllBySingleId(item);
                     if (getPlayerData != null)
                     {
                         foreach (var single in getPlayerData)
@@ -53,9 +54,8 @@ namespace XWPLStats.Services
 
         public async Task<Players> GetPlayerDetails(int id)
         {
-            var pDetails = new Players();
-            Players playerTotals = new Players();
-            var getPlayerData = await playerService.GetAllBySingleId(id);
+            Players playerTotals = new();
+            var getPlayerData = await restService.GetAllBySingleId(id);//playerService.GetAllBySingleId(id);
             if (getPlayerData != null)
             {
                 foreach (var single in getPlayerData)
@@ -66,7 +66,7 @@ namespace XWPLStats.Services
                     playerTotals.GamesLost += single.GamesLost;
                     playerTotals.GamesPlayed = playerTotals.GamesWon + playerTotals.GamesLost;
                     playerTotals.Average = Decimal.Round((decimal)(playerTotals.GamesWon / (decimal)playerTotals.GamesPlayed) * 100, 2);
-                    playerTotals.WeekNumber = getPlayerData.Count();
+                    playerTotals.WeekNumber = getPlayerData.Count;
                 }
             }
 

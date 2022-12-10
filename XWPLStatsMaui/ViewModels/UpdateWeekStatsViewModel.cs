@@ -13,39 +13,37 @@ namespace XWPLStats.ViewModels
 {
     public partial class UpdateWeekStatsViewModel : BaseViewModel
     {
-        int weeksWon, weeksLost, id, weeksPlayed;
+        int  weeksLost, id, weeksPlayed, weekNumber;
+        bool weeksWon;
         decimal average;
         public int Id { get => id; set => SetProperty(ref id, value); }
-        public int WeeksWon { get => weeksWon; set => SetProperty(ref weeksWon, value); }
+        public bool WeekWon { get => weeksWon; set => SetProperty(ref weeksWon, value); }
+        public int WeekNumber { get => weekNumber; set => SetProperty(ref weekNumber, value); }
         public int WeeksLost { get => weeksLost; set => SetProperty(ref weeksLost, value); }
         public int WeeksPlayed { get => weeksPlayed; set => SetProperty(ref weeksPlayed, value); }
         public decimal Average { get => average; set => SetProperty(ref average, value); }
 
-        IWeekService weekService;
-
+        readonly IWeekService weekService;
+        readonly IRestService restService;
 
         public UpdateWeekStatsViewModel()
         {
             Title = "Add/Update Week Stats";
             weekService = new WeekService();
+            restService = new RestService();
         }
 
         [RelayCommand]
         async Task SaveWeeks()
         {
-            weeksPlayed = weeksWon + weeksLost;
-            decimal avg = decimal.Round((decimal)(weeksWon / (decimal)weeksPlayed) * 100, 2);
 
-            Weeks week = new Weeks()
+            Weeks week = new()
             {
-                Id = Id,
-                WeeksWon = weeksWon,
-                WeeksLost = weeksLost,
-                WeeksPlayed = weeksPlayed,
-                WeeksAverage = avg
+                WeekNumber = weekNumber,
+                WeekWon = weeksWon
             };
 
-            await weekService.SaveWeeks(week);
+            await restService.AddWeeks(week);
             await Shell.Current.GoToAsync($"{nameof(WeekStatsPage)}");
             
         }

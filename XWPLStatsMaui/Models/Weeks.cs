@@ -9,8 +9,10 @@ namespace XWPLStats.Models
     {
         [PrimaryKey,AutoIncrement]
         public int Id { get; set; }
-        public int WeeksWon { get; set; }
-        public int WeeksLost { get; set; }
+        public int WeekNumber { get; set; }
+        public int WeekWin { get; set; }
+        public int WeekLoss { get; set; }
+        public bool WeekWon { get; set; }
         public int WeeksPlayed { get; set; }
         public decimal WeeksAverage { get; set; }
     }

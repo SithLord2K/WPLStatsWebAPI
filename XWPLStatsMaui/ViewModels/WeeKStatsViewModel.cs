@@ -12,11 +12,13 @@ namespace XWPLStats.ViewModels
         private bool _isBusy;
         
         readonly IWeekService weekService;
+        readonly IRestService restPlayerService;
         public WeekStatsViewModel()
         {
             Title = "Week Statistics";
             WeekStats = new ObservableRangeCollection<Weeks>();
             weekService = new WeekService();
+            restPlayerService = new RestService();
         }
         public new bool IsBusy
         {
@@ -34,10 +36,29 @@ namespace XWPLStats.ViewModels
         async Task Refresh()
         {
             //Get Week Stats
-            WeekStats.Clear();
-            var weeks = await weekService.GetAllWeeksAsync();
+            if (WeekStats.Count != 0)
+            {
+                WeekStats.Clear();
+            }
+            var weeks = await restPlayerService.GetAllWeeks();
             weeks = weeks.OrderByDescending(a => a.Id);
-            WeekStats.Add((Weeks)weeks.FirstOrDefault());
+            Weeks week = new();
+            foreach(var w in weeks)
+            {
+                week.Id = w.Id;
+                if(w.WeekWon == true)
+                {
+                    week.WeekWin += 1;
+                }
+                else
+                {
+                    week.WeekLoss += 1;
+                }
+         
+            }
+            week.WeeksPlayed = week.WeekWin + week.WeekLoss;
+            week.WeeksAverage = Decimal.Round((decimal)(week.WeekWin / (decimal)week.WeeksPlayed) * 100, 2);
+            WeekStats.Add(week);
             IsBusy = false;
         }
     }

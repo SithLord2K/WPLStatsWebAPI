@@ -15,7 +15,7 @@ namespace XWPLStats.Views
             if (vm.WeekStats.Count == 0)
                 await vm.RefreshCommand.ExecuteAsync(null);
 
-            await vm.RefreshCommand.ExecuteAsync(null);
+            //await vm.RefreshCommand.ExecuteAsync(null);
         }
     }
 }
