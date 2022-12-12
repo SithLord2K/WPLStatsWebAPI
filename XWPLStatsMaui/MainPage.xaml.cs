@@ -7,10 +7,11 @@ namespace XWPLStats
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPage : ContentPage
     {
+
         public MainPage(MainPageViewModel vm)
         {
             InitializeComponent();
-            BindingContext= vm;
+            BindingContext = vm;
         }
         protected override async void OnAppearing()
         {

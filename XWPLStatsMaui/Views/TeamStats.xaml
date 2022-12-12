@@ -32,34 +32,29 @@
                         <DataTemplate x:DataType="models:TeamStats">
                             <ViewCell>
                                 <Grid Padding="5">
-
                                     <Frame  Style="{StaticResource PlayerCard}">
                                         <StackLayout Orientation="Horizontal">
                                             <StackLayout VerticalOptions="Center">
                                                 <Label
-                                       Style="{StaticResource LabelMedium}"
-                                       Text="Team Statistics"
-                                       VerticalOptions="Center" />
+                                                   Style="{StaticResource LabelSmall}"
+                                                   Text="{Binding TotalGamesPlayed, StringFormat='Total Games Played: {0}'}"
+                                                   VerticalOptions="Center" />
                                                 <Label
-                                       Style="{StaticResource LabelSmall}"
-                                       Text="{Binding TotalGamesPlayed, StringFormat='Total Games Played: {0}'}"
-                                       VerticalOptions="Center" />
+                                                    Style="{StaticResource LabelSmall}"
+                                                    Text="{Binding TotalGamesWon, StringFormat='Total Games Won: {0}'}"
+                                                    VerticalOptions="Center" />
                                                 <Label
-                                        Style="{StaticResource LabelSmall}"
-                                        Text="{Binding TotalGamesWon, StringFormat='Total Games Won: {0}'}"
-                                        VerticalOptions="Center" />
+                                                    Style="{StaticResource LabelSmall}"
+                                                    Text="{Binding TotalGamesLost, StringFormat='Total Games Lost: {0}'}"
+                                                    VerticalOptions="Center" />
                                                 <Label
-                                        Style="{StaticResource LabelSmall}"
-                                        Text="{Binding TotalGamesLost, StringFormat='Total Games Lost: {0}'}"
-                                        VerticalOptions="Center" />
+                                                    Style="{StaticResource LabelSmall}"
+                                                    Text="{Binding TotalAverage, StringFormat='Average: {0}%'}"
+                                                    VerticalOptions="Center" />
                                                 <Label
-                                        Style="{StaticResource LabelSmall}"
-                                        Text="{Binding TotalAverage, StringFormat='Average: {0}%'}"
-                                        VerticalOptions="Center" />
-                                                <Label
-                                        Style="{StaticResource LabelSmall}"
-                                        Text="{Binding WeeksPlayed, StringFormat='Weeks Played: {0}'}"
-                                        VerticalOptions="Center" />
+                                                    Style="{StaticResource LabelSmall}"
+                                                    Text="{Binding WeeksPlayed, StringFormat='Weeks Played: {0}'}"
+                                                    VerticalOptions="Center" />
                                             </StackLayout>
                                         </StackLayout>
                                     </Frame>

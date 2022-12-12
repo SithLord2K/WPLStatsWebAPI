@@ -53,23 +53,45 @@
                             IsDestructive="True"
                             Text="Delete Player" />
                     </ViewCell.ContextActions>
-                    <Grid Padding="5">
+                    <Grid Padding="3">
 
                         <Frame  Style="{StaticResource PlayerCard}">
-                            <StackLayout Orientation="Horizontal">
+                            <StackLayout Orientation="Vertical">
                                 <StackLayout VerticalOptions="Center">
-                                    <Label
-                                       Style="{StaticResource LabelSmall}"
-                                       Text="{Binding Id, StringFormat='Id: {0}'}"
-                                       VerticalOptions="Center" />
-                                    <Label
-                                        Style="{StaticResource LabelMedium}"
-                                        Text="{Binding Name}"
-                                        VerticalOptions="Center" />
-                                    <Label
-                                        Style="{StaticResource LabelSmall}"
-                                        Text="{Binding Average, StringFormat='Average: {0}%'}"
-                                        VerticalOptions="Center" />
+                                    <Grid Padding=" 3">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition />
+                                            <ColumnDefinition />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                        </Grid.RowDefinitions>
+                                        <Label
+                                            Style="{StaticResource LabelSmall}"
+                                            Text="{Binding Id, StringFormat='Id: {0}'}"
+                                            VerticalOptions="Center" IsVisible="false" />
+                                        <Label
+                                            Style="{StaticResource LabelMedium}"
+                                            Text="{Binding Name}"
+                                            VerticalOptions="Center"
+                                            Grid.Column="0"
+                                            Grid.Row="0"/>
+
+                                        <Label
+                                            Style="{StaticResource LabelSmall}"
+                                            Text="{Binding Average, StringFormat='Average: {0}%'}"
+                                            VerticalOptions="Center"
+                                            Grid.Column="0"
+                                            Grid.Row="2" />
+                                        <Label
+                                            Style="{StaticResource LabelSmall}"
+                                            Text="{Binding GamesPlayed, StringFormat='Games Played: {0}'}"
+                                            VerticalOptions="Center"
+                                            Grid.Column="1"
+                                            Grid.Row="2" />
+                                    </Grid>
                                 </StackLayout>
                             </StackLayout>
                         </Frame>

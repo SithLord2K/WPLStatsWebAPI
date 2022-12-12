@@ -16,7 +16,7 @@ namespace XWPLStats.ViewModels
     {
         public ObservableRangeCollection<Players> Player { get; set; }
 
-        private List<Players> pList = new List<Players>();
+        public List<Players> pList = new();
         string name;
         int gamesWon, gamesLost, playerId, gamesPlayed, weekNumber;
         decimal average;
@@ -29,14 +29,20 @@ namespace XWPLStats.ViewModels
         public int WeekNumber { get => weekNumber; set => SetProperty(ref weekNumber, value); }
         public decimal Average { get => average; set => SetProperty(ref average, value); }
 
-        IRestService restService;
-        PlayerHelpers pHelper = new();
+        readonly IRestService restService;
+        readonly PlayerHelpers pHelper = new();
         public bool _isBusy;
+        readonly NetworkAccess access = Connectivity.Current.NetworkAccess;
         public MainPageViewModel()
         {
             Title = "Player List";
             Player = new ObservableRangeCollection<Players>();
             restService = new RestService();
+            if (access != NetworkAccess.Internet)
+            {
+                Shell.Current.DisplayAlert("Internet Access Required", "Please connect to the internet and restart the application.", "OK");
+                App.Current.Quit();
+            }
         }
         public new bool IsBusy
         {
@@ -67,8 +73,7 @@ namespace XWPLStats.ViewModels
         [RelayCommand]
         async Task Remove(Players player)
         {
-            List<Players> removePlayer = new();
-            removePlayer = await restService.GetAllBySingleId(player.Id);
+            var removePlayer = await restService.GetAllBySingleId(player.Id);
             foreach (var item in removePlayer)
             {
                 await restService.DeletePlayer(item.EntryId);
@@ -84,8 +89,6 @@ namespace XWPLStats.ViewModels
                 Player.Clear();
 
             }
-            Players playerTotals = new();
-            //var players = await playerService.GetAllPlayersAsync();
             var players = await restService.GetAllPlayers();
 
             if (players.Count == 0)
@@ -95,7 +98,6 @@ namespace XWPLStats.ViewModels
             else
             {
                 pList = await pHelper.ConsolidatePlayer();
-
                 var sorted = pList.OrderByDescending(a => a.Average);
                 Player.AddRange(sorted);
                 IsBusy = false;

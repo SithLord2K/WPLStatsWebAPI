@@ -5,6 +5,7 @@ namespace XWPLStats
 {
     public partial class App : Application
     {
+       
         public App()
         {
             InitializeComponent();
@@ -15,6 +16,7 @@ namespace XWPLStats
 
         protected override void OnStart()
         {
+   
         }
 
         protected override void OnSleep()

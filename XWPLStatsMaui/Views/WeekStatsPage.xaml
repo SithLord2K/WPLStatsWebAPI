@@ -31,30 +31,25 @@
                     <DataTemplate x:DataType="models:Weeks">
                         <ViewCell>
                             <Grid Padding="5">
-
                                 <Frame  Style="{StaticResource PlayerCard}">
                                     <StackLayout Orientation="Horizontal">
                                         <StackLayout VerticalOptions="Center">
                                             <Label
-                                       Style="{StaticResource LabelMedium}"
-                                       Text="Week Statistics"
-                                       VerticalOptions="Center" />
+                                                Style="{StaticResource LabelSmall}"
+                                                Text="{Binding WeeksPlayed, StringFormat='Weeks Played: {0}'}"
+                                                VerticalOptions="Center" />
                                             <Label
-                                       Style="{StaticResource LabelSmall}"
-                                       Text="{Binding WeeksPlayed, StringFormat='Weeks Played: {0}'}"
-                                       VerticalOptions="Center" />
+                                                Style="{StaticResource LabelSmall}"
+                                                Text="{Binding WeekWin, StringFormat='Weeks Won: {0}'}"
+                                                VerticalOptions="Center" />
                                             <Label
-                                        Style="{StaticResource LabelSmall}"
-                                        Text="{Binding WeekWin, StringFormat='Weeks Won: {0}'}"
-                                        VerticalOptions="Center" />
+                                                Style="{StaticResource LabelSmall}"
+                                                Text="{Binding WeekLoss, StringFormat='Weeks Lost: {0}'}"
+                                                VerticalOptions="Center" />
                                             <Label
-                                        Style="{StaticResource LabelSmall}"
-                                        Text="{Binding WeekLoss, StringFormat='Weeks Lost: {0}'}"
-                                        VerticalOptions="Center" />
-                                            <Label
-                                        Style="{StaticResource LabelSmall}"
-                                        Text="{Binding WeeksAverage, StringFormat='Week Average: {0}%'}"
-                                        VerticalOptions="Center" />
+                                                Style="{StaticResource LabelSmall}"
+                                                Text="{Binding WeeksAverage, StringFormat='Week Average: {0}%'}"
+                                                VerticalOptions="Center" />
                                         </StackLayout>
                                     </StackLayout>
                                 </Frame>
