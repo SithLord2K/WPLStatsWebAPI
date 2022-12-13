@@ -10,6 +10,7 @@ namespace XWPLStats.Services
         public RestService()
         {
             _client = new HttpClient();
+            _client.DefaultRequestHeaders.Add("APIKey", "TDLoRo8deL0Bd9p6HfFMNONvtWAlz76YFXy3HIKMkgbSTA3Gkhllrle1a5FPiTkUjAuHcSicguMOQMUO7OuGj6nJg5h3VXc8h5gBrx2YRftwc7NRGl2R4cqv22aRJPnB");
         }
         public async Task<List<Players>> GetAllPlayers()
         {
@@ -45,8 +46,7 @@ namespace XWPLStats.Services
             {
                 Content = JsonContent.Create<Players>(player)
             };
-
-            HttpResponseMessage response = await _client.SendAsync(message);
+            _ = await _client.SendAsync(message);
         }
         public async Task DeletePlayer(int id)
         {
@@ -55,7 +55,7 @@ namespace XWPLStats.Services
             { 
                 Content = JsonContent.Create<int>(id)
             };
-            HttpResponseMessage response = await _client.SendAsync(message);
+            _ = await _client.SendAsync(message);
         }
 
  
@@ -107,8 +107,7 @@ namespace XWPLStats.Services
             {
                 Content = JsonContent.Create<Weeks>(weeks)
             };
-
-            HttpResponseMessage response = await _client.SendAsync(message);
+            _ = await _client.SendAsync(message);
         }
 
         public Task UpdateWeeks(Weeks weeks)
@@ -123,8 +122,7 @@ namespace XWPLStats.Services
             {
                 Content = JsonContent.Create<int>(id)
             };
-
-            HttpResponseMessage response = await _client.SendAsync(message);
+            _ = await _client.SendAsync(message);
         }
     }
 }
