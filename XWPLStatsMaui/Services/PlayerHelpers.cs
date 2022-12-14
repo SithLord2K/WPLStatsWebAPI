@@ -16,8 +16,6 @@ namespace XWPLStats.Services
         {
             var pList = new List<Players>();
 
-
-            //var players = await playerService.GetDistinctPlayerId();
             var players = await restService.GetDistinctPlayer();
 
             if (players.Count == 0)
@@ -30,7 +28,7 @@ namespace XWPLStats.Services
                 {
                     Players playerTotals = new();
 
-                    var getPlayerData = await restService.GetAllBySingleId(item); //playerService.GetAllBySingleId(item);
+                    var getPlayerData = await restService.GetAllBySingleId(item);
                     if (getPlayerData != null)
                     {
                         foreach (var single in getPlayerData)
@@ -55,7 +53,7 @@ namespace XWPLStats.Services
         public async Task<Players> GetPlayerDetails(int id)
         {
             Players playerTotals = new();
-            var getPlayerData = await restService.GetAllBySingleId(id);//playerService.GetAllBySingleId(id);
+            var getPlayerData = await restService.GetAllBySingleId(id);
             if (getPlayerData != null)
             {
                 foreach (var single in getPlayerData)
@@ -70,7 +68,6 @@ namespace XWPLStats.Services
                 }
             }
 
-            
             return playerTotals;
         }
         

@@ -7,11 +7,13 @@ namespace XWPLStats.Services
     public class RestService : IRestService
     {
         readonly HttpClient _client;
+
         public RestService()
         {
             _client = new HttpClient();
             _client.DefaultRequestHeaders.Add("APIKey", "TDLoRo8deL0Bd9p6HfFMNONvtWAlz76YFXy3HIKMkgbSTA3Gkhllrle1a5FPiTkUjAuHcSicguMOQMUO7OuGj6nJg5h3VXc8h5gBrx2YRftwc7NRGl2R4cqv22aRJPnB");
         }
+
         public async Task<List<Players>> GetAllPlayers()
         {
             List<Players> players = new();
@@ -48,6 +50,7 @@ namespace XWPLStats.Services
             };
             _ = await _client.SendAsync(message);
         }
+
         public async Task DeletePlayer(int id)
         {
             Uri uri = new($"https://wileysoft.codersden.com/api/Players/{id}");
@@ -58,8 +61,7 @@ namespace XWPLStats.Services
             _ = await _client.SendAsync(message);
         }
 
- 
-        public async Task<List<int>> GetDistinctPlayer()
+         public async Task<List<int>> GetDistinctPlayer()
         {
             List<Players> players = new();
             Uri uri = new("https://wileysoft.codersden.com/api/Players");
