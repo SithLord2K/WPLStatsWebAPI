@@ -42,7 +42,6 @@
                 Padding="20,0"
                 Command="{Binding SavePlayerCommand}"
                 HorizontalOptions="Fill"
-                IsEnabled="{Binding IsNotBusy}"
                 Text="Save"
                 VerticalOptions="EndAndExpand"
                 Style="{StaticResource ButtonOutline}"/>

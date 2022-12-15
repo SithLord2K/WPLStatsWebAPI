@@ -7,6 +7,7 @@ using XWPLStats.Services;
 using Microsoft.Maui;
 using Microsoft.Maui.Controls;
 using CommunityToolkit.Mvvm.Input;
+using System.ComponentModel;
 
 namespace XWPLStats.ViewModels
 {
@@ -21,7 +22,7 @@ namespace XWPLStats.ViewModels
         decimal average;
 
         public string PlayerID { get; set; }
-        public string Name { get => name; set => SetProperty(ref name, value); }
+        public string Name { get => name; set { name = value; OnPropertyChanged(nameof(Name)); } }
         public int Id { get => id; set => SetProperty(ref id, value); }
         public int GamesWon { get=> gamesWon; set => SetProperty(ref gamesWon, value); }
         public int GamesLost { get => gamesLost; set => SetProperty(ref gamesLost, value); }
