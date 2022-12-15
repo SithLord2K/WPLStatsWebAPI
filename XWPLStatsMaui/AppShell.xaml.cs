@@ -15,6 +15,7 @@ namespace XWPLStats
             Routing.RegisterRoute(nameof(PlayerDetailPage),typeof(PlayerDetailPage));
             Routing.RegisterRoute(nameof(MainPage), typeof(MainPage));
             Routing.RegisterRoute(nameof(TeamStats), typeof(TeamStats));
+            Routing.RegisterRoute(nameof(WeekStatsPage), typeof(WeekStatsPage));
             Routing.RegisterRoute(nameof(UpdateWeekStats), typeof(UpdateWeekStats));
         }
     }

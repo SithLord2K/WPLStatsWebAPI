@@ -1,4 +1,5 @@
-﻿using System.Net.Http.Json;
+﻿using System.Net.Http.Headers;
+using System.Net.Http.Json;
 using System.Text.Json;
 using XWPLStats.Models;
 
@@ -19,6 +20,9 @@ namespace XWPLStats.Services
             List<Players> players = new();
             Uri uri = new("https://wileysoft.codersden.com/api/Players");
             HttpResponseMessage response = await _client.GetAsync(uri);
+            //HttpResponseHeaders headers = response.Headers;
+            //string header = headers.GetValues("Cache-Control").FirstOrDefault();
+            //await Shell.Current.DisplayAlert("Cache Header", header, "Ok");
             if(response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
