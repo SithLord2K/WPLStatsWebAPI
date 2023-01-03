@@ -31,7 +31,7 @@ namespace XWPLStats.ViewModels
 
         readonly IRestService restService;
         readonly PlayerHelpers pHelper = new();
-        public bool _isBusy;
+  
         readonly NetworkAccess access = Connectivity.Current.NetworkAccess;
         public MainPageViewModel()
         {
@@ -42,15 +42,6 @@ namespace XWPLStats.ViewModels
             {
                 Shell.Current.DisplayAlert("Internet Access Required", "Please connect to the internet and restart the application.", "OK");
                 App.Current.Quit();
-            }
-        }
-        public new bool IsBusy
-        {
-            get { return _isBusy; }
-            set
-            {
-                _isBusy = value;
-                OnPropertyChanged(nameof(IsBusy));
             }
         }
 

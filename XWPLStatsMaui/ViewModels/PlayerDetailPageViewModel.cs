@@ -30,7 +30,7 @@ namespace XWPLStats.ViewModels
             
         }
 
-        IRestService restService;
+        readonly IRestService restService;
         public PlayerDetailPageViewModel() 
         { 
             restService = new RestService();

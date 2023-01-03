@@ -9,8 +9,7 @@ namespace XWPLStats.ViewModels
     {
         public ObservableRangeCollection<Weeks> WeekStats { get; set; }
         
-        private bool _isBusy;
-        
+       
         readonly IRestService restService;
         public WeekStatsViewModel()
         {
@@ -18,18 +17,7 @@ namespace XWPLStats.ViewModels
             WeekStats = new ObservableRangeCollection<Weeks>();
             restService = new RestService();
         }
-        public new bool IsBusy
-        {
-            get
-            {
-                return _isBusy;
-            }
-            set
-            {
-                _isBusy = value;
-                OnPropertyChanged(nameof(IsBusy));
-            }
-        }
+
         [RelayCommand]
         async Task Refresh()
         {

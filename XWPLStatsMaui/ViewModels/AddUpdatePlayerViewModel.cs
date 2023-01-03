@@ -16,7 +16,7 @@ namespace XWPLStats.ViewModels
     [QueryProperty(nameof(PlayerID), nameof(PlayerID))]
     public partial class AddUpdatePlayerViewModel : BaseViewModel
     {
-        Players Player = new();
+        readonly Players Player = new();
         string name;
         int gamesWon, gamesLost, id, gamesPlayed, weekNumber;
         decimal average;
@@ -29,6 +29,7 @@ namespace XWPLStats.ViewModels
         public int GamesPlayed { get=> gamesPlayed; set => SetProperty(ref gamesPlayed, value); }
         public decimal Average { get => average; set => SetProperty(ref average, value); }
         public int WeekNumber { get => weekNumber; set => SetProperty(ref weekNumber, value); }
+
 
         readonly IRestService restService;
 

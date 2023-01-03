@@ -9,7 +9,6 @@ namespace XWPLStats.ViewModels
     {
         public ObservableRangeCollection<TeamStats> TeamStat { get; set; }
         
-        private bool _isBusy;
         readonly IRestService restService;
         
         public TeamStatsViewModel()
@@ -18,18 +17,7 @@ namespace XWPLStats.ViewModels
             TeamStat = new ObservableRangeCollection<TeamStats>();
             restService = new RestService();
         }
-        public new bool IsBusy
-        {
-            get
-            {
-                return _isBusy;
-            }
-            set
-            {
-                _isBusy = value;
-                OnPropertyChanged(nameof(IsBusy));
-            }
-        }
+
         [RelayCommand]
         async Task Refresh()
         {
