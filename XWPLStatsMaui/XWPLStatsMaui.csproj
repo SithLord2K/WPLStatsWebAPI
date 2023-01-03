@@ -55,9 +55,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="CommunityToolkit.Maui" Version="3.0.0" />
+		<PackageReference Include="CommunityToolkit.Maui" Version="3.1.0" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0" />
+		<PackageReference Include="Microsoft.Datasync.Client.SQLiteStore" Version="5.0.18" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
+		<PackageReference Include="MonkeyCache.FileStore" Version="1.6.3" />
 		<PackageReference Include="Refractored.MvvmHelpers" Version="1.6.2" />
 		<PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
 		<PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.1.3" />
@@ -76,8 +78,8 @@
 	    <SubType>Code</SubType>
 	    <DependentUpon>%(Filename)</DependentUpon>
 	  </Compile>
-	  <Compile Update="Views\AddUpdatePlayer.xaml.cs">
-	    <DependentUpon>%(Filename)</DependentUpon>
+	  <Compile Update="Views\AddPlayer.xaml.cs">
+	    <DependentUpon>AddPlayer.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="Views\PlayerDetailPage.xaml.cs">
 	    <DependentUpon>%(Filename)</DependentUpon>
@@ -91,7 +93,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="Views\AddUpdatePlayer.xaml">
+	  <MauiXaml Update="Views\AddPlayer.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\EditPlayer.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\PlayerDetailPage.xaml">

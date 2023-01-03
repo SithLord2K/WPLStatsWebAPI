@@ -11,12 +11,13 @@ namespace XWPLStats
             InitializeComponent();
 
             //Routing
-            Routing.RegisterRoute(nameof(AddUpdatePlayer),typeof(AddUpdatePlayer));
+            Routing.RegisterRoute(nameof(AddPlayer),typeof(AddPlayer));
             Routing.RegisterRoute(nameof(PlayerDetailPage),typeof(PlayerDetailPage));
             Routing.RegisterRoute(nameof(MainPage), typeof(MainPage));
             Routing.RegisterRoute(nameof(TeamStats), typeof(TeamStats));
             Routing.RegisterRoute(nameof(WeekStatsPage), typeof(WeekStatsPage));
             Routing.RegisterRoute(nameof(UpdateWeekStats), typeof(UpdateWeekStats));
+            Routing.RegisterRoute(nameof(EditPlayer), typeof(EditPlayer));
         }
     }
 }

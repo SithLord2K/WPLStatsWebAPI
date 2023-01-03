@@ -10,6 +10,7 @@ namespace XWPLStats.Services
     public interface IRestService
     {
         Task<List<Players>> GetAllPlayers();
+        
         Task<Players> GetSinglePlayer(int id);
         Task<List<Players>> GetAllBySingleId(int id);
         Task<List<int>> GetDistinctPlayer();

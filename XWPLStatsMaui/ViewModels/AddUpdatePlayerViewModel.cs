@@ -37,14 +37,24 @@ namespace XWPLStats.ViewModels
         {
             Title = "Add/Update Player";
             restService = new RestService();
+
         }
 
         [RelayCommand]
         async Task SavePlayer()
         {
- 
-            gamesPlayed = gamesWon + gamesLost;
-            decimal avg = Decimal.Round((decimal)(gamesWon / (decimal)gamesPlayed)*100,2);
+
+            if (gamesWon > 0 && gamesLost > 0)
+            {
+                gamesPlayed = gamesWon + gamesLost;
+                average = Decimal.Round((decimal)(gamesWon / (decimal)gamesPlayed) * 100, 2);
+            }
+            else
+            {
+                await Shell.Current.DisplayAlert("No Data", "You must fill out the information.", "Ok");
+                await Shell.Current.GoToAsync("..");
+                return;
+            }
 
             Players player = new()
             {
@@ -53,7 +63,7 @@ namespace XWPLStats.ViewModels
                 GamesWon = gamesWon,
                 GamesLost = gamesLost,
                 GamesPlayed = gamesPlayed,
-                Average = avg,
+                Average = average,
                 WeekNumber = weekNumber
             };
 

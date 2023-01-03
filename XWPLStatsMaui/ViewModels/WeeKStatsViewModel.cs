@@ -8,8 +8,6 @@ namespace XWPLStats.ViewModels
     internal partial class WeekStatsViewModel : BaseViewModel
     {
         public ObservableRangeCollection<Weeks> WeekStats { get; set; }
-        
-       
         readonly IRestService restService;
         public WeekStatsViewModel()
         {
@@ -21,6 +19,7 @@ namespace XWPLStats.ViewModels
         [RelayCommand]
         async Task Refresh()
         {
+            IsBusy = true;
             //Get Week Stats
             if (WeekStats.Count != 0)
             {

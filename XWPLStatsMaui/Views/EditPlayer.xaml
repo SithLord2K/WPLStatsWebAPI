@@ -1,20 +1,16 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage
-    x:Class="XWPLStats.MainPage"
-    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:model="clr-namespace:XWPLStats.Models"
-    xmlns:viewmodels="clr-namespace:XWPLStats.ViewModels"
-    xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-    x:Name="PlayerListPage"
-    Title="{Binding Title}"
-    x:DataType="viewmodels:MainPageViewModel"
-    BackgroundColor="{AppThemeBinding 
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:XWPLStats.Models"
+             xmlns:viewmodels="clr-namespace:XWPLStats.ViewModels"
+             xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="XWPLStats.Views.EditPlayer"
+             Title="Edit Player"
+                 BackgroundColor="{AppThemeBinding 
                     Dark={StaticResource WindowBackgroundColorDark}, 
                     Light={StaticResource WindowBackgroundColor}}">
-
     <ContentPage.BindingContext>
-        <viewmodels:MainPageViewModel />
+        <viewmodels:EditPlayerViewModel />
     </ContentPage.BindingContext>
 
     <ContentPage.Resources>
@@ -24,10 +20,8 @@
     </ContentPage.Resources>
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add/Update Player" Command="{Binding AddPlayerCommand}"/>
+        <!--<ToolbarItem Text="Add/Update Player" Command="{Binding AddPlayerCommand}"/>-->
     </ContentPage.ToolbarItems>
-
-
     <ListView
         IsRefreshing="{Binding IsBusy, Mode=OneWay}"
         ItemsSource="{Binding Player}"
@@ -75,24 +69,21 @@
                                         </Grid.RowDefinitions>
                                         <Label
                                             Style="{StaticResource LabelSmall}"
-                                            Text="{Binding Id, StringFormat='Id: {0}'}"
-                                            VerticalOptions="Center" IsVisible="false" />
-                                        <Label
-                                            Style="{StaticResource LabelMedium}"
-                                            Text="{Binding Name}"
-                                            VerticalOptions="Center"
-                                            Grid.Column="0"
-                                            Grid.Row="0"/>
-
+                                            Text="{Binding Id, StringFormat='Player Id: {0}'}"
+                                            VerticalOptions="Center" IsVisible="true" />
                                         <Label
                                             Style="{StaticResource LabelSmall}"
-                                            Text="{Binding Average, StringFormat='Average: {0}%'}"
+                                            Text="{Binding WeekNumber, StringFormat='Week #: {0}'}"
+                                            VerticalOptions="Center" IsVisible="true" />
+                                        <Label
+                                            Style="{StaticResource LabelSmall}"
+                                            Text="{Binding GamesWon, StringFormat='GamesWon: {0}%'}"
                                             VerticalOptions="Center"
                                             Grid.Column="0"
                                             Grid.Row="2" />
                                         <Label
                                             Style="{StaticResource LabelSmall}"
-                                            Text="{Binding GamesPlayed, StringFormat='Games Played: {0}'}"
+                                            Text="{Binding GamesLost, StringFormat='Games Played: {0}'}"
                                             VerticalOptions="Center"
                                             Grid.Column="1"
                                             Grid.Row="2" />

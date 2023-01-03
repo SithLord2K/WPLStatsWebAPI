@@ -1,5 +1,6 @@
 ﻿using Microsoft.Maui;
 using Microsoft.Maui.Controls;
+using MonkeyCache.FileStore;
 
 namespace XWPLStats
 {
@@ -9,7 +10,7 @@ namespace XWPLStats
         public App()
         {
             InitializeComponent();
-
+            Barrel.ApplicationId = AppInfo.PackageName;
             MainPage = new AppShell();
           
         }

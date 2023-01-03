@@ -48,7 +48,7 @@ namespace XWPLStats.ViewModels
         [RelayCommand]
         async Task AddPlayer()
         {
-            await Shell.Current.GoToAsync($"{nameof(AddUpdatePlayer)}");
+            await Shell.Current.GoToAsync($"{nameof(AddPlayer)}");
         }
 
         [RelayCommand]
@@ -73,9 +73,19 @@ namespace XWPLStats.ViewModels
         }
 
         [RelayCommand]
+        async Task Edit(Players player)
+        {
+            if (player == null) return;
+
+            var route = $"{nameof(EditPlayer)}";
+            await Shell.Current.GoToAsync(route,true);
+        }
+
+        [RelayCommand]
         async Task Refresh()
         {
-            if (Player.Count > 0)
+            IsBusy = true;
+            if (Player.Count != 0)
             {
                 Player.Clear();
 
@@ -91,9 +101,9 @@ namespace XWPLStats.ViewModels
                 pList = await pHelper.ConsolidatePlayer();
                 var sorted = pList.OrderByDescending(a => a.Average);
                 Player.AddRange(sorted);
-                IsBusy = false;
 
             }
+            IsBusy = false;
         }
     }
 }

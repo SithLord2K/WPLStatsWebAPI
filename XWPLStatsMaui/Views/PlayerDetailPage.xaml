@@ -34,12 +34,6 @@
                     HorizontalOptions="Fill"
                     Style="{StaticResource ButtonOutline}"/>
 
-            <!--<Button Clicked="ButtonEdit_Clicked" Text="Edit"
-                    HorizontalOptions="Fill"
-                    Grid.Column="1"
-                    VerticalOptions="EndAndExpand"
-                    Style="{StaticResource ButtonOutline}"/>-->
-
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

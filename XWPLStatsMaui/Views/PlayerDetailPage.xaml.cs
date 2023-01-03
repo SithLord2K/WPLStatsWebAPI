@@ -29,11 +29,6 @@ namespace XWPLStats.Views
         {
             await Shell.Current.GoToAsync("..");
         }
-        private async void ButtonEdit_Clicked(object sender, EventArgs e)
-        {
-            string playId = labelId.Text.Replace("ID: ", string.Empty).Trim();
-            var route = $"{nameof(AddUpdatePlayer)}?PlayerID={playId}";
-            await Shell.Current.GoToAsync(route);
-        }
+
     }
 }
