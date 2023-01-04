@@ -1,6 +1,7 @@
 ﻿using MonkeyCache.FileStore;
 using Newtonsoft.Json;
 using System.Diagnostics;
+using System.Linq;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Text.Json;
@@ -68,17 +69,19 @@ namespace XWPLStats.Services
         //    return players;
         //}
 
-        public async Task<Players> GetSinglePlayer(int id)
+        public async Task<List<Players>> GetSinglePlayer(int id)
         {
+            List<Players> fullPlayer = new();
             Players player = new();
             Uri uri = new($"https://wileysoft.codersden.com/api/Players/{id}");
             HttpResponseMessage response = await client.GetAsync(uri);
             if(response.IsSuccessStatusCode) 
             {
                 string content = await response.Content.ReadAsStringAsync();
-                player = System.Text.Json.JsonSerializer.Deserialize<Players>(content);
+                fullPlayer = System.Text.Json.JsonSerializer.Deserialize<List<Players>>(content);
+                
             }
-            return player;
+            return fullPlayer;
         }
 
         public async Task SavePlayer(Players player)

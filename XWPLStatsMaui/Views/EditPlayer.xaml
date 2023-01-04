@@ -24,7 +24,7 @@
     </ContentPage.ToolbarItems>
     <ListView
         IsRefreshing="{Binding IsBusy, Mode=OneWay}"
-        ItemsSource="{Binding Player}"
+        ItemsSource="{Binding PlayerWeeks}"
         RefreshCommand="{Binding RefreshCommand}"
         IsPullToRefreshEnabled="True"
         SelectionMode="Single"
@@ -42,12 +42,12 @@
                 <ViewCell>
                     <ViewCell.ContextActions>
                         <MenuItem
-                            Command="{Binding Source={x:Reference PlayerListPage}, Path=BindingContext.EditCommand}"
+                            Command="{Binding Source={x:Reference EditPlayer}, Path=BindingContext.EditCommand}"
                             CommandParameter="{Binding .}"
                             IsDestructive="True"
                             Text="Edit" />
                         <MenuItem
-                            Command="{Binding Source={x:Reference PlayerListPage}, Path=BindingContext.RemoveCommand}"
+                            Command="{Binding Source={x:Reference EditPlayer}, Path=BindingContext.RemoveCommand}"
                             CommandParameter="{Binding .}"
                             IsDestructive="True"
                             Text="Delete" />
@@ -69,15 +69,21 @@
                                         </Grid.RowDefinitions>
                                         <Label
                                             Style="{StaticResource LabelSmall}"
-                                            Text="{Binding Id, StringFormat='Player Id: {0}'}"
-                                            VerticalOptions="Center" IsVisible="true" />
+                                            Text="{Binding Name, StringFormat='Player: {0}'}"
+                                            VerticalOptions="Center"
+                                            Grid.Column="0"
+                                            Grid.Row="0"
+                                            IsVisible="true" />
                                         <Label
                                             Style="{StaticResource LabelSmall}"
                                             Text="{Binding WeekNumber, StringFormat='Week #: {0}'}"
-                                            VerticalOptions="Center" IsVisible="true" />
+                                            VerticalOptions="Center"
+                                            Grid.Column="1"
+                                            Grid.Row="0"
+                                            IsVisible="true" />
                                         <Label
                                             Style="{StaticResource LabelSmall}"
-                                            Text="{Binding GamesWon, StringFormat='GamesWon: {0}%'}"
+                                            Text="{Binding GamesWon, StringFormat='GamesWon: {0}'}"
                                             VerticalOptions="Center"
                                             Grid.Column="0"
                                             Grid.Row="2" />

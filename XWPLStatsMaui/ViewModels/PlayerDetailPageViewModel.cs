@@ -12,6 +12,7 @@ namespace XWPLStats.ViewModels
     {
         public string playerID;
         public Players Player { get; set; }
+        public List<Players> fullPlayer = new List<Players>();
 
         public string PlayerID
         {
@@ -26,7 +27,8 @@ namespace XWPLStats.ViewModels
         public async void LoadPlayer(string value)
         {
             int id = int.Parse(value);
-            Player = await restService.GetSinglePlayer(id);
+            fullPlayer = await restService.GetSinglePlayer(id);
+            Player = fullPlayer.LastOrDefault();
             
         }
 

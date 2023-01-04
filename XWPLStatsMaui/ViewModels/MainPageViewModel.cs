@@ -73,12 +73,16 @@ namespace XWPLStats.ViewModels
         }
 
         [RelayCommand]
-        async Task Edit(Players player)
+        private async Task Edit(object sender)
         {
-            if (player == null) return;
+            var player = sender;
+            if (player == null)
+                return;
 
-            var route = $"{nameof(EditPlayer)}";
-            await Shell.Current.GoToAsync(route,true);
+            await Shell.Current.GoToAsync(nameof(EditPlayer),true,new Dictionary<string,object>
+            {
+                {"Player", player }
+            });
         }
 
         [RelayCommand]

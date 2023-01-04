@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Mvvm.Input;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using MvvmHelpers;
 using XWPLStats.Models;
 using XWPLStats.Services;
@@ -6,8 +7,12 @@ using XWPLStats.Services;
 namespace XWPLStats.ViewModels
 {
     [QueryProperty(nameof(PlayerID), nameof(PlayerID))]
-    public partial class EditPlayerViewModel : BaseViewModel
+    [QueryProperty(nameof(Player), nameof(Player))]
+    public partial class EditPlayerViewModel : CommunityToolkit.Mvvm.ComponentModel.ObservableObject
     {
+        [ObservableProperty]
+        Players player;
+
         public List<Players> pList = new();
         string name;
         int gamesWon, gamesLost, playerId, gamesPlayed, weekNumber;
@@ -20,7 +25,7 @@ namespace XWPLStats.ViewModels
             set => SetProperty(ref pID, value);
         }
 
-        public ObservableRangeCollection<Players> Player { get; set; }
+        public ObservableRangeCollection<Players> PlayerWeeks { get; set; }
         public string Name { get => name; set => SetProperty(ref name, value); }
         public int PlayerId { get => playerId; set => SetProperty(ref playerId, value); }
         public int GamesWon { get => gamesWon; set => SetProperty(ref gamesWon, value); }
@@ -28,16 +33,13 @@ namespace XWPLStats.ViewModels
         public int GamesPlayed { get => gamesPlayed; set => SetProperty(ref gamesPlayed, value); }
         public int WeekNumber { get => weekNumber; set => SetProperty(ref weekNumber, value); }
         public decimal Average { get => average; set => SetProperty(ref average, value); }
-        IRestService restService;
+
+        readonly IRestService restService;
 
         public EditPlayerViewModel()
         {
+            PlayerWeeks = new();
             restService= new RestService();
-            bool v = int.TryParse(PlayerID, out int result);
-            if(v)
-            {
-                playerId = result;
-            }
         }
 
 
@@ -46,25 +48,32 @@ namespace XWPLStats.ViewModels
         async Task Refresh()
         {
             //IsBusy = true;
-            if (Player.Count != 0)
-            {
-                Player.Clear();
+            //if (PlayerList.Count != null)
+            //{
+            //    PlayerList.Clear();
 
-            }
-            var players = await restService.GetAllPlayers();
+            //}
 
-            if (players.Count == 0)
+
+            if (player == null)
             {
                 return;
             }
             else
             {
-                pList = await restService.GetAllBySingleId(playerId);
+                
+                pList = await restService.GetAllBySingleId(player.Id);
                 var sorted = pList.OrderByDescending(a => a.WeekNumber);
-                Player.AddRange(sorted);
+                PlayerWeeks.AddRange(sorted);
 
             }
             //IsBusy = false;
+        }
+
+        [RelayCommand]
+        async Task Selected()
+        {
+            await Shell.Current.DisplayAlert("Test", "Selected", "Ok");
         }
     }
 }

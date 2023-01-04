@@ -15,22 +15,40 @@
         <viewmodel:AddUpdatePlayerViewModel />
     </ContentPage.BindingContext>
     <ContentPage.Content>
+        <!-- <CollectionView ItemsSource="{Binding Player}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>-->
         <StackLayout Padding="20" >
             <Label Text="ID:"
                    Style="{StaticResource LabelMedium}" />
-            <Entry Text="{Binding Id}" Style="{StaticResource LabelMedium}" Keyboard="Numeric" />
+            <Entry Text="{Binding Id}" 
+                   Style="{StaticResource LabelMedium}" 
+                   Keyboard="Numeric"
+                   Placeholder="" 
+                   TextChanged="UpdateWeekNumber" />
             <Label Text="Name:"
                    Style="{StaticResource LabelMedium}" />
-            <Entry Text="{Binding Name}" Style="{StaticResource LabelMedium}" Keyboard="Chat" />
+            <Entry Text="{Binding Name}" 
+                   Style="{StaticResource LabelMedium}" 
+                   Keyboard="Chat" />
             <Label Text="Games Won:"
                    Style="{StaticResource LabelMedium}" />
-            <Entry Text="{Binding GamesWon}" Style="{StaticResource LabelMedium}" Keyboard="Numeric" />
+            <Entry Text="{Binding GamesWon}" 
+                   Style="{StaticResource LabelMedium}" 
+                   Keyboard="Numeric"
+                   Placeholder="" />
             <Label Text="Games Lost:"
                    Style="{StaticResource LabelMedium}" />
-            <Entry Text="{Binding GamesLost}" Style="{StaticResource LabelMedium}" Keyboard="Numeric" />
+            <Entry Text="{Binding GamesLost}"
+                   Style="{StaticResource LabelMedium}" 
+                   Keyboard="Numeric"
+                   Placeholder="" />
             <Label Text="Week Number:"
                    Style="{StaticResource LabelMedium}" />
-            <Entry Text="{Binding WeekNumber}" Style="{StaticResource LabelMedium}" Keyboard="Numeric" />
+            <Entry Text="{Binding WeekNumber}"
+                   Style="{StaticResource LabelMedium}" 
+                   Keyboard="Numeric" 
+                   Placeholder="" />
 
             <ActivityIndicator
                 HorizontalOptions="Center"
@@ -46,5 +64,8 @@
                 VerticalOptions="EndAndExpand"
                 Style="{StaticResource ButtonOutline}"/>
         </StackLayout>
+        <!--</DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>-->
     </ContentPage.Content>
 </ContentPage>
