@@ -43,7 +43,7 @@ namespace XWPLStats.ViewModels
             restService = new RestService();
         }
 
-        public new bool IsBusy
+        public bool IsBusy
         {
             get { return _isBusy; }
             set
@@ -56,7 +56,7 @@ namespace XWPLStats.ViewModels
         [RelayCommand]
         async Task Refresh()
         {
-            IsBusy = true;
+            
             if (player == null)
             {
                 IsBusy = false;
