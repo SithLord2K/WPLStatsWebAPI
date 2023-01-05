@@ -50,10 +50,10 @@
                 <ViewCell>
                     <ViewCell.ContextActions>
                         <MenuItem
-                            Command="{Binding Source={x:Reference PlayerListPage}, Path=BindingContext.EditCommand}"
+                            Command="{Binding Source={x:Reference PlayerListPage}, Path=BindingContext.ViewWeeksCommand}"
                             CommandParameter="{Binding .}"
                             IsDestructive="True"
-                            Text="Edit" />
+                            Text="View Weeks" />
                         <MenuItem
                             Command="{Binding Source={x:Reference PlayerListPage}, Path=BindingContext.RemoveCommand}"
                             CommandParameter="{Binding .}"

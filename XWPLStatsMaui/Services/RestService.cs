@@ -42,8 +42,8 @@ namespace XWPLStats.Services
 
                     Barrel.Current.Add(key, json, TimeSpan.FromMinutes(mins));
                 }
-                var players = JsonConvert.DeserializeObject<T>(json);
-                return players;
+                var data = JsonConvert.DeserializeObject<T>(json);
+                return data;
             }
             catch (Exception ex)
             {
@@ -51,6 +51,8 @@ namespace XWPLStats.Services
                 throw;
             }
         }
+
+   
 
         public Task<List<Players>> GetAllPlayers() =>
             GetAsync<List<Players>>("/api/Players", "getplayers");
@@ -66,23 +68,24 @@ namespace XWPLStats.Services
         //        string content = await response.Content.ReadAsStringAsync();
         //        players = System.Text.Json.JsonSerializer.Deserialize<List<Players>>(content);
         //    }
-            
+
         //    return players;
         //}
 
-        public async Task<List<Players>> GetSinglePlayer(int id)
-        {
-            List<Players> fullPlayer = new();
-            Uri uri = new($"https://wileysoft.codersden.com/api/Players/{id}");
-            HttpResponseMessage response = await client.GetAsync(uri);
-            if(response.IsSuccessStatusCode) 
-            {
-                string content = await response.Content.ReadAsStringAsync();
-                fullPlayer = System.Text.Json.JsonSerializer.Deserialize<List<Players>>(content);
+        public Task<List<Players>> GetSinglePlayer(int id) =>
+            GetAsync<List<Players>>($"/api/Players/{id}", $"getsingleplayer/{id}");
+        //{
+        //    List<Players> fullPlayer = new();
+        //    Uri uri = new($"https://wileysoft.codersden.com/api/Players/{id}");
+        //    HttpResponseMessage response = await client.GetAsync(uri);
+        //    if(response.IsSuccessStatusCode) 
+        //    {
+        //        string content = await response.Content.ReadAsStringAsync();
+        //        fullPlayer = System.Text.Json.JsonSerializer.Deserialize<List<Players>>(content);
                 
-            }
-            return fullPlayer;
-        }
+        //    }
+        //    return fullPlayer;
+        //}
 
         public async Task SavePlayer(Players player)
         {
@@ -131,19 +134,20 @@ namespace XWPLStats.Services
             return players;
         }
 
-        public async Task<IEnumerable<Weeks>> GetAllWeeks()
-        {
-            List<Weeks> weeks = new();
-            Uri uri = new("https://wileysoft.codersden.com/api/Weeks");
-            HttpResponseMessage response = await client.GetAsync(uri);
-            if (response.IsSuccessStatusCode)
-            {
-                string content = await response.Content.ReadAsStringAsync();
-                weeks = System.Text.Json.JsonSerializer.Deserialize<List<Weeks>>(content);
-            }
+        public Task<IEnumerable<Weeks>> GetAllWeeks() =>
+            GetAsync<IEnumerable<Weeks>>("/api/Weeks", "getallweeks");
+        //{
+        //    List<Weeks> weeks = new();
+        //    Uri uri = new("https://wileysoft.codersden.com/api/Weeks");
+        //    HttpResponseMessage response = await client.GetAsync(uri);
+        //    if (response.IsSuccessStatusCode)
+        //    {
+        //        string content = await response.Content.ReadAsStringAsync();
+        //        weeks = System.Text.Json.JsonSerializer.Deserialize<List<Weeks>>(content);
+        //    }
 
-            return weeks;
-        }
+        //    return weeks;
+        //}
 
         public async Task AddWeeks(Weeks weeks)
         {

@@ -20,11 +20,12 @@ public static class MauiProgram
 		builder.Services.AddSingleton<MainPage>();
         builder.Services.AddSingleton<MainPageViewModel>();
 
-		builder.Services.AddTransient<AddPlayer>();
+
+        builder.Services.AddTransient<AddPlayer>();
 		builder.Services.AddTransient<AddUpdatePlayerViewModel>();
-		builder.Services.AddTransient<EditPlayer>();
-		builder.Services.AddTransient<EditPlayerViewModel>();
-		builder.Services.AddTransient<PlayerDetailPage>();
+        builder.Services.AddTransient<EditPlayer>();
+        builder.Services.AddTransient<EditPlayerViewModel>();
+        builder.Services.AddTransient<PlayerDetailPage>();
 		builder.Services.AddTransient<PlayerDetailPageViewModel>();
 		builder.Services.AddTransient<TeamStats>();
 		builder.Services.AddTransient<TeamStatsViewModel>();

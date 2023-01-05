@@ -6,7 +6,6 @@ using XWPLStats.ViewModels;
 
 namespace XWPLStats.Views;
 
-
 public partial class EditPlayer : ContentPage
 {
     public EditPlayer(EditPlayerViewModel vm)
@@ -16,12 +15,10 @@ public partial class EditPlayer : ContentPage
 
 	}
 
-    protected override void OnNavigatedTo(NavigatedToEventArgs args)
+    protected override void OnAppearing()
     {
         EditPlayerViewModel viewModel = (EditPlayerViewModel)BindingContext;
         viewModel.RefreshCommand.Execute(null);
-        base.OnNavigatedTo(args);
     }
-
 
 }

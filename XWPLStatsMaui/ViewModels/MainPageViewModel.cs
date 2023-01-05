@@ -48,7 +48,7 @@ namespace XWPLStats.ViewModels
         [RelayCommand]
         async Task AddPlayer()
         {
-            await Shell.Current.GoToAsync($"{nameof(AddPlayer)}");
+            await Shell.Current.GoToAsync($"{nameof(AddPlayer)}",true);
         }
 
         [RelayCommand]
@@ -58,7 +58,7 @@ namespace XWPLStats.ViewModels
                 return;
 
             var route = $"{nameof(PlayerDetailPage)}?PlayerID={player.Id}";
-            await Shell.Current.GoToAsync(route);
+            await Shell.Current.GoToAsync(route,true);
         }
 
         [RelayCommand]
@@ -73,7 +73,7 @@ namespace XWPLStats.ViewModels
         }
 
         [RelayCommand]
-        private async Task Edit(object sender)
+        private async Task ViewWeeks(object sender)
         {
             var player = sender;
             if (player == null)

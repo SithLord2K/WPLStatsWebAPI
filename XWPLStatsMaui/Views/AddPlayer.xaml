@@ -15,9 +15,6 @@
         <viewmodel:AddUpdatePlayerViewModel />
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <!-- <CollectionView ItemsSource="{Binding Player}">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>-->
         <StackLayout Padding="20" >
             <Label Text="ID:"
                    Style="{StaticResource LabelMedium}" />
@@ -64,8 +61,5 @@
                 VerticalOptions="EndAndExpand"
                 Style="{StaticResource ButtonOutline}"/>
         </StackLayout>
-        <!--</DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>-->
-    </ContentPage.Content>
+      </ContentPage.Content>
 </ContentPage>

@@ -3,9 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:model="clr-namespace:XWPLStats.Models"
              xmlns:viewmodels="clr-namespace:XWPLStats.ViewModels"
-             xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:DataType="viewmodels:EditPlayerViewModel"
              x:Class="XWPLStats.Views.EditPlayer"
-             Title="Edit Player"
+             Title="{Binding Player.Name, StringFormat='{0} - Weeks View'}"
                  BackgroundColor="{AppThemeBinding 
                     Dark={StaticResource WindowBackgroundColorDark}, 
                     Light={StaticResource WindowBackgroundColor}}">
@@ -15,14 +16,12 @@
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            <xct:SelectedItemEventArgsConverter x:Key="SelectedItemEventArgsConverter" />
+            <mct:SelectedItemEventArgsConverter x:Key="SelectedItemEventArgsConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <ContentPage.ToolbarItems>
-        <!--<ToolbarItem Text="Add/Update Player" Command="{Binding AddPlayerCommand}"/>-->
-    </ContentPage.ToolbarItems>
     <ListView
+        IsRefreshing="{Binding IsBusy, Mode=OneWay}"
         ItemsSource="{Binding PlayerWeeks}"
         RefreshCommand="{Binding RefreshCommand}"
         IsPullToRefreshEnabled="True"
@@ -31,7 +30,7 @@
         CachingStrategy="RecycleElement"
         x:Name="PlayersList">
         <ListView.Behaviors>
-            <xct:EventToCommandBehavior
+            <mct:EventToCommandBehavior
                 EventName="ItemSelected"
                 Command="{Binding SelectedCommand}"                
                 EventArgsConverter="{StaticResource SelectedItemEventArgsConverter}"/>
@@ -39,24 +38,11 @@
         <ListView.ItemTemplate>
             <DataTemplate x:DataType="model:Players">
                 <ViewCell>
-                    <ViewCell.ContextActions>
-                        <MenuItem
-                            Command="{Binding Source={x:Reference EditPlayer}, Path=BindingContext.EditCommand}"
-                            CommandParameter="{Binding .}"
-                            IsDestructive="True"
-                            Text="Edit" />
-                        <MenuItem
-                            Command="{Binding Source={x:Reference EditPlayer}, Path=BindingContext.RemoveCommand}"
-                            CommandParameter="{Binding .}"
-                            IsDestructive="True"
-                            Text="Delete" />
-                    </ViewCell.ContextActions>
                     <Grid Padding="3">
-
-                        <Frame  Style="{StaticResource PlayerCard}">
+                        <Frame Style="{StaticResource PlayerCard}">
                             <StackLayout Orientation="Vertical">
                                 <StackLayout VerticalOptions="Center">
-                                    <Grid Padding=" 3">
+                                    <Grid Padding=" 3" >
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition />
                                             <ColumnDefinition />
@@ -68,35 +54,33 @@
                                         </Grid.RowDefinitions>
                                         <Label
                                             Style="{StaticResource LabelSmall}"
-                                            Text="{Binding Name, StringFormat='Player: {0}'}"
+                                            Text="{Binding GamesWon, StringFormat='Games Won: {0}'}"
                                             VerticalOptions="Center"
                                             Grid.Column="0"
-                                            Grid.Row="0"
-                                            IsVisible="true" />
+                                            Grid.Row="0" />
+                                        <Label
+                                            Style="{StaticResource LabelSmall}"
+                                            Text="{Binding GamesLost, StringFormat='Games Lost: {0}'}"
+                                            VerticalOptions="Center"
+                                            Grid.Column="1"
+                                            Grid.Row="0" />
+                                        <Label
+                                            Style="{StaticResource LabelSmall}"
+                                            Text="{Binding GamesPlayed, StringFormat='Games Played: {0}'}"
+                                            VerticalOptions="Center"
+                                            Grid.Column="0"
+                                            Grid.Row="1" />
+                                        <Label
+                                            Style="{StaticResource LabelSmall}"
+                                            Text="{Binding Average, StringFormat='Average: {0}%'}"
+                                            VerticalOptions="Center"
+                                            Grid.Column="0"
+                                            Grid.Row="2" />
                                         <Label
                                             Style="{StaticResource LabelSmall}"
                                             Text="{Binding WeekNumber, StringFormat='Week #: {0}'}"
                                             VerticalOptions="Center"
                                             Grid.Column="1"
-                                            Grid.Row="0"
-                                            IsVisible="true" />
-                                        <Label
-                                            Style="{StaticResource LabelSmall}"
-                                            Text="{Binding GamesWon, StringFormat='GamesWon: {0}'}"
-                                            VerticalOptions="Center"
-                                            Grid.Column="0"
-                                            Grid.Row="1" />
-                                        <Label
-                                            Style="{StaticResource LabelSmall}"
-                                            Text="{Binding GamesPlayed, StringFormat='Games Played: {0}'}"
-                                            VerticalOptions="Center"
-                                            Grid.Column="1"
-                                            Grid.Row="1" />
-                                        <Label
-                                            Style="{StaticResource LabelSmall}"
-                                            Text="{Binding Average, StringFormat='Average: {0}'}"
-                                            VerticalOptions="Center"
-                                            Grid.Column="0"
                                             Grid.Row="2" />
                                     </Grid>
                                 </StackLayout>
