@@ -21,6 +21,7 @@ namespace XWPLStats.ViewModels
         [RelayCommand]
         async Task Refresh()
         {
+            IsBusy = true;
             TeamStat.Clear();
             var players = await restService.GetAllPlayers();
             int gWon = 0;
@@ -44,7 +45,7 @@ namespace XWPLStats.ViewModels
             };
 
             TeamStat.Add(Team);
-
+            IsBusy = false;
         }
     }
 }

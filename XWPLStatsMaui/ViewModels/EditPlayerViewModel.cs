@@ -39,21 +39,13 @@ namespace XWPLStats.ViewModels
         public EditPlayerViewModel()
         {
             PlayerWeeks = new();
-            restService= new RestService();
+            restService = new RestService();
         }
 
-
-
+        
         [RelayCommand]
         async Task Refresh()
         {
-            //IsBusy = true;
-            //if (PlayerList.Count != null)
-            //{
-            //    PlayerList.Clear();
-
-            //}
-
 
             if (player == null)
             {
@@ -61,17 +53,22 @@ namespace XWPLStats.ViewModels
             }
             else
             {
-                
+
                 pList = await restService.GetAllBySingleId(player.Id);
                 var sorted = pList.OrderByDescending(a => a.WeekNumber);
+                foreach (var item in sorted)
+                {
+                    item.GamesPlayed = item.GamesWon + item.GamesLost;
+                    item.Average = Decimal.Round((decimal)item.GamesWon / (decimal)item.GamesPlayed * 100, 2);
+                }
                 PlayerWeeks.AddRange(sorted);
 
             }
-            //IsBusy = false;
+            
         }
 
         [RelayCommand]
-        async Task Selected()
+        static async Task Selected()
         {
             await Shell.Current.DisplayAlert("Test", "Selected", "Ok");
         }

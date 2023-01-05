@@ -23,7 +23,6 @@
         <!--<ToolbarItem Text="Add/Update Player" Command="{Binding AddPlayerCommand}"/>-->
     </ContentPage.ToolbarItems>
     <ListView
-        IsRefreshing="{Binding IsBusy, Mode=OneWay}"
         ItemsSource="{Binding PlayerWeeks}"
         RefreshCommand="{Binding RefreshCommand}"
         IsPullToRefreshEnabled="True"
@@ -86,12 +85,18 @@
                                             Text="{Binding GamesWon, StringFormat='GamesWon: {0}'}"
                                             VerticalOptions="Center"
                                             Grid.Column="0"
-                                            Grid.Row="2" />
+                                            Grid.Row="1" />
                                         <Label
                                             Style="{StaticResource LabelSmall}"
-                                            Text="{Binding GamesLost, StringFormat='Games Played: {0}'}"
+                                            Text="{Binding GamesPlayed, StringFormat='Games Played: {0}'}"
                                             VerticalOptions="Center"
                                             Grid.Column="1"
+                                            Grid.Row="1" />
+                                        <Label
+                                            Style="{StaticResource LabelSmall}"
+                                            Text="{Binding Average, StringFormat='Average: {0}'}"
+                                            VerticalOptions="Center"
+                                            Grid.Column="0"
                                             Grid.Row="2" />
                                     </Grid>
                                 </StackLayout>

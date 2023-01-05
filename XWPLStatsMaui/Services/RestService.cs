@@ -12,7 +12,7 @@ namespace XWPLStats.Services
     public class RestService : IRestService
     {
         static HttpClient client;
-        static string BaseURL = "https://wileysoft.codersden.com";
+        static readonly string BaseURL = "https://wileysoft.codersden.com";
 
         public RestService()
         {
@@ -42,7 +42,8 @@ namespace XWPLStats.Services
 
                     Barrel.Current.Add(key, json, TimeSpan.FromMinutes(mins));
                 }
-                return JsonConvert.DeserializeObject<T>(json);
+                var players = JsonConvert.DeserializeObject<T>(json);
+                return players;
             }
             catch (Exception ex)
             {
@@ -72,7 +73,6 @@ namespace XWPLStats.Services
         public async Task<List<Players>> GetSinglePlayer(int id)
         {
             List<Players> fullPlayer = new();
-            Players player = new();
             Uri uri = new($"https://wileysoft.codersden.com/api/Players/{id}");
             HttpResponseMessage response = await client.GetAsync(uri);
             if(response.IsSuccessStatusCode) 
