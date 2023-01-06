@@ -2,6 +2,7 @@
 using MvvmHelpers;
 using XWPLStats.Models;
 using XWPLStats.Services;
+using XWPLStats.Views;
 
 namespace XWPLStats.ViewModels
 {
@@ -45,6 +46,13 @@ namespace XWPLStats.ViewModels
             week.WeeksAverage = Decimal.Round((decimal)(week.WeekWin / (decimal)week.WeeksPlayed) * 100, 2);
             WeekStats.Add(week);
             IsBusy = false;
+        }
+
+        [RelayCommand]
+        async Task UpdateWeeks()
+        {
+            var route = $"{nameof(UpdateWeekStats)}";
+            await Shell.Current.GoToAsync(route,true);
         }
     }
 }

@@ -90,7 +90,5 @@
     <FlyoutItem Title="Weekly Statistics">
         <ShellContent ContentTemplate="{DataTemplate views:WeekStatsPage}" Route="WeekStatsPage" />
     </FlyoutItem>
-    <FlyoutItem Title="Update Week Stats Page">
-        <ShellContent ContentTemplate="{DataTemplate views:UpdateWeekStats}" Route="UpdateWeekStats" />
-    </FlyoutItem>
+
 </Shell>

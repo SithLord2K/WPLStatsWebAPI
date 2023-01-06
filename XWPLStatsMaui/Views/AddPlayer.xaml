@@ -7,7 +7,7 @@
     xmlns:models="clr-namespace:XWPLStats.Models"
     Title="Add/Update Players"
     x:DataType="viewmodel:AddUpdatePlayerViewModel"
-    Shell.PresentationMode="Modal"
+    Shell.PresentationMode="Animated"
     BackgroundColor="{AppThemeBinding 
                     Dark={StaticResource WindowBackgroundColorDark}, 
                     Light={StaticResource WindowBackgroundColor}}">
@@ -15,51 +15,92 @@
         <viewmodel:AddUpdatePlayerViewModel />
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <StackLayout Padding="20" >
-            <Label Text="ID:"
-                   Style="{StaticResource LabelMedium}" />
-            <Entry Text="{Binding Id}" 
-                   Style="{StaticResource LabelMedium}" 
-                   Keyboard="Numeric"
-                   Placeholder="" 
-                   TextChanged="UpdateWeekNumber" />
-            <Label Text="Name:"
-                   Style="{StaticResource LabelMedium}" />
-            <Entry Text="{Binding Name}" 
-                   Style="{StaticResource LabelMedium}" 
-                   Keyboard="Chat" />
-            <Label Text="Games Won:"
-                   Style="{StaticResource LabelMedium}" />
-            <Entry Text="{Binding GamesWon}" 
-                   Style="{StaticResource LabelMedium}" 
-                   Keyboard="Numeric"
-                   Placeholder="" />
-            <Label Text="Games Lost:"
-                   Style="{StaticResource LabelMedium}" />
-            <Entry Text="{Binding GamesLost}"
-                   Style="{StaticResource LabelMedium}" 
-                   Keyboard="Numeric"
-                   Placeholder="" />
-            <Label Text="Week Number:"
-                   Style="{StaticResource LabelMedium}" />
-            <Entry Text="{Binding WeekNumber}"
-                   Style="{StaticResource LabelMedium}" 
-                   Keyboard="Numeric" 
-                   Placeholder="" />
+        <StackLayout Padding="20" VerticalOptions="StartAndExpand" >
+            <Grid Padding="10" VerticalOptions="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
 
-            <ActivityIndicator
-                HorizontalOptions="Center"
-                IsRunning="{Binding IsBusy}"
-                IsVisible="{Binding IsBusy}"
-                VerticalOptions="Center" />
+                <Label Text="ID:"
+                       Style="{StaticResource LabelMedium}"
+                       VerticalOptions="Center"
+                       Grid.Column="0"
+                       Grid.Row="0" />
+                <Entry Text="{Binding Id}"
+                       Style="{StaticResource LabelMedium}"
+                       VerticalOptions="Center"
+                       Keyboard="Numeric"
+                       Placeholder=""
+                       TextChanged="UpdateWeekNumber"
+                       Grid.Column="1"
+                       Grid.Row="0" />
 
-            <Button
-                Padding="20,0"
-                Command="{Binding SavePlayerCommand}"
-                HorizontalOptions="Fill"
-                Text="Save"
-                VerticalOptions="EndAndExpand"
-                Style="{StaticResource ButtonOutline}"/>
+                <Label Text="Name:"
+                       Style="{StaticResource LabelMedium}"
+                       VerticalOptions="Center"
+                       Grid.Column="0"
+                       Grid.Row="1" />
+                <Entry Text="{Binding Name}"
+                       Style="{StaticResource LabelMedium}"
+                       VerticalOptions="Center"
+                       Keyboard="Chat"
+                       Grid.Column="1"
+                       Grid.Row="1" />
+
+                <Label Text="Games Won:"
+                       Style="{StaticResource LabelMedium}"
+                       VerticalOptions="Center"
+                       Grid.Column="0"
+                       Grid.Row="2"/>
+                <Entry Text="{Binding GamesWon}"
+                       Style="{StaticResource LabelMedium}"
+                       VerticalOptions="Center"
+                       Keyboard="Numeric"
+                       Placeholder=""
+                       Grid.Column="1"
+                       Grid.Row="2" />
+
+                <Label Text="Games Lost:"
+                       Style="{StaticResource LabelMedium}"
+                       VerticalOptions="Center"
+                       Grid.Column="0"
+                       Grid.Row="3" />
+                <Entry Text="{Binding GamesLost}"
+                       Style="{StaticResource LabelMedium}"
+                       VerticalOptions="Center"
+                       Keyboard="Numeric"
+                       Placeholder=""
+                       Grid.Column="1"
+                       Grid.Row="3" />
+
+                <Label Text="Week Number:"
+                       Style="{StaticResource LabelMedium}"
+                       VerticalOptions="Center"
+                       Grid.Column="0"
+                       Grid.Row="4" />
+                <Entry Text="{Binding WeekNumber}"
+                       Style="{StaticResource LabelMedium}"
+                       VerticalOptions="Center"
+                       Keyboard="Numeric"
+                       Placeholder=""
+                       Grid.Column="1"
+                       Grid.Row="4"/>
+            </Grid>
+            <Button Padding="20,0"
+                    Command="{Binding SavePlayerCommand}"
+                    HorizontalOptions="Fill"
+                    Text="Save Player Information"
+                    VerticalOptions="EndAndExpand"
+                    Style="{StaticResource ButtonOutline}"/>
         </StackLayout>
-      </ContentPage.Content>
+    </ContentPage.Content>
 </ContentPage>

@@ -13,6 +13,9 @@
     <ContentPage.BindingContext>
         <viewmodels:WeekStatsViewModel />
     </ContentPage.BindingContext>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add/Update Player" Command="{Binding UpdateWeeksCommand}"/>
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <FlexLayout>
             <ListView

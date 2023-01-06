@@ -1,5 +1,4 @@
-﻿
-using CommunityToolkit.Maui;
+﻿using CommunityToolkit.Maui;
 using XWPLStats.Services;
 using XWPLStats.ViewModels;
 using XWPLStats.Views;

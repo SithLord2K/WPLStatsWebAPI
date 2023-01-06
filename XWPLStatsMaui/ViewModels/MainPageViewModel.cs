@@ -1,13 +1,7 @@
 ﻿using MvvmHelpers;
-using MvvmHelpers.Commands;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using XWPLStats.Models;
 using XWPLStats.Services;
 using XWPLStats.Views;
-using Microsoft.Maui;
-using Microsoft.Maui.Controls;
 using CommunityToolkit.Mvvm.Input;
 
 namespace XWPLStats.ViewModels
@@ -48,7 +42,8 @@ namespace XWPLStats.ViewModels
         [RelayCommand]
         async Task AddPlayer()
         {
-            await Shell.Current.GoToAsync($"{nameof(AddPlayer)}",true);
+            var route = $"{nameof(AddPlayer)}";
+            await Shell.Current.GoToAsync(route,true);
         }
 
         [RelayCommand]

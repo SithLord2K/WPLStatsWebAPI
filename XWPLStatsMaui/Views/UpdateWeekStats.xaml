@@ -12,41 +12,62 @@
         <viewmodel:UpdateWeekStatsViewModel />
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Week Number" 
-                   Style="{StaticResource LabelMedium}" />
-            <Entry Text="{Binding WeekNumber}" Style="{StaticResource LabelMedium}" Keyboard="Numeric" />
-            <Label Text="Week Won:" 
-                   Style="{StaticResource LabelMedium}" />
-            <CheckBox IsChecked="{Binding WeekWon}"/> 
-            <!--<Entry Text="{Binding WeeksWon}" Style="{StaticResource LabelMedium}" Keyboard="Numeric" />-->
-            <!--<Label Text="Weeks Lost" 
-                   Style="{StaticResource LabelMedium}" />
-            <Entry Text="{Binding WeeksLost}" Style="{StaticResource LabelMedium}" Keyboard="Numeric" />-->
+        <StackLayout Padding="20">
+            <Grid Padding="10" VerticalOptions="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                
+                <Label Text="Week Number"
+                       Style="{StaticResource LabelMedium}"
+                       VerticalOptions="Center"
+                       Grid.Column="0"
+                       Grid.Row="0" />
+                <Entry Text="{Binding WeekNumber}"
+                       Style="{StaticResource LabelMedium}"
+                       VerticalOptions="Center"
+                       Keyboard="Numeric"
+                       Grid.Column="1"
+                       Grid.Row="0"/>
+                <Label Text="Week Won:"
+                       Style="{StaticResource LabelMedium}"
+                       VerticalOptions="Center"
+                       Grid.Column="0"
+                       Grid.Row="2"/>
+                <CheckBox IsChecked="{Binding WeekWon}"
+                          VerticalOptions="Center"
+                          Grid.Column="1"
+                          Grid.Row="2"/>
 
-            <ActivityIndicator
-                HorizontalOptions="Center"
-                IsRunning="{Binding IsBusy}"
-                IsVisible="{Binding IsBusy}"
-                VerticalOptions="Center" />
+                <Button Padding="20,0"
+                        Command="{Binding SaveWeeksCommand}"
+                        HorizontalOptions="Fill"
+                        IsEnabled="{Binding IsNotBusy}"
+                        Text="Save"
+                        VerticalOptions="EndAndExpand"
+                        Style="{StaticResource ButtonOutline}"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Grid.Row="5" />
 
-            <Button
-                Padding="20,0"
-                Command="{Binding SaveWeeksCommand}"
-                HorizontalOptions="Fill"
-                IsEnabled="{Binding IsNotBusy}"
-                Text="Save"
-                VerticalOptions="EndAndExpand"
-                Style="{StaticResource ButtonOutline}"/>
-
-            <Button
-                Padding="20,0"
-                Command="{Binding DeleteAllWeeksCommand}"
-                HorizontalOptions="Center"
-                IsEnabled="{Binding IsNotBusy}"
-                Text="Delete Weeks Table"
-                VerticalOptions="EndAndExpand"
-                Style="{StaticResource ButtonOutline}" IsVisible="false"/>
+                <Button Padding="20,0"
+                        Command="{Binding DeleteAllWeeksCommand}"
+                        HorizontalOptions="Center"
+                        IsEnabled="{Binding IsNotBusy}"
+                        Text="Delete Weeks Table"
+                        VerticalOptions="EndAndExpand"
+                        Style="{StaticResource ButtonOutline}"
+                        IsVisible="false" />
+            </Grid>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
