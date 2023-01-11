@@ -17,10 +17,10 @@
                 <Setter Property="Shell.ForegroundColor" Value="{AppThemeBinding Dark=White, Light=Black}" />
                 <Setter Property="Shell.TitleColor" Value="{AppThemeBinding Dark=White, Light=Black}" />
                 <Setter Property="Shell.DisabledColor" Value="#B4FFFFFF" />
-                <Setter Property="Shell.UnselectedColor" Value="{AppThemeBinding Dark=#5B5B5B, Light=#95000000}" />
+                <Setter Property="Shell.UnselectedColor" Value="{AppThemeBinding Dark=#95FFFFFF, Light=#95000000}" />
                 <Setter Property="Shell.TabBarBackgroundColor" Value="{AppThemeBinding Dark=Black, Light=White}" />
                 <Setter Property="Shell.TabBarForegroundColor" Value="{AppThemeBinding Dark=White, Light=Black}" />
-                <Setter Property="Shell.TabBarUnselectedColor" Value="{AppThemeBinding Dark=#5B5B5B, Light=#95000000}" />
+                <Setter Property="Shell.TabBarUnselectedColor" Value="{AppThemeBinding Dark=#95FFFFFF, Light=#95000000}" />
                 <Setter Property="Shell.TabBarTitleColor" Value="{AppThemeBinding Dark=White, Light=Black}" />
             </Style>
             <Style BasedOn="{StaticResource BaseStyle}" TargetType="TabBar" />
@@ -38,7 +38,7 @@
                 Class="FlyoutItemLayoutStyle"
                 TargetType="Layout">
                 <Setter Property="BackgroundColor" Value="LightBlue" />
-                <Setter Property="VisualStateManager.VisualStateGroups">
+               <Setter Property="VisualStateManager.VisualStateGroups">
                     <VisualStateGroupList>
                         <VisualStateGroup x:Name="CommonStates">
                             <VisualState x:Name="Normal">
@@ -81,10 +81,10 @@
 
 
     <ShellContent ContentTemplate="{DataTemplate local:MainPage}" Route="MainPage" />
-    <FlyoutItem Title="Player List Page">
+    <FlyoutItem Title="Player List">
         <ShellContent ContentTemplate="{DataTemplate local:MainPage}" Route="MainPage" />
     </FlyoutItem>
-    <FlyoutItem Title="Team Statistics Page">
+    <FlyoutItem Title="Team Statistics">
           <ShellContent ContentTemplate="{DataTemplate views:TeamStats}" Route="TeamStats" />
     </FlyoutItem>
     <FlyoutItem Title="Weekly Statistics">

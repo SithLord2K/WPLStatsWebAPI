@@ -4,7 +4,6 @@ using Microsoft.Maui.Controls;
 
 namespace XWPLStats
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPage : ContentPage
     {
 

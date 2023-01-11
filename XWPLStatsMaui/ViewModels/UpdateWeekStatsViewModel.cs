@@ -22,7 +22,6 @@ namespace XWPLStats.ViewModels
 
         public UpdateWeekStatsViewModel()
         {
-            Title = "Add/Update Week Stats";
             restService = new RestService();
         }
 
@@ -37,7 +36,7 @@ namespace XWPLStats.ViewModels
             };
 
             await restService.AddWeeks(week);
-            await Shell.Current.GoToAsync($"{nameof(WeekStatsPage)}");
+            await Shell.Current.GoToAsync($"..");
             
         }
 

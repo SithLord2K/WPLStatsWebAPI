@@ -7,7 +7,7 @@
     xmlns:viewmodels="clr-namespace:XWPLStats.ViewModels"
     xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     x:Name="PlayerListPage"
-    Title="{Binding Title}"
+    Title="Player List"
     x:DataType="viewmodels:MainPageViewModel"
     BackgroundColor="{AppThemeBinding 
                     Dark={StaticResource WindowBackgroundColorDark}, 

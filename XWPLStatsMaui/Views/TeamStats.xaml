@@ -5,7 +5,7 @@
              xmlns:viewmodels="clr-namespace:XWPLStats.ViewModels"
              xmlns:models="clr-namespace:XWPLStats.Models"
              x:Class="XWPLStats.Views.TeamStats"
-             Title="{Binding Title}"
+             Title="Team Statictics"
              x:DataType="viewmodels:TeamStatsViewModel"
              BackgroundColor="{AppThemeBinding 
                     Dark={StaticResource WindowBackgroundColorDark}, 

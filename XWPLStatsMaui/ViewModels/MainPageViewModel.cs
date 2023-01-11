@@ -29,7 +29,6 @@ namespace XWPLStats.ViewModels
         readonly NetworkAccess access = Connectivity.Current.NetworkAccess;
         public MainPageViewModel()
         {
-            Title = "Player List";
             Player = new ObservableRangeCollection<Players>();
             restService = new RestService();
             if (access != NetworkAccess.Internet)
@@ -90,6 +89,7 @@ namespace XWPLStats.ViewModels
 
             }
             var players = await restService.GetAllPlayers();
+            //await Shell.Current.DisplayAlert("Row Count", players.Count().ToString(), "Ok");
 
             if (players.Count == 0)
             {

@@ -31,16 +31,13 @@ namespace XWPLStats.Services
                     var getPlayerData = await restService.GetAllBySingleId(item);
                     if (getPlayerData != null)
                     {
-                        foreach (var single in getPlayerData)
-                        {
-                            playerTotals.Id = single.Id;
-                            playerTotals.Name = single.Name;
-                            playerTotals.GamesWon += single.GamesWon;
-                            playerTotals.GamesLost += single.GamesLost;
-                            playerTotals.GamesPlayed = playerTotals.GamesWon + playerTotals.GamesLost;
-                            playerTotals.Average = Decimal.Round((decimal)(playerTotals.GamesWon / (decimal)playerTotals.GamesPlayed) * 100, 2);
-                            playerTotals.WeekNumber = single.WeekNumber;
-                        }
+                        playerTotals.Id = getPlayerData.FirstOrDefault().Id;
+                        playerTotals.Name = getPlayerData.FirstOrDefault().Name;
+                        playerTotals.GamesWon = getPlayerData.Sum(x => x.GamesWon);
+                        playerTotals.GamesLost = getPlayerData.Sum(y => y.GamesLost);
+                        playerTotals.GamesPlayed = playerTotals.GamesWon + playerTotals.GamesLost;
+                        playerTotals.Average = Decimal.Round(((decimal)playerTotals.GamesWon / (decimal)playerTotals.GamesPlayed) * 100, 2);
+                        playerTotals.WeekNumber = getPlayerData.Count;
                     }
 
                     pList.Add(playerTotals);
@@ -56,19 +53,29 @@ namespace XWPLStats.Services
             var getPlayerData = await restService.GetAllBySingleId(id);
             if (getPlayerData != null)
             {
-                foreach (var single in getPlayerData)
-                {
-                    playerTotals.Id = single.Id;
-                    playerTotals.Name = single.Name;
-                    playerTotals.GamesWon += single.GamesWon;
-                    playerTotals.GamesLost += single.GamesLost;
-                    playerTotals.GamesPlayed = playerTotals.GamesWon + playerTotals.GamesLost;
-                    playerTotals.Average = Decimal.Round((decimal)(playerTotals.GamesWon / (decimal)playerTotals.GamesPlayed) * 100, 2);
-                    playerTotals.WeekNumber = getPlayerData.Count;
-                }
+                playerTotals.Id = getPlayerData.FirstOrDefault().Id;
+                playerTotals.Name = getPlayerData.FirstOrDefault().Name;
+                playerTotals.GamesWon = getPlayerData.Sum(x => x.GamesWon);
+                playerTotals.GamesLost = getPlayerData.Sum(y => y.GamesLost);
+                playerTotals.GamesPlayed = playerTotals.GamesWon + playerTotals.GamesLost;
+                playerTotals.Average = Decimal.Round(((decimal)playerTotals.GamesWon / (decimal)playerTotals.GamesPlayed) * 100, 2);
+                playerTotals.WeekNumber = getPlayerData.Count;
             }
 
             return playerTotals;
+        }
+
+        public async Task<TeamStats> GetTeamStats()
+        {
+            List<Players> teamTotals= new();
+            teamTotals = await restService.GetAllPlayers();
+            TeamStats teamStats = new();
+            teamStats.TotalGamesWon = teamTotals.Sum(x => x.GamesWon);
+            teamStats.TotalGamesLost = teamTotals.Sum(y => y.GamesLost);
+            teamStats.TotalGamesPlayed = teamStats.TotalGamesWon + teamStats.TotalGamesLost;
+            teamStats.TotalAverage = Decimal.Round(((decimal)teamStats.TotalGamesWon / (decimal)teamStats.TotalGamesPlayed) * 100, 2);
+            teamStats.WeeksPlayed = teamStats.TotalGamesPlayed / 25;
+            return teamStats;
         }
         
     }

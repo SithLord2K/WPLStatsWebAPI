@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="XWPLStats.Views.UpdateWeekStats"
              xmlns:viewmodel="clr-namespace:XWPLStats.ViewModels"
-             Title="{Binding Title}"
+             Title="Add/Update Weeks"
              x:DataType="viewmodel:UpdateWeekStatsViewModel"
              BackgroundColor="{AppThemeBinding 
                     Dark={StaticResource WindowBackgroundColorDark}, 

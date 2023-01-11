@@ -12,7 +12,6 @@ namespace XWPLStats.ViewModels
         readonly IRestService restService;
         public WeekStatsViewModel()
         {
-            Title = "Week Statistics";
             WeekStats = new ObservableRangeCollection<Weeks>();
             restService = new RestService();
         }

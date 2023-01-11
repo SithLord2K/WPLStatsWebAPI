@@ -5,7 +5,7 @@
              xmlns:viewmodels="clr-namespace:XWPLStats.ViewModels"
              xmlns:models="clr-namespace:XWPLStats.Models"
              x:Class="XWPLStats.Views.WeekStatsPage"
-             Title="{Binding Title}"
+             Title="Week Statistics"
              x:DataType="viewmodels:WeekStatsViewModel"
              BackgroundColor="{AppThemeBinding 
                     Dark={StaticResource WindowBackgroundColorDark}, 
@@ -14,7 +14,7 @@
         <viewmodels:WeekStatsViewModel />
     </ContentPage.BindingContext>
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add/Update Player" Command="{Binding UpdateWeeksCommand}"/>
+        <ToolbarItem Text="Add/Update Week" Command="{Binding UpdateWeeksCommand}"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <FlexLayout>
