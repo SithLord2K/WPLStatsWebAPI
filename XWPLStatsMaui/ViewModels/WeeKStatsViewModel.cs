@@ -53,5 +53,12 @@ namespace XWPLStats.ViewModels
             var route = $"{nameof(UpdateWeekStats)}";
             await Shell.Current.GoToAsync(route,true);
         }
+
+        [RelayCommand]
+        async Task Selected()
+        {
+            var route = $"{nameof(WeekViewer)}";
+            await Shell.Current.GoToAsync(route, true);
+        }
     }
 }

@@ -18,6 +18,7 @@ namespace XWPLStats
             Routing.RegisterRoute(nameof(WeekStatsPage), typeof(WeekStatsPage));
             Routing.RegisterRoute(nameof(UpdateWeekStats), typeof(UpdateWeekStats));
             Routing.RegisterRoute(nameof(EditPlayer), typeof(EditPlayer));
+            Routing.RegisterRoute(nameof(WeekViewer), typeof(WeekViewer));
         }
     }
 }

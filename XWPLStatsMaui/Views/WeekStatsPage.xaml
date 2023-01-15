@@ -4,6 +4,7 @@
              xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit" 
              xmlns:viewmodels="clr-namespace:XWPLStats.ViewModels"
              xmlns:models="clr-namespace:XWPLStats.Models"
+             xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="XWPLStats.Views.WeekStatsPage"
              Title="Week Statistics"
              x:DataType="viewmodels:WeekStatsViewModel"
@@ -13,6 +14,13 @@
     <ContentPage.BindingContext>
         <viewmodels:WeekStatsViewModel />
     </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <mct:SelectedItemEventArgsConverter x:Key="SelectedItemEventArgsConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add/Update Week" Command="{Binding UpdateWeeksCommand}"/>
     </ContentPage.ToolbarItems>
@@ -22,7 +30,7 @@
         IsRefreshing="{Binding IsBusy, Mode=OneWay}"
         ItemsSource="{Binding WeekStats}"
         RefreshCommand="{Binding RefreshCommand}"
-        SelectionMode="None"
+        SelectionMode="Single"
         HorizontalOptions="Fill"            
         Style="{StaticResource PlayerListView}"
         CachingStrategy="RecycleElement"
@@ -30,6 +38,12 @@
                     Grid.Column="0"
                     Grid.Row="1"
                     VerticalOptions="Start">
+                <ListView.Behaviors>
+                    <mct:EventToCommandBehavior
+                EventName="ItemSelected"
+                Command="{Binding SelectedCommand}"                
+                />
+                </ListView.Behaviors>
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="models:Weeks">
                         <ViewCell>

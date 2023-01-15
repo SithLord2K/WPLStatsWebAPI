@@ -30,6 +30,8 @@ public static class MauiProgram
 		builder.Services.AddTransient<TeamStatsViewModel>();
 		builder.Services.AddTransient<WeekStatsPage>();
 		builder.Services.AddTransient<WeekStatsViewModel>();
+		builder.Services.AddTransient<WeekViewer>();
+		builder.Services.AddTransient<WeekViewerViewModel>();
 
         return builder.Build();
 	}
