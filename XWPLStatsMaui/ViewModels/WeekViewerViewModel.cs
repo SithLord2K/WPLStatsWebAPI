@@ -16,7 +16,6 @@ namespace XWPLStats.ViewModels
         public bool weekWon;
         public decimal average;
         public List<WeekFullInfo> weekFullInfo;
-        private List<WeekFullInfo> weekFullInfos;
 
         public ObservableRangeCollection<WeekFullInfo> WeeksFull { get; set; }
         public int WeekNumber { get => weekNumber; set => SetProperty(ref weekNumber, value); }
@@ -24,6 +23,7 @@ namespace XWPLStats.ViewModels
         public int GamesLost { get => gamesLost; set => SetProperty(ref gamesLost, value); }
         public bool WeekWon { get => weekWon; set => SetProperty(ref weekWon, value); }
         public decimal Average { get => average; set => SetProperty(ref average, value); }
+        public string DatePlayed { get; set; }
 
         readonly IRestService restService;
 
@@ -39,20 +39,27 @@ namespace XWPLStats.ViewModels
         {
             IsBusy = true;
             weekFullInfo = new List<WeekFullInfo>();
-            if(WeeksFull.Count != 0)
+            List<TeamDetails> whatTeam = new();
+            if (WeeksFull.Count != 0)
             {
                 WeeksFull.Clear();
             }
             var fullWeeks = await restService.GetAllWeeks();
             var playerInfo = await restService.GetAllPlayers();
+            
             foreach(Weeks week in fullWeeks)
             {
+                whatTeam = await restService.GetTeamDetails();
                 WeekFullInfo weekFull = new()
                 {
                     GamesWon = playerInfo.Where(w => w.WeekNumber == week.WeekNumber).Sum(g => g.GamesWon),
                     GamesLost = playerInfo.Where(w => w.WeekNumber == week.WeekNumber).Sum(g => g.GamesLost),
                     WeekNumber = week.WeekNumber,
-                    WeekWon = week.WeekWon
+                    WeekWon = week.WeekWon,
+                    TeamName = whatTeam.Where(td => td.TeamNumber == week.TeamPlayed).FirstOrDefault().TeamName + " - "+
+                    whatTeam.Where(td => td.TeamNumber == week.TeamPlayed).FirstOrDefault().Captain,
+                    DatePlayed = week.DatePlayed.ToString("MMM. dd yyyy"),
+                    Home = week.Home
                 };
                 weekFull.Average = Decimal.Round((decimal)weekFull.GamesWon / ((decimal)weekFull.GamesLost + (decimal)weekFull.GamesWon) * 100, 2);
                 weekFullInfo.Add(weekFull);

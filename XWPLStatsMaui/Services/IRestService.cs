@@ -22,6 +22,9 @@ namespace XWPLStats.Services
         Task AddWeeks(Weeks weeks);
         Task UpdateWeeks(Weeks weeks);
         Task RemoveWeeks(int id);
+
+        //TeamDetails
+        Task<List<TeamDetails>> GetTeamDetails();
             
     }
 }

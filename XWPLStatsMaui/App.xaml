@@ -63,6 +63,17 @@
                 <Setter Property="RefreshColor"
                         Value="{StaticResource SystemBlue}"/>
             </Style>
+            <Style TargetType="CheckBox" x:Key="CheckboxStyle">
+                <Style.Triggers>
+                    <Trigger Property="IsChecked" Value="True" TargetType="CheckBox">
+                        <Setter Property="Color" Value="LimeGreen" />
+                    </Trigger>
+                    <Trigger Property="IsChecked" Value="False" TargetType="CheckBox">
+                        <Setter Property="Color" Value="DarkRed" />
+                    </Trigger>
+                </Style.Triggers>
+                
+            </Style>
 
             <Style x:Key="BaseLabel" TargetType="Label">
                 <Setter Property="TextColor" 

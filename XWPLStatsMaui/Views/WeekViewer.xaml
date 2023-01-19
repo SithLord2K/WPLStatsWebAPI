@@ -25,16 +25,10 @@
         ItemsSource="{Binding WeeksFull}"
         RefreshCommand="{Binding RefreshCommand}"
         IsPullToRefreshEnabled="True"
-        SelectionMode="Single"
+        SelectionMode="None"
         Style="{StaticResource PlayerListView}"
         CachingStrategy="RecycleElement"
         x:Name="WeeksList">
-        <!--<ListView.Behaviors>
-            <mct:EventToCommandBehavior
-                EventName="ItemSelected"
-                Command="{Binding SelectedCommand}"                
-                EventArgsConverter="{StaticResource SelectedItemEventArgsConverter}"/>
-        </ListView.Behaviors>-->
         <ListView.ItemTemplate>
             <DataTemplate x:DataType="model:WeekFullInfo">
                 <ViewCell>
@@ -42,7 +36,7 @@
                         <Frame Style="{StaticResource PlayerCard}">
                             <StackLayout Orientation="Vertical">
                                 <StackLayout VerticalOptions="Center">
-                                    <Grid Padding=" 3" >
+                                    <Grid Padding=" 3" RowSpacing="5" >
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition />
                                             <ColumnDefinition />
@@ -51,37 +45,75 @@
                                             <RowDefinition />
                                             <RowDefinition />
                                             <RowDefinition />
+                                            <RowDefinition />
+                                            <RowDefinition />
+                                            <RowDefinition />
                                         </Grid.RowDefinitions>
+                                        <Label
+                                            Style="{StaticResource LabelSmall}"
+                                            Text="{Binding TeamName, StringFormat='Team Played:   {0}'}"
+                                            VerticalOptions="Center"
+                                            Grid.Column="0"
+                                            Grid.ColumnSpan="2"
+                                            Grid.Row="0" />
                                         <Label
                                             Style="{StaticResource LabelSmall}"
                                             Text="{Binding WeekNumber, StringFormat='Week #: {0}'}"
                                             VerticalOptions="Center"
                                             Grid.Column="0"
-                                            Grid.Row="0" />
+                                            Grid.Row="1" />
                                         <Label
                                             Style="{StaticResource LabelSmall}"
-                                            Text="{Binding WeekWon, StringFormat='Week Won: {0}'}"
+                                            Text="WeekWon:"
+                                            HorizontalOptions="Start"
                                             VerticalOptions="Center"
                                             Grid.Column="1"
-                                            Grid.Row="0" />
+                                            Grid.Row="4" />
+                                        <CheckBox IsChecked="{Binding WeekWon}"
+                                                  Style="{StaticResource CheckboxStyle}"
+                                                  Grid.Column="1"
+                                                  Grid.Row="4"
+                                                  HorizontalOptions="End"
+                                                  IsEnabled="False" />
                                         <Label
                                             Style="{StaticResource LabelSmall}"
                                             Text="{Binding GamesWon, StringFormat='Games Won: {0}'}"
                                             VerticalOptions="Center"
                                             Grid.Column="0"
-                                            Grid.Row="1" />
+                                            Grid.Row="2" />
                                         <Label
                                             Style="{StaticResource LabelSmall}"
                                             Text="{Binding GamesLost, StringFormat='Games Lost: {0}'}"
                                             VerticalOptions="Center"
                                             Grid.Column="0"
-                                            Grid.Row="2" />
+                                            Grid.Row="3" />
                                         <Label
                                             Style="{StaticResource LabelSmall}"
-                                            Text="{Binding Average, StringFormat='Week Average: {0}%'}"
+                                            Text="{Binding Average, StringFormat='Average: {0}%'}"
                                             VerticalOptions="Center"
                                             Grid.Column="1"
+                                            Grid.RowSpan="2"
                                             Grid.Row="2" />
+                                        
+                                        <Label
+                                            Style="{StaticResource LabelSmall}"
+                                            Text="{Binding DatePlayed, StringFormat='Date: {0}'}"
+                                            VerticalOptions="Center"
+                                            Grid.Column="0"
+                                            Grid.Row="4" />
+                                        <Label
+                                            Style="{StaticResource LabelSmall}"
+                                            Text="Home:"
+                                            HorizontalOptions="Start"
+                                            VerticalOptions="Center"
+                                            Grid.Column="1"
+                                            Grid.Row="1" />
+                                        <CheckBox IsChecked="{Binding Home}"
+                                                  Style="{StaticResource CheckboxStyle}"
+                                                  Grid.Column="1"
+                                                  Grid.Row="1"
+                                                  HorizontalOptions="End"
+                                                  IsEnabled="False" />
                                     </Grid>
                                 </StackLayout>
                             </StackLayout>

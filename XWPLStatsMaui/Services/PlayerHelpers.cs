@@ -77,6 +77,8 @@ namespace XWPLStats.Services
             teamStats.WeeksPlayed = teamStats.TotalGamesPlayed / 25;
             return teamStats;
         }
+
+        
         
     }
 }

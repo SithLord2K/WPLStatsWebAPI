@@ -15,5 +15,9 @@ namespace XWPLStats.Models
         public bool WeekWon { get; set; }
         public int WeeksPlayed { get; set; }
         public decimal WeeksAverage { get; set; }
+        public int TeamPlayed { get; set; }
+        public bool Home { get; set; }
+        public DateTime DatePlayed { get; set; }
+        public string Captain { get; set; }
     }
 }
