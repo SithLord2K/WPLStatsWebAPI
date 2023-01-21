@@ -19,5 +19,6 @@ namespace XWPLStats.Models
         public bool Home { get; set; }
         public DateTime DatePlayed { get; set; }
         public string Captain { get; set; }
+        public List<TeamDetails> PickedTeam { get; internal set; }
     }
 }

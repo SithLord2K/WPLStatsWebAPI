@@ -56,7 +56,7 @@ namespace XWPLStats.ViewModels
         [RelayCommand]
         async Task Refresh()
         {
-            if (player == null)
+            if (Player == null)
             {
                 IsBusy = false;
                 return;
@@ -64,7 +64,7 @@ namespace XWPLStats.ViewModels
             else
             {
 
-                pList = await restService.GetAllBySingleId(player.Id);
+                pList = await restService.GetAllBySingleId(Player.Id);
                 var sorted = pList.OrderByDescending(a => a.WeekNumber);
                 foreach (var item in sorted)
                 {
