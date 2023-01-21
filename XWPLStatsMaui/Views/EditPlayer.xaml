@@ -7,7 +7,7 @@
              x:DataType="viewmodels:EditPlayerViewModel"
              x:Class="XWPLStats.Views.EditPlayer"
              Title="{Binding Player.Name, StringFormat='{0} - Weeks View'}"
-                 BackgroundColor="{AppThemeBinding 
+             BackgroundColor="{AppThemeBinding 
                     Dark={StaticResource WindowBackgroundColorDark}, 
                     Light={StaticResource WindowBackgroundColor}}">
     <ContentPage.BindingContext>

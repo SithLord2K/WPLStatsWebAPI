@@ -47,13 +47,13 @@
         </ListView.Behaviors>
         <ListView.ItemTemplate>
             <DataTemplate x:DataType="model:Players">
-                <ViewCell>
+                <ViewCell >
                     <ViewCell.ContextActions>
                         <MenuItem
                             Command="{Binding Source={x:Reference PlayerListPage}, Path=BindingContext.ViewWeeksCommand}"
                             CommandParameter="{Binding .}"
-                            IsDestructive="True"
-                            Text="View Weeks" />
+                            IsDestructive="False"
+                            Text="View Weeks"  />
                         <MenuItem
                             Command="{Binding Source={x:Reference PlayerListPage}, Path=BindingContext.RemoveCommand}"
                             CommandParameter="{Binding .}"

@@ -77,7 +77,7 @@
     </Shell.Resources>
 
 
-    <ShellContent ContentTemplate="{DataTemplate local:MainPage}" Route="MainPage" />
+    <!--<ShellContent ContentTemplate="{DataTemplate local:MainPage}" Route="MainPage" />
     <FlyoutItem Title="Player List">
         <ShellContent ContentTemplate="{DataTemplate local:MainPage}" Route="MainPage" />
     </FlyoutItem>
@@ -86,6 +86,15 @@
     </FlyoutItem>
     <FlyoutItem Title="Weekly Statistics">
         <ShellContent ContentTemplate="{DataTemplate views:WeekStatsPage}" Route="WeekStatsPage" />
-    </FlyoutItem>
+    </FlyoutItem>-->
+
+    <TabBar>
+        <ShellContent Title="Player Stats"
+                      ContentTemplate="{DataTemplate local:MainPage}"/>
+        <ShellContent Title="Team Stats"
+                      ContentTemplate="{DataTemplate views:TeamStats}"/>
+        <ShellContent Title="Weekly Stats"
+                      ContentTemplate="{DataTemplate views:WeekStatsPage}"/>
+    </TabBar>
 
 </Shell>
