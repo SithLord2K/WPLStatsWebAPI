@@ -21,7 +21,7 @@
     </ContentPage.Resources>
 
     <ListView
-        IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+        IsRefreshing="{Binding RefreshCommand.IsRunning, Mode=OneWay}"
         ItemsSource="{Binding PlayerWeeks}"
         RefreshCommand="{Binding RefreshCommand}"
         IsPullToRefreshEnabled="True"

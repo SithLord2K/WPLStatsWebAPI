@@ -20,11 +20,9 @@ namespace XWPLStats.ViewModels
         [RelayCommand]
         async Task Refresh()
         {
-            IsBusy = true;
             TeamStat.Clear();
             TeamStats newTeam = await playerHelpers.GetTeamStats();
             TeamStat.Add(newTeam);
-            IsBusy = false;
         }
     }
 }

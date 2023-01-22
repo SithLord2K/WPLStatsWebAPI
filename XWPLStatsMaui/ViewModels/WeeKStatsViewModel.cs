@@ -19,7 +19,7 @@ namespace XWPLStats.ViewModels
         [RelayCommand]
         async Task Refresh()
         {
-            IsBusy = true;
+            
             //Get Week Stats
             if (WeekStats.Count != 0)
             {
@@ -44,7 +44,6 @@ namespace XWPLStats.ViewModels
             week.WeeksPlayed = week.WeekWin + week.WeekLoss;
             week.WeeksAverage = Decimal.Round((decimal)(week.WeekWin / (decimal)week.WeeksPlayed) * 100, 2);
             WeekStats.Add(week);
-            IsBusy = false;
         }
 
         [RelayCommand]

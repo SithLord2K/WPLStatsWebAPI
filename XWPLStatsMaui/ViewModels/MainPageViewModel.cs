@@ -82,7 +82,6 @@ namespace XWPLStats.ViewModels
         [RelayCommand]
         async Task Refresh()
         {
-            IsBusy = true;
             if (Player.Count != 0)
             {
                 Player.Clear();
@@ -102,7 +101,6 @@ namespace XWPLStats.ViewModels
                 Player.AddRange(sorted);
 
             }
-            IsBusy = false;
         }
     }
 }

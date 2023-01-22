@@ -1,7 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using MvvmHelpers;
-using System.ComponentModel;
 using XWPLStats.Models;
 using XWPLStats.Services;
 
@@ -34,7 +33,7 @@ namespace XWPLStats.ViewModels
         public int GamesPlayed { get => gamesPlayed; set => SetProperty(ref gamesPlayed, value); }
         public int WeekNumber { get => weekNumber; set => SetProperty(ref weekNumber, value); }
         public decimal Average { get => average; set => SetProperty(ref average, value); }
-        private bool _isBusy;
+        
         readonly IRestService restService;
 
         public EditPlayerViewModel()
@@ -43,22 +42,12 @@ namespace XWPLStats.ViewModels
             restService = new RestService();
         }
 
-        public bool IsBusy
-        {
-            get { return _isBusy; }
-            set
-            {
-                _isBusy = value;
-                OnPropertyChanged(nameof(IsBusy));
-            }
-        }
 
         [RelayCommand]
         async Task Refresh()
         {
             if (Player == null)
             {
-                IsBusy = false;
                 return;
             }
             else
@@ -72,9 +61,8 @@ namespace XWPLStats.ViewModels
                     item.Average = Decimal.Round((decimal)item.GamesWon / (decimal)item.GamesPlayed * 100, 2);
                   }
                 PlayerWeeks.AddRange(sorted);
-                IsBusy = false;
+
             }
-            IsBusy = false;
         }
 
         [RelayCommand]

@@ -31,7 +31,7 @@
 
 
     <ListView
-        IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+        IsRefreshing="{Binding RefreshCommand.IsRunning, Mode=OneWay}"
         ItemsSource="{Binding Player}"
         RefreshCommand="{Binding RefreshCommand}"
         IsPullToRefreshEnabled="True"

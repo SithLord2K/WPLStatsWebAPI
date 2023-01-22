@@ -6,6 +6,7 @@ using XWPLStats.Views;
 using System.Diagnostics;
 using System.Collections.ObjectModel;
 
+
 namespace XWPLStats.ViewModels
 {
     public partial class UpdateWeekStatsViewModel : BaseViewModel
@@ -55,7 +56,6 @@ namespace XWPLStats.ViewModels
 
             await restService.AddWeeks(week);
             await Shell.Current.GoToAsync($"..");
-            
         }
 
         [RelayCommand]

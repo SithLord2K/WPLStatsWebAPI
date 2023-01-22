@@ -27,7 +27,7 @@
     <ContentPage.Content>
         <FlexLayout>
             <ListView
-        IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+        IsRefreshing="{Binding RefreshCommand.IsRunning, Mode=OneWay}"
         ItemsSource="{Binding WeekStats}"
         RefreshCommand="{Binding RefreshCommand}"
         SelectionMode="Single"

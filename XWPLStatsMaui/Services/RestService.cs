@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System.Diagnostics;
 using System.Net.Http.Json;
+using System.Runtime.InteropServices;
 using XWPLStats.Models;
 
 namespace XWPLStats.Services
@@ -101,8 +102,8 @@ namespace XWPLStats.Services
             return players;
         }
 
-        public Task<IEnumerable<Weeks>> GetAllWeeks() =>
-            GetAsync<IEnumerable<Weeks>>("/api/Weeks", "getallweeks", 20);
+        public Task<IEnumerable<Weeks>> GetAllWeeks([Optional]bool forceRefresh) =>
+            GetAsync<IEnumerable<Weeks>>("/api/Weeks", "getallweeks", 20, forceRefresh);
  
         public async Task AddWeeks(Weeks weeks)
         {

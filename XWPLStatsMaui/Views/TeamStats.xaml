@@ -19,7 +19,7 @@
                 <Grid.ColumnDefinitions />
                 <Grid.RowDefinitions />
                 <ListView
-        IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+        IsRefreshing="{Binding RefreshCommand.IsRunning, Mode=OneWay}"
         ItemsSource="{Binding TeamStat}"
         RefreshCommand="{Binding RefreshCommand}"
         SelectionMode="None"

@@ -37,8 +37,7 @@ namespace XWPLStats.ViewModels
         [RelayCommand]
         async Task Refresh()
         {
-            IsBusy = true;
-            weekFullInfo = new List<WeekFullInfo>();
+              weekFullInfo = new List<WeekFullInfo>();
             List<TeamDetails> whatTeam = new();
             if (WeeksFull.Count != 0)
             {
@@ -65,8 +64,6 @@ namespace XWPLStats.ViewModels
                 weekFullInfo.Add(weekFull);
             }
             WeeksFull.AddRange(weekFullInfo);
-            IsBusy = false;
-            
         }
     }
 }
