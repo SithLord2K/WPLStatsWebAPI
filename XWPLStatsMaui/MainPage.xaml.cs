@@ -1,6 +1,4 @@
 ﻿using XWPLStats.ViewModels;
-using Microsoft.Maui;
-using Microsoft.Maui.Controls;
 
 namespace XWPLStats
 {

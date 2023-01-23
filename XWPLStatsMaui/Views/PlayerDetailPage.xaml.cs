@@ -1,8 +1,5 @@
-﻿using System;
-using XWPLStats.Services;
+﻿using XWPLStats.Services;
 using XWPLStats.ViewModels;
-using Microsoft.Maui;
-using Microsoft.Maui.Controls;
 
 namespace XWPLStats.Views
 {

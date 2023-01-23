@@ -1,6 +1,4 @@
-﻿using Microsoft.Maui;
-using Microsoft.Maui.Controls;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using XWPLStats.Services;
 
 namespace XWPLStats.Views

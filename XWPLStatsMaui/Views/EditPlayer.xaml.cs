@@ -1,7 +1,3 @@
-using MvvmHelpers;
-using System.Collections.ObjectModel;
-using XWPLStats.Models;
-using XWPLStats.Services;
 using XWPLStats.ViewModels;
 
 namespace XWPLStats.Views;

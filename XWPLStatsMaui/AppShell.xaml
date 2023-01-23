@@ -76,18 +76,6 @@
         </ResourceDictionary>
     </Shell.Resources>
 
-
-    <!--<ShellContent ContentTemplate="{DataTemplate local:MainPage}" Route="MainPage" />
-    <FlyoutItem Title="Player List">
-        <ShellContent ContentTemplate="{DataTemplate local:MainPage}" Route="MainPage" />
-    </FlyoutItem>
-    <FlyoutItem Title="Team Statistics">
-          <ShellContent ContentTemplate="{DataTemplate views:TeamStats}" Route="TeamStats" />
-    </FlyoutItem>
-    <FlyoutItem Title="Weekly Statistics">
-        <ShellContent ContentTemplate="{DataTemplate views:WeekStatsPage}" Route="WeekStatsPage" />
-    </FlyoutItem>-->
-
     <TabBar>
         <ShellContent Title="Player Stats"
                       ContentTemplate="{DataTemplate local:MainPage}"/>

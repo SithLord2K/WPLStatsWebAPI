@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using XWPLStats.Models;
-using Microsoft.Maui;
-using Microsoft.Maui.Controls;
+﻿using XWPLStats.Models;
 
 namespace XWPLStats.Services
 {
