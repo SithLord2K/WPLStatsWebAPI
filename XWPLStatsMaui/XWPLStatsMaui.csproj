@@ -41,7 +41,7 @@
 		
 		<!-- Splash Screen -->
 		
-		<MauiSplashScreen Include="Resources\Splash\splashscreen.png" BaseSize="512,512" Color="#000000" />
+		<MauiSplashScreen Include="Resources\Splash\splashscreen.png" Resize="false" Color="#000000" />
 		
 
 		<!-- Images -->
@@ -57,9 +57,9 @@
 	<ItemGroup>
 	  <None Remove="Resources\AppIcon\appicon.png" />
 	  <None Remove="Resources\Images\home.png" />
-	  <None Remove="Resources\Splash\splashscreen.jpg" />
+	  <None Remove="Resources\Images\team.png" />
+	  <None Remove="Resources\Images\weeklystats.png" />
 	  <None Remove="Resources\Splash\splashscreen.png" />
-	  <None Remove="Resources\Splash\splashscreen.svg" />
 	</ItemGroup>
 
 	<ItemGroup>

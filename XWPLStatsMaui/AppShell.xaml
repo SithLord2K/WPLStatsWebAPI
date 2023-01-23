@@ -78,10 +78,13 @@
 
     <TabBar>
         <ShellContent Title="Player Stats"
+                      Icon="person"
                       ContentTemplate="{DataTemplate local:MainPage}"/>
         <ShellContent Title="Team Stats"
+                      Icon="team"
                       ContentTemplate="{DataTemplate views:TeamStats}"/>
         <ShellContent Title="Weekly Stats"
+                      Icon="weeklystats"
                       ContentTemplate="{DataTemplate views:WeekStatsPage}"/>
     </TabBar>
 
