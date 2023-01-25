@@ -61,7 +61,9 @@ namespace XWPLStats.Services
             HttpRequestMessage message = new(HttpMethod.Post, uri)
             {
                 Content = JsonContent.Create<Players>(player)
+                
             };
+            Barrel.Current.EmptyAll();
             _ = await client.SendAsync(message);
         }
 
@@ -112,6 +114,7 @@ namespace XWPLStats.Services
             {
                 Content = JsonContent.Create<Weeks>(weeks)
             };
+            Barrel.Current.EmptyAll()
             _ = await client.SendAsync(message);
         }
 
