@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="XWPLStatsDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Players">
+          <Key>
+            <PropertyRef Name="EntryId" />
+          </Key>
+          <Property Name="EntryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="GamesWon" Type="int" Nullable="false" />
+          <Property Name="GamesLost" Type="int" Nullable="false" />
+          <Property Name="WeekNumber" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TeamDetails">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TeamNumber" Type="int" Nullable="false" />
+          <Property Name="TeamName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Captain" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Weeks">
+          <Key>
+            <PropertyRef Name="WeekNumber" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WeekNumber" Type="int" Nullable="false" />
+          <Property Name="WeekWon" Type="bit" />
+          <Property Name="DatePlayed" Type="date" />
+          <Property Name="TeamPlayed" Type="int" />
+          <Property Name="Home" Type="bit" />
+        </EntityType>
+        <EntityContainer Name="XWPLStatsDataModelStoreContainer">
+          <EntitySet Name="Players" EntityType="Self.Players" Schema="wiley" store:Type="Tables" />
+          <EntitySet Name="TeamDetails" EntityType="Self.TeamDetails" Schema="wiley" store:Type="Tables" />
+          <EntitySet Name="Weeks" EntityType="Self.Weeks" Schema="wiley" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="XWPLStatsDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Player">
+          <Key>
+            <PropertyRef Name="EntryId" />
+          </Key>
+          <Property Name="EntryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GamesWon" Type="Int32" Nullable="false" />
+          <Property Name="GamesLost" Type="Int32" Nullable="false" />
+          <Property Name="WeekNumber" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TeamDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TeamNumber" Type="Int32" Nullable="false" />
+          <Property Name="TeamName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Captain" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Week">
+          <Key>
+            <PropertyRef Name="WeekNumber" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WeekNumber" Type="Int32" Nullable="false" />
+          <Property Name="WeekWon" Type="Boolean" />
+          <Property Name="DatePlayed" Type="DateTime" Precision="0" />
+          <Property Name="TeamPlayed" Type="Int32" />
+          <Property Name="Home" Type="Boolean" />
+        </EntityType>
+        <EntityContainer Name="XWPLStatsEntity" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Players" EntityType="Self.Player" />
+          <EntitySet Name="TeamDetails" EntityType="Self.TeamDetail" />
+          <EntitySet Name="Weeks" EntityType="Self.Week" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="XWPLStatsDataModelStoreContainer" CdmEntityContainer="XWPLStatsEntity">
+          <EntitySetMapping Name="Players">
+            <EntityTypeMapping TypeName="XWPLStatsDataModel.Player">
+              <MappingFragment StoreEntitySet="Players">
+                <ScalarProperty Name="EntryId" ColumnName="EntryId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="GamesWon" ColumnName="GamesWon" />
+                <ScalarProperty Name="GamesLost" ColumnName="GamesLost" />
+                <ScalarProperty Name="WeekNumber" ColumnName="WeekNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TeamDetails">
+            <EntityTypeMapping TypeName="XWPLStatsDataModel.TeamDetail">
+              <MappingFragment StoreEntitySet="TeamDetails">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="TeamNumber" ColumnName="TeamNumber" />
+                <ScalarProperty Name="TeamName" ColumnName="TeamName" />
+                <ScalarProperty Name="Captain" ColumnName="Captain" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Weeks">
+            <EntityTypeMapping TypeName="XWPLStatsDataModel.Week">
+              <MappingFragment StoreEntitySet="Weeks">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="WeekNumber" ColumnName="WeekNumber" />
+                <ScalarProperty Name="WeekWon" ColumnName="WeekWon" />
+                <ScalarProperty Name="DatePlayed" ColumnName="DatePlayed" />
+                <ScalarProperty Name="TeamPlayed" ColumnName="TeamPlayed" />
+                <ScalarProperty Name="Home" ColumnName="Home" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
