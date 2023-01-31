@@ -44,8 +44,8 @@ namespace XWPLStats.ViewModels
             foreach (Weeks week in fullWeeks)
             {
                 whatTeam = await restService.GetTeamDetails();
-                Players testWeek = (Players)playerInfo.Where(wp => wp.WeekNumber == week.WeekNumber);
-                if (testWeek.GamesWon != 0)
+                int testWeek = playerInfo.Where(wp => wp.WeekNumber == week.WeekNumber).Sum(g => g.GamesWon);
+                if (testWeek != 0)
                 {
                     WeekFullInfo weekFull = new()
                     {
@@ -69,6 +69,7 @@ namespace XWPLStats.ViewModels
                     {
                         GamesWon = 0,
                         GamesLost = 0,
+                        Average = 0,
                         WeekNumber = week.WeekNumber,
                         WeekWon = week.WeekWon,
                         TeamName = whatTeam.Where(td => td.TeamNumber == week.TeamPlayed).FirstOrDefault().TeamName + " - " +
@@ -76,7 +77,7 @@ namespace XWPLStats.ViewModels
                         DatePlayed = week.DatePlayed.ToString("MMM. dd yyyy"),
                         Home = week.Home
                     };
-                    weekForfiet.Average = 0;
+                    
                     weekFullInfo.Add(weekForfiet);
                 }
                 WeeksFull.AddRange(weekFullInfo);
