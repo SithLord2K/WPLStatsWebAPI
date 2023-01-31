@@ -25,6 +25,8 @@
                     <RowDefinition />
                     <RowDefinition />
                     <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
                 </Grid.RowDefinitions>
                 
                 <Label Text="Week Number"
@@ -47,26 +49,44 @@
                           VerticalOptions="Center"
                           Grid.Column="1"
                           Grid.Row="2"/>
+                <Label Text="Home Game:"
+                       Style="{StaticResource LabelSmall}"
+                       VerticalOptions="Center"
+                       Grid.Column="0"
+                       Grid.Row="3"/>
+                <CheckBox IsChecked="{Binding Home}"
+                          VerticalOptions="Center"
+                          Grid.Column="1"
+                          Grid.Row="3"/>
+                <Label Text="Forfeit:"
+                       Style="{StaticResource LabelSmall}"
+                       VerticalOptions="Center"
+                       Grid.Column="0"
+                       Grid.Row="4"/>
+                <CheckBox IsChecked="{Binding Forfeit}"
+                          VerticalOptions="Center"
+                          Grid.Column="1"
+                          Grid.Row="4"/>
                 <Label Text="Team Played:"
                        Style="{StaticResource LabelSmall}"
                        VerticalOptions="Center"
                        Grid.Column="0"
-                       Grid.Row="3" />
+                       Grid.Row="5" />
                 <Picker Title="Select Team Played"
                         x:Name="TeamPicker"
                         SelectedItem="{Binding PickedTeam,Mode=TwoWay}"
                         VerticalOptions="Center"
                         Grid.Column="1"
-                        Grid.Row="3" />
+                        Grid.Row="5" />
                 <Label Text="Date Played:"
                        Style="{StaticResource LabelSmall}"
                        VerticalOptions="Center"
                        Grid.Column="0"
-                       Grid.Row="4" />
+                       Grid.Row="6" />
                 <DatePicker x:Name="DatePicker"
                             Date="{Binding DatePlayed}"
                             Grid.Column="1"
-                            Grid.Row="4" />
+                            Grid.Row="6" />
 
                 <Button Padding="20,0"
                         Command="{Binding SaveWeeksCommand}"
@@ -77,7 +97,7 @@
                         Style="{StaticResource ButtonOutline}"
                         Grid.Column="0"
                         Grid.ColumnSpan="2"
-                        Grid.Row="5" />
+                        Grid.Row="7" />
                 
                 <Button Padding="20,0"
                         Command="{Binding DeleteAllWeeksCommand}"

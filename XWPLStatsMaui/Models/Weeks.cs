@@ -12,6 +12,7 @@ namespace XWPLStats.Models
         public int WeekNumber { get; set; }
         public int WeekWin { get; set; }
         public int WeekLoss { get; set; }
+        public bool Forfeit { get; set; }
         public bool WeekWon { get; set; }
         public int WeeksPlayed { get; set; }
         public decimal WeeksAverage { get; set; }

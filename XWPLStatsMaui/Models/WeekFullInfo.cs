@@ -17,6 +17,7 @@ namespace XWPLStats.Models
         public string TeamName { get; set; }
         public string DatePlayed { get; set; }
         public bool Home { get; set; }
+        public bool Forfeit { get; set; }
         public string Captain { get; set; }
     }
 }
