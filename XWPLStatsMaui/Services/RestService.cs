@@ -114,7 +114,7 @@ namespace XWPLStats.Services
             {
                 Content = JsonContent.Create<Weeks>(weeks)
             };
-            Barrel.Current.EmptyAll()
+            Barrel.Current.EmptyAll();
             _ = await client.SendAsync(message);
         }
 

@@ -24,7 +24,7 @@ namespace XWPLStats.ViewModels
 
         public WeekViewerViewModel()
         {
-            
+
             WeeksFull = new ObservableRangeCollection<WeekFullInfo>();
             restService = new RestService();
         }
@@ -32,7 +32,7 @@ namespace XWPLStats.ViewModels
         [RelayCommand]
         async Task Refresh()
         {
-              weekFullInfo = new List<WeekFullInfo>();
+            weekFullInfo = new List<WeekFullInfo>();
             List<TeamDetails> whatTeam = new();
             if (WeeksFull.Count != 0)
             {
@@ -40,25 +40,47 @@ namespace XWPLStats.ViewModels
             }
             var fullWeeks = await restService.GetAllWeeks();
             var playerInfo = await restService.GetAllPlayers();
-            
-            foreach(Weeks week in fullWeeks)
+
+            foreach (Weeks week in fullWeeks)
             {
                 whatTeam = await restService.GetTeamDetails();
-                WeekFullInfo weekFull = new()
+                Players testWeek = (Players)playerInfo.Where(wp => wp.WeekNumber == week.WeekNumber);
+                if (testWeek.GamesWon != 0)
                 {
-                    GamesWon = playerInfo.Where(w => w.WeekNumber == week.WeekNumber).Sum(g => g.GamesWon),
-                    GamesLost = playerInfo.Where(w => w.WeekNumber == week.WeekNumber).Sum(g => g.GamesLost),
-                    WeekNumber = week.WeekNumber,
-                    WeekWon = week.WeekWon,
-                    TeamName = whatTeam.Where(td => td.TeamNumber == week.TeamPlayed).FirstOrDefault().TeamName + " - "+
-                    whatTeam.Where(td => td.TeamNumber == week.TeamPlayed).FirstOrDefault().Captain,
-                    DatePlayed = week.DatePlayed.ToString("MMM. dd yyyy"),
-                    Home = week.Home
-                };
-                weekFull.Average = Decimal.Round((decimal)weekFull.GamesWon / ((decimal)weekFull.GamesLost + (decimal)weekFull.GamesWon) * 100, 2);
-                weekFullInfo.Add(weekFull);
+                    WeekFullInfo weekFull = new()
+                    {
+
+                        GamesWon = playerInfo.Where(w => w.WeekNumber == week.WeekNumber).Sum(g => g.GamesWon),
+                        GamesLost = playerInfo.Where(w => w.WeekNumber == week.WeekNumber).Sum(g => g.GamesLost),
+                        WeekNumber = week.WeekNumber,
+                        WeekWon = week.WeekWon,
+                        TeamName = whatTeam.Where(td => td.TeamNumber == week.TeamPlayed).FirstOrDefault().TeamName + " - " +
+                        whatTeam.Where(td => td.TeamNumber == week.TeamPlayed).FirstOrDefault().Captain,
+                        DatePlayed = week.DatePlayed.ToString("MMM. dd yyyy"),
+                        Home = week.Home
+
+                    };
+                    weekFull.Average = Decimal.Round((decimal)weekFull.GamesWon / ((decimal)weekFull.GamesLost + (decimal)weekFull.GamesWon) * 100, 2);
+                    weekFullInfo.Add(weekFull);
+                }
+                else
+                {
+                    WeekFullInfo weekForfiet = new()
+                    {
+                        GamesWon = 0,
+                        GamesLost = 0,
+                        WeekNumber = week.WeekNumber,
+                        WeekWon = week.WeekWon,
+                        TeamName = whatTeam.Where(td => td.TeamNumber == week.TeamPlayed).FirstOrDefault().TeamName + " - " +
+                        whatTeam.Where(td => td.TeamNumber == week.TeamPlayed).FirstOrDefault().Captain,
+                        DatePlayed = week.DatePlayed.ToString("MMM. dd yyyy"),
+                        Home = week.Home
+                    };
+                    weekForfiet.Average = 0;
+                    weekFullInfo.Add(weekForfiet);
+                }
+                WeeksFull.AddRange(weekFullInfo);
             }
-            WeeksFull.AddRange(weekFullInfo);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices;
+﻿using Microsoft.Identity.Client;
+using System.Runtime.InteropServices;
 using XWPLStats.Models;
 
 namespace XWPLStats.Services
@@ -21,6 +22,5 @@ namespace XWPLStats.Services
 
         //TeamDetails
         Task<List<TeamDetails>> GetTeamDetails();
-            
     }
 }
