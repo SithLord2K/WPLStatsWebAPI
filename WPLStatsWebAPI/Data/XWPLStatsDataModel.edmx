@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="XWPLStatsDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="XWPLStatsDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Players">
           <Key>
             <PropertyRef Name="EntryId" />
@@ -35,14 +35,14 @@
           <Property Name="DatePlayed" Type="date" />
           <Property Name="TeamPlayed" Type="int" />
           <Property Name="Home" Type="bit" />
+          <Property Name="Forfeit" Type="bit" />
         </EntityType>
         <EntityContainer Name="XWPLStatsDataModelStoreContainer">
           <EntitySet Name="Players" EntityType="Self.Players" Schema="wiley" store:Type="Tables" />
           <EntitySet Name="TeamDetails" EntityType="Self.TeamDetails" Schema="wiley" store:Type="Tables" />
           <EntitySet Name="Weeks" EntityType="Self.Weeks" Schema="wiley" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="XWPLStatsDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -76,6 +76,7 @@
           <Property Name="DatePlayed" Type="DateTime" Precision="0" />
           <Property Name="TeamPlayed" Type="Int32" />
           <Property Name="Home" Type="Boolean" />
+          <Property Name="Forfeit" Type="Boolean" />
         </EntityType>
         <EntityContainer Name="XWPLStatsEntity" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Players" EntityType="Self.Player" />
@@ -113,6 +114,7 @@
           <EntitySetMapping Name="Weeks">
             <EntityTypeMapping TypeName="XWPLStatsDataModel.Week">
               <MappingFragment StoreEntitySet="Weeks">
+                <ScalarProperty Name="Forfeit" ColumnName="Forfeit" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="WeekNumber" ColumnName="WeekNumber" />
                 <ScalarProperty Name="WeekWon" ColumnName="WeekWon" />

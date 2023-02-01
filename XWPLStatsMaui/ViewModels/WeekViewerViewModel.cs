@@ -8,7 +8,7 @@ namespace XWPLStats.ViewModels
     public partial class WeekViewerViewModel : BaseViewModel
     {
         public int gamesWon, gamesLost, weekNumber;
-        public bool weekWon;
+        public bool weekWon, home, forfeit;
         public decimal average;
         public List<WeekFullInfo> weekFullInfo;
 
@@ -19,6 +19,8 @@ namespace XWPLStats.ViewModels
         public bool WeekWon { get => weekWon; set => SetProperty(ref weekWon, value); }
         public decimal Average { get => average; set => SetProperty(ref average, value); }
         public string DatePlayed { get; set; }
+        public bool Forfeit { get => forfeit; set => SetProperty(ref forfeit, value); }
+        public bool Home { get => home; set => SetProperty(ref home, value); }
 
         readonly IRestService restService;
 
@@ -38,13 +40,14 @@ namespace XWPLStats.ViewModels
             {
                 WeeksFull.Clear();
             }
-            var fullWeeks = await restService.GetAllWeeks();
+            var fullWeeks = await restService.GetAllWeeks(true);
             var playerInfo = await restService.GetAllPlayers();
 
             foreach (Weeks week in fullWeeks)
             {
                 whatTeam = await restService.GetTeamDetails();
                 bool testWeek = week.Forfeit;
+
                 WeekFullInfo weekFull = new()
                 {
 
@@ -58,12 +61,13 @@ namespace XWPLStats.ViewModels
                     Home = week.Home
 
                 };
-                if (testWeek)
+                if (!testWeek)
                 {
                     weekFull.Average = Decimal.Round((decimal)weekFull.GamesWon / ((decimal)weekFull.GamesLost + (decimal)weekFull.GamesWon) * 100, 2);
                 }
                 else
                 {
+                    weekFull.Forfeit = week.Forfeit;
                     weekFull.GamesWon = 0;
                     weekFull.GamesLost = 0;
                     weekFull.Average = 0;

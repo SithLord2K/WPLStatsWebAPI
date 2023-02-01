@@ -20,5 +20,6 @@ namespace WPLStatsWebAPI.Data
         public Nullable<System.DateTime> DatePlayed { get; set; }
         public Nullable<int> TeamPlayed { get; set; }
         public Nullable<bool> Home { get; set; }
+        public Nullable<bool> Forfeit { get; set; }
     }
 }

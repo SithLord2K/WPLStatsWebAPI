@@ -92,9 +92,20 @@
                                             Text="{Binding Average, StringFormat='Average: {0}%'}"
                                             VerticalOptions="Center"
                                             Grid.Column="1"
-                                            Grid.RowSpan="2"
                                             Grid.Row="2" />
-                                        
+                                        <Label
+                                            Style="{StaticResource LabelSmall}"
+                                            Text="Forfeit:"
+                                            HorizontalOptions="Start"
+                                            VerticalOptions="Center"
+                                            Grid.Column="1"
+                                            Grid.Row="3" />
+                                        <CheckBox IsChecked="{Binding Forfeit}"
+                                                  Style="{StaticResource CheckboxStyle}"
+                                                  Grid.Column="1"
+                                                  Grid.Row="3"
+                                                  HorizontalOptions="End"
+                                                  IsEnabled="False" />
                                         <Label
                                             Style="{StaticResource LabelSmall}"
                                             Text="{Binding DatePlayed, StringFormat='Date: {0}'}"

@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPLStatsWebAPI", "WPLStatsWebAPI.csproj", "{A585DACA-8DB6-4411-BDA7-03A422100A5E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A585DACA-8DB6-4411-BDA7-03A422100A5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A585DACA-8DB6-4411-BDA7-03A422100A5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A585DACA-8DB6-4411-BDA7-03A422100A5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A585DACA-8DB6-4411-BDA7-03A422100A5E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3B0FDA0C-863C-4CD2-B499-826F49985BCF}
+	EndGlobalSection
+EndGlobal
