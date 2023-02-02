@@ -5,7 +5,7 @@ using WPLStatsCoreWebAPI.Models;
 
 namespace WPLStatsCoreWebAPI.Data
 {
-    [Route("api_v2/[controller]")]
+    [Route("/[controller]")]
     [ApiController]
     public class PlayersController : ControllerBase
     {
@@ -19,7 +19,7 @@ namespace WPLStatsCoreWebAPI.Data
         // GET: api/Players
         [HttpGet]
         [ResponseCache(Duration = 20, Location = ResponseCacheLocation.Any, NoStore = false)]
-        [Authorize]
+        
         public async Task<ActionResult<IEnumerable<Player>>> GetPlayers()
         {
           if (_context.Players == null)
@@ -31,7 +31,7 @@ namespace WPLStatsCoreWebAPI.Data
 
         // GET: api/Players/5
         [HttpGet("{id}")]
-        [Authorize]
+        
         [ResponseCache(Duration = 20, Location = ResponseCacheLocation.Any, NoStore = false)]
         public async Task<ActionResult<Player>> GetPlayer(int id)
         {
@@ -52,7 +52,7 @@ namespace WPLStatsCoreWebAPI.Data
         // PUT: api/Players/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        [Authorize]
+        
         public async Task<IActionResult> PutPlayer(int id, Player player)
         {
             if (id != player.EntryId)
@@ -84,7 +84,7 @@ namespace WPLStatsCoreWebAPI.Data
         // POST: api/Players
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        [Authorize]
+        
         public async Task<ActionResult<Player>> PostPlayer(Player player)
         {
           if (_context.Players == null)
@@ -99,7 +99,7 @@ namespace WPLStatsCoreWebAPI.Data
 
         // DELETE: api/Players/5
         [HttpDelete("{id}")]
-        [Authorize]
+        
         public async Task<IActionResult> DeletePlayer(int id)
         {
             if (_context.Players == null)

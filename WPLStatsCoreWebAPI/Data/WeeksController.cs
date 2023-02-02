@@ -4,7 +4,7 @@ using WPLStatsCoreWebAPI.Models;
 
 namespace WPLStatsCoreWebAPI.Data
 {
-    [Route("api_v2/[controller]")]
+    [Route("/[controller]")]
     [ApiController]
     public class WeeksController : ControllerBase
     {
