@@ -20,18 +20,18 @@ public static class MauiProgram
         builder.Services.AddSingleton<MainPageViewModel>();
 
 
-        builder.Services.AddTransient<AddPlayer>();
-		builder.Services.AddTransient<AddUpdatePlayerViewModel>();
-        builder.Services.AddTransient<EditPlayer>();
-        builder.Services.AddTransient<EditPlayerViewModel>();
-        builder.Services.AddTransient<PlayerDetailPage>();
-		builder.Services.AddTransient<PlayerDetailPageViewModel>();
-		builder.Services.AddTransient<TeamStats>();
-		builder.Services.AddTransient<TeamStatsViewModel>();
-		builder.Services.AddTransient<WeekStatsPage>();
-		builder.Services.AddTransient<WeekStatsViewModel>();
-		builder.Services.AddTransient<WeekViewer>();
-		builder.Services.AddTransient<WeekViewerViewModel>();
+        builder.Services.AddSingleton<AddPlayer>();
+		builder.Services.AddSingleton<AddUpdatePlayerViewModel>();
+        builder.Services.AddSingleton<EditPlayer>();
+        builder.Services.AddSingleton<EditPlayerViewModel>();
+        builder.Services.AddSingleton<PlayerDetailPage>();
+		builder.Services.AddSingleton<PlayerDetailPageViewModel>();
+		builder.Services.AddSingleton<TeamStats>();
+		builder.Services.AddSingleton<TeamStatsViewModel>();
+		builder.Services.AddSingleton<WeekStatsPage>();
+		builder.Services.AddSingleton<WeekStatsViewModel>();
+		builder.Services.AddSingleton<WeekViewer>();
+		builder.Services.AddSingleton<WeekViewerViewModel>();
 
         return builder.Build();
 	}
