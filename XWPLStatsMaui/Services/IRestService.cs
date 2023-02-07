@@ -1,5 +1,4 @@
-﻿using Microsoft.Identity.Client;
-using System.Runtime.InteropServices;
+﻿using System.Runtime.InteropServices;
 using XWPLStats.Models;
 
 namespace XWPLStats.Services

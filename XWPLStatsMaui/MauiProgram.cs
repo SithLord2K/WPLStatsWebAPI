@@ -13,25 +13,25 @@ public static class MauiProgram
 		builder
 			.UseMauiApp<App>().UseMauiCommunityToolkit();
 
-		builder.Services.AddSingleton<IRestService, RestService>();
-		builder.Services.AddSingleton<PlayerHelpers, PlayerHelpers>();
+		builder.Services.AddTransient<IRestService, RestService>();
+		builder.Services.AddTransient<PlayerHelpers, PlayerHelpers>();
 
-		builder.Services.AddSingleton<MainPage>();
-        builder.Services.AddSingleton<MainPageViewModel>();
+		builder.Services.AddTransient<MainPage>();
+        builder.Services.AddScoped<MainPageViewModel>();
 
 
-        builder.Services.AddSingleton<AddPlayer>();
-		builder.Services.AddSingleton<AddUpdatePlayerViewModel>();
-        builder.Services.AddSingleton<EditPlayer>();
-        builder.Services.AddSingleton<EditPlayerViewModel>();
-        builder.Services.AddSingleton<PlayerDetailPage>();
-		builder.Services.AddSingleton<PlayerDetailPageViewModel>();
-		builder.Services.AddSingleton<TeamStats>();
-		builder.Services.AddSingleton<TeamStatsViewModel>();
-		builder.Services.AddSingleton<WeekStatsPage>();
-		builder.Services.AddSingleton<WeekStatsViewModel>();
-		builder.Services.AddSingleton<WeekViewer>();
-		builder.Services.AddSingleton<WeekViewerViewModel>();
+        builder.Services.AddTransient<AddPlayer>();
+		builder.Services.AddScoped<AddUpdatePlayerViewModel>();
+        builder.Services.AddTransient<EditPlayer>();
+        builder.Services.AddScoped<EditPlayerViewModel>();
+        builder.Services.AddTransient<PlayerDetailPage>();
+		builder.Services.AddScoped<PlayerDetailPageViewModel>();
+		builder.Services.AddTransient<TeamStats>();
+		builder.Services.AddScoped<TeamStatsViewModel>();
+		builder.Services.AddTransient<WeekStatsPage>();
+		builder.Services.AddScoped<WeekStatsViewModel>();
+		builder.Services.AddTransient<WeekViewer>();
+		builder.Services.AddScoped<WeekViewerViewModel>();
 
         return builder.Build();
 	}

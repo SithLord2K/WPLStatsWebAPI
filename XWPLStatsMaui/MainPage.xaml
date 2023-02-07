@@ -58,7 +58,8 @@
                             Command="{Binding Source={x:Reference PlayerListPage}, Path=BindingContext.RemoveCommand}"
                             CommandParameter="{Binding .}"
                             IsDestructive="True"
-                            Text="Delete" />
+                            Text="Delete"
+                            IsEnabled="False"/>
                     </ViewCell.ContextActions>
                     <Grid Padding="3">
 

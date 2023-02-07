@@ -7,6 +7,7 @@ namespace XWPLStats.ViewModels
 {
     public partial class WeekViewerViewModel : BaseViewModel
     {
+        public string teamName;
         public int gamesWon, gamesLost, weekNumber;
         public bool weekWon, home, forfeit;
         public decimal average;
@@ -21,18 +22,18 @@ namespace XWPLStats.ViewModels
         public string DatePlayed { get; set; }
         public bool Forfeit { get => forfeit; set => SetProperty(ref forfeit, value); }
         public bool Home { get => home; set => SetProperty(ref home, value); }
+        public string TeamName { get => teamName; set => SetProperty(ref teamName, value); }
 
         readonly IRestService restService;
 
         public WeekViewerViewModel()
         {
-
             WeeksFull = new ObservableRangeCollection<WeekFullInfo>();
             restService = new RestService();
         }
 
         [RelayCommand]
-        async Task Refresh()
+        public async Task Refresh()
         {
             weekFullInfo = new List<WeekFullInfo>();
             List<TeamDetails> whatTeam = new();
@@ -75,6 +76,7 @@ namespace XWPLStats.ViewModels
                 weekFullInfo.Add(weekFull);
             }
             WeeksFull.AddRange(weekFullInfo);
+            return;
         }
     }
 }

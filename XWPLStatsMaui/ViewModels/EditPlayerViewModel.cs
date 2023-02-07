@@ -65,10 +65,6 @@ namespace XWPLStats.ViewModels
             }
         }
 
-        [RelayCommand]
-        static async Task Selected()
-        {
-            await Shell.Current.DisplayAlert("Test", "Selected", "Ok");
-        }
+
     }
 }

@@ -14,11 +14,11 @@
         <viewmodels:EditPlayerViewModel />
     </ContentPage.BindingContext>
 
-    <ContentPage.Resources>
+    <!--<ContentPage.Resources>
         <ResourceDictionary>
             <mct:SelectedItemEventArgsConverter x:Key="SelectedItemEventArgsConverter" />
         </ResourceDictionary>
-    </ContentPage.Resources>
+    </ContentPage.Resources>-->
 
     <ListView
         IsRefreshing="{Binding RefreshCommand.IsRunning, Mode=OneWay}"
@@ -29,12 +29,12 @@
         Style="{StaticResource PlayerListView}"
         CachingStrategy="RecycleElement"
         x:Name="PlayersList">
-        <ListView.Behaviors>
+        <!--<ListView.Behaviors>
             <mct:EventToCommandBehavior
                 EventName="ItemSelected"
                 Command="{Binding SelectedCommand}"                
                 EventArgsConverter="{StaticResource SelectedItemEventArgsConverter}"/>
-        </ListView.Behaviors>
+        </ListView.Behaviors>-->
         <ListView.ItemTemplate>
             <DataTemplate x:DataType="model:Players">
                 <ViewCell>
