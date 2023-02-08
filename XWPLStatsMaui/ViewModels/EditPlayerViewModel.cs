@@ -14,10 +14,11 @@ namespace XWPLStats.ViewModels
         Players player;
 
         public List<Players> pList = new();
-        string name;
-        int gamesWon, gamesLost, playerId, gamesPlayed, weekNumber;
-        decimal average;
+        public string name;
+        public int gamesWon, gamesLost, playerId, gamesPlayed, weekNumber;
+        public decimal average;
         public string pID;
+        public bool _isBusy = false;
 
         public string PlayerID
         {
@@ -42,10 +43,16 @@ namespace XWPLStats.ViewModels
             restService = new RestService();
         }
 
+        public bool IsBusy
+        {
+            get { return _isBusy; }
+            set { SetProperty(ref _isBusy, value); }
+        }
 
         [RelayCommand]
         async Task Refresh()
         {
+            IsBusy = true;
             if (Player == null)
             {
                 return;
@@ -59,8 +66,10 @@ namespace XWPLStats.ViewModels
                 {
                     item.GamesPlayed = item.GamesWon + item.GamesLost;
                     item.Average = Decimal.Round((decimal)item.GamesWon / (decimal)item.GamesPlayed * 100, 2);
-                  }
+                }
                 PlayerWeeks.AddRange(sorted);
+                IsBusy = false;
+                return;
 
             }
         }
