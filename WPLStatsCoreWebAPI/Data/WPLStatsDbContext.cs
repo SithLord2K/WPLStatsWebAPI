@@ -17,10 +17,11 @@ public partial class WPLStatsDbContext : DbContext
     }
 
     public virtual DbSet<Player> Players { get; set; }
-
+    public virtual DbSet<Player> Player { get; set; }
     public virtual DbSet<TeamDetail> TeamDetails { get; set; }
-
     public virtual DbSet<Week> Weeks { get; set; }
+    public virtual DbSet<Logging> Logging { get; set; }
+    public virtual DbSet<PlayerData> PlayerData { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -28,9 +29,9 @@ public partial class WPLStatsDbContext : DbContext
 
         modelBuilder.Entity<Player>(entity =>
         {
-            entity.HasKey(e => e.EntryId);
-
-            entity.Property(e => e.Name).HasMaxLength(50);
+            entity.HasKey(e => e.Id);
+            entity.Property(e => e.FirstName).HasMaxLength(50);
+            entity.Property(e => e.LastName).HasMaxLength(50);
         });
 
         modelBuilder.Entity<TeamDetail>(entity =>
@@ -51,8 +52,24 @@ public partial class WPLStatsDbContext : DbContext
             entity.Property(e => e.Id).ValueGeneratedOnAdd();
         });
 
+        modelBuilder.Entity<Logging>(entity =>
+        {
+            entity.HasKey(e => e.ID);
+            entity.Property(e => e.ID).ValueGeneratedOnAdd();
+            entity.Property(e => e.LogText).HasMaxLength(255);
+            entity.Property(e => e.TimeStamp).HasColumnType("datetime");
+        });
+
+        modelBuilder.Entity<PlayerData>(entity =>
+        {
+            entity.HasKey(e => e.PlayerId);
+            entity.HasKey(e => e.WeekNumber);
+        });
+
         OnModelCreatingPartial(modelBuilder);
     }
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+
+    
 }

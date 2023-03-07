@@ -1,26 +1,22 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WPLStatsCoreWebAPI.Models;
-using WPLStatsCoreWebAPI.Filters;
 
 namespace WPLStatsCoreWebAPI.Data
 {
-    [APIKey]
     [Route("/[controller]")]
     [ApiController]
-    public class PlayersController : ControllerBase
+    public class PlayerController : ControllerBase
     {
         private readonly WPLStatsDbContext _context;
 
-        public PlayersController(WPLStatsDbContext context)
+        public PlayerController(WPLStatsDbContext context)
         {
             _context = context;
         }
 
-        // GET: api/Players
+        // GET: api/Player
         [HttpGet]
-        [ResponseCache(Duration = 20, Location = ResponseCacheLocation.Any, NoStore = false)]
-        
         public async Task<ActionResult<IEnumerable<Player>>> GetPlayers()
         {
           if (_context.Players == null)
@@ -30,9 +26,8 @@ namespace WPLStatsCoreWebAPI.Data
             return await _context.Players.ToListAsync();
         }
 
-        // GET: api/Players/5
+        // GET: api/Player/5
         [HttpGet("{id}")]
-        [ResponseCache(Duration = 20, Location = ResponseCacheLocation.Any, NoStore = false)]
         public async Task<ActionResult<Player>> GetPlayer(int id)
         {
           if (_context.Players == null)
@@ -49,10 +44,9 @@ namespace WPLStatsCoreWebAPI.Data
             return player;
         }
 
-        // PUT: api/Players/5
+        // PUT: api/Player/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        
         public async Task<IActionResult> PutPlayer(int id, Player player)
         {
             if (id != player.Id)
@@ -81,10 +75,9 @@ namespace WPLStatsCoreWebAPI.Data
             return NoContent();
         }
 
-        // POST: api/Players
+        // POST: api/Player
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        
         public async Task<ActionResult<Player>> PostPlayer(Player player)
         {
           if (_context.Players == null)
@@ -97,9 +90,8 @@ namespace WPLStatsCoreWebAPI.Data
             return CreatedAtAction("GetPlayer", new { id = player.Id }, player);
         }
 
-        // DELETE: api/Players/5
+        // DELETE: api/Player/5
         [HttpDelete("{id}")]
-        
         public async Task<IActionResult> DeletePlayer(int id)
         {
             if (_context.Players == null)

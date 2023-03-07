@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using WPLStatsCoreWebAPI.Filters;
 using WPLStatsCoreWebAPI.Models;
 
 namespace WPLStatsCoreWebAPI.Data
 {
+    [APIKey]
     [Route("/[controller]")]
     [ApiController]
     public class WeeksController : ControllerBase

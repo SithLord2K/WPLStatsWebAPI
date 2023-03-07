@@ -5,15 +5,8 @@ namespace WPLStatsCoreWebAPI.Models;
 
 public partial class Player
 {
-    public int EntryId { get; set; }
-
     public int Id { get; set; }
-
-    public string Name { get; set; } = null!;
-
-    public int GamesWon { get; set; }
-
-    public int GamesLost { get; set; }
-
-    public int WeekNumber { get; set; }
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
+    public int TeamId { get; set; }
 }
